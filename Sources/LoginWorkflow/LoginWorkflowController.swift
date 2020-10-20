@@ -1,0 +1,63 @@
+//
+//  File.swift
+//  
+//
+//  Created by GG on 16/10/2020.
+//
+
+import UIKit
+
+public class LoginWorkflowController: UIViewController {
+ 
+    static func create(coordinatorDelegate: LoginLogicCoordinatorDelegate) -> LoginWorkflowController {
+        let ctrl:LoginWorkflowController = UIStoryboard(name: "LoginWorkflow", bundle: Bundle.module).instantiateViewController(identifier: "LoginWorkflowController") as! LoginWorkflowController
+        ctrl.logicDelegate = coordinatorDelegate
+        return ctrl
+    }
+    weak var logicDelegate: LoginLogicCoordinatorDelegate!
+    @IBOutlet weak var icon: UIImageView!  {
+        didSet {
+            icon.layer.cornerRadius = 10.0
+            icon.clipsToBounds = true
+        }
+    }
+
+    @IBOutlet weak var appNameLabel: UILabel!
+    @IBOutlet weak var signUpButton: SignUpButton!  {
+        didSet {
+            signUpButton.signUpType = .sigup
+            signUpButton.hasFocus = true
+        }
+    }
+
+    @IBOutlet weak var loginButton: SignUpButton!  {
+        didSet {
+            loginButton.signUpType = .login
+        }
+    }
+    
+    public var appName: String?
+    public var imageName: String?
+    public var backgroundColor: UIColor?
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        if let name = appName {
+            appNameLabel.text = name
+        }
+        if let name = imageName,
+           let image = UIImage(named: name) {
+            icon.image = image
+        }
+        if let color = backgroundColor {
+            view.backgroundColor = color
+        }
+    }
+    
+    @IBAction func login(_ sender: Any) {
+        logicDelegate?.showLogin()
+    }
+    @IBAction func signup(_ sender: Any) {
+        logicDelegate?.showSignUp()
+    }
+}

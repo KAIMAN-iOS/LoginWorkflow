@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		C612B6F7253D6FF7002B38F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C612B6F5253D6FF7002B38F5 /* Main.storyboard */; };
 		C612B6F9253D6FF9002B38F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C612B6F8253D6FF9002B38F5 /* Assets.xcassets */; };
 		C612B6FC253D6FF9002B38F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C612B6FA253D6FF9002B38F5 /* LaunchScreen.storyboard */; };
+		C612B706253D70DC002B38F5 /* LoginWorkflow in Frameworks */ = {isa = PBXBuildFile; productRef = C612B705253D70DC002B38F5 /* LoginWorkflow */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C612B6F8253D6FF9002B38F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C612B6FB253D6FF9002B38F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C612B6FD253D6FF9002B38F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C612B708253D70E1002B38F5 /* LoginWorkflow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoginWorkflow; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C612B706253D70DC002B38F5 /* LoginWorkflow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 		C612B6E3253D6FF7002B38F5 = {
 			isa = PBXGroup;
 			children = (
+				C612B708253D70E1002B38F5 /* LoginWorkflow */,
 				C612B6EE253D6FF7002B38F5 /* iosExample */,
 				C612B6ED253D6FF7002B38F5 /* Products */,
 			);
@@ -83,6 +87,9 @@
 			dependencies = (
 			);
 			name = iosExample;
+			packageProductDependencies = (
+				C612B705253D70DC002B38F5 /* LoginWorkflow */,
+			);
 			productName = iosExample;
 			productReference = C612B6EC253D6FF7002B38F5 /* iosExample.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +117,9 @@
 				Base,
 			);
 			mainGroup = C612B6E3253D6FF7002B38F5;
+			packageReferences = (
+				C612B704253D70DC002B38F5 /* XCRemoteSwiftPackageReference "LoginWorkflow" */,
+			);
 			productRefGroup = C612B6ED253D6FF7002B38F5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -341,6 +351,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C612B704253D70DC002B38F5 /* XCRemoteSwiftPackageReference "LoginWorkflow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jerometonnelier/LoginWorkflow";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C612B705253D70DC002B38F5 /* LoginWorkflow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C612B704253D70DC002B38F5 /* XCRemoteSwiftPackageReference "LoginWorkflow" */;
+			productName = LoginWorkflow;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C612B6E4253D6FF7002B38F5 /* Project object */;
 }

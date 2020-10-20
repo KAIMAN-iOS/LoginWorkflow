@@ -7,34 +7,34 @@
 
 import UIKit
 
-@IBDesignable
-class SignUpButton: UIButton {
-    enum SignUpType: Int {
-        case login, sigup
-        
-        var title: String {
-            switch self {
-            case .login: return NSLocalizedString("Log in", bundle: Bundle.module, comment: "Log in")
-            case .sigup: return NSLocalizedString("Sign up", bundle: Bundle.module, comment: "Sign up")
-            }
+public enum SignUpType: Int {
+    case login, sigup
+    
+    var title: String {
+        switch self {
+        case .login: return NSLocalizedString("Log in", bundle: Bundle.module, comment: "Log in")
+        case .sigup: return NSLocalizedString("Sign up", bundle: Bundle.module, comment: "Sign up")
         }
     }
-    @IBInspectable var selectedBackgroundColor: UIColor = .white
-    @IBInspectable var selectedTitleColor: UIColor = .red
+}
+
+public class SignUpButton: UIButton {
     
-    @IBInspectable var hasFocus: Bool = false {
+    public var selectedBackgroundColor: UIColor = .white
+    public var selectedTitleColor: UIColor = .red
+    public var hasFocus: Bool = false {
         didSet {
             layoutIfNeeded()
         }
     }
     
-    var signUpType: SignUpType = .login  {
+    public var signUpType: SignUpType = .login  {
         didSet {
             setTitle(signUpType.title, for: .normal)
         }
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         backgroundColor = hasFocus ? selectedBackgroundColor : .clear
         layer.borderWidth = 1.0
