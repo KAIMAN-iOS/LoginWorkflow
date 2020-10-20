@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/jerometonnelier/ActionButton",
         "state": {
           "branch": null,
-          "revision": "fe2443c8834865df1620d9587a3a8d0441e4afeb",
-          "version": "1.0.0"
+          "revision": "aab1e02fc35751743c3e94ff6668627c06ba97f7",
+          "version": "1.0.2"
         }
       },
       {
@@ -35,6 +35,15 @@
           "branch": null,
           "revision": "43dd9976c8234987382d5c7780fd8c8992caa40a",
           "version": "1.0.14"
+        }
+      },
+      {
+        "package": "LoginWorkflow",
+        "repositoryURL": "https://github.com/jerometonnelier/LoginWorkflow",
+        "state": {
+          "branch": null,
+          "revision": "ffdf470277bdfb320df80c36134f94f06d0457e3",
+          "version": "1.0.0"
         }
       },
       {

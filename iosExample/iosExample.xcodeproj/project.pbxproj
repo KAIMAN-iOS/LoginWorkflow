@@ -25,7 +25,6 @@
 		C612B6F8253D6FF9002B38F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C612B6FB253D6FF9002B38F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C612B6FD253D6FF9002B38F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C612B708253D70E1002B38F5 /* LoginWorkflow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LoginWorkflow; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +42,6 @@
 		C612B6E3253D6FF7002B38F5 = {
 			isa = PBXGroup;
 			children = (
-				C612B708253D70E1002B38F5 /* LoginWorkflow */,
 				C612B6EE253D6FF7002B38F5 /* iosExample */,
 				C612B6ED253D6FF7002B38F5 /* Products */,
 			);
@@ -357,8 +355,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jerometonnelier/LoginWorkflow";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

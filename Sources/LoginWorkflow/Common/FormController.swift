@@ -94,6 +94,7 @@ public class FormController: UIViewController {
         ActionButton.primaryColor = #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1)
         ActionButton.separatorColor = #colorLiteral(red: 0.6170696616, green: 0.6521494985, blue: 0.7113651633, alpha: 1)
         ActionButton.mainTextsColor = #colorLiteral(red: 0.1234303191, green: 0.1703599989, blue: 0.2791167498, alpha: 1)
+        ActionButton.loadingColor = #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1).withAlphaComponent(0.7)
 
         applyChanges()
     }
@@ -241,7 +242,6 @@ public class FormController: UIViewController {
                   let password = textFields.filter({ $0.field == .password }).first?.text else { return }
             let user = LoginUser(email: email, password: password)
             nextButton.isLoading = true
-            nextButton.backgroundColor = #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1).withAlphaComponent(0.6)
             coordinatorDelegate?.login(user, completion: { [weak self] in
                 self?.nextButton.isLoading = false
             })
@@ -254,7 +254,6 @@ public class FormController: UIViewController {
                   let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text else { return }
             let user = SignupUser(email: email, password: password, phone: phone, countryCode: FieldTextField.countryCode, firstname: firstname, lastname: lastname)
             nextButton.isLoading = true
-            nextButton.backgroundColor = #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1).withAlphaComponent(0.6)
             coordinatorDelegate?.signup(user, completion: { [weak self] in
                 self?.nextButton.isLoading = false
             })
