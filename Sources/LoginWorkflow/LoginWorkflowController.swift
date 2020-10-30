@@ -15,13 +15,7 @@ public class LoginWorkflowController: UIViewController {
         return ctrl
     }
     weak var logicDelegate: LoginLogicCoordinatorDelegate!
-    @IBOutlet weak var icon: UIImageView!  {
-        didSet {
-            icon.layer.cornerRadius = 10.0
-            icon.clipsToBounds = true
-        }
-    }
-
+    @IBOutlet weak var icon: UIImageView! 
     @IBOutlet weak var appNameLabel: UILabel!
     @IBOutlet weak var signUpButton: SignUpButton!  {
         didSet {

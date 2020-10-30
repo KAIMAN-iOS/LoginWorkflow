@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -105,7 +105,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYw-Av-XXM">
-                                <rect key="frame" x="20" y="57" width="33" height="44"/>
+                                <rect key="frame" x="20" y="57" width="31.5" height="42"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" image="backArrow"/>
                                 <connections>
@@ -113,7 +113,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdN-ju-hqQ">
-                                <rect key="frame" x="340" y="64" width="54" height="30"/>
+                                <rect key="frame" x="340" y="63" width="54" height="30"/>
                                 <color key="tintColor" name="selectedTitleColor"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
@@ -121,16 +121,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lB-hO-aVL">
-                                <rect key="frame" x="30" y="117" width="111" height="48"/>
+                                <rect key="frame" x="30" y="115" width="111" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-ZH-33U">
-                                <rect key="frame" x="30" y="183" width="354" height="623"/>
+                                <rect key="frame" x="30" y="181" width="354" height="625"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gG-wP-Tcj">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="623"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="625"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="623" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="68t-bq-dUZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="623"/>
@@ -192,7 +192,7 @@
     </scenes>
     <resources>
         <image name="AppIcon" width="1024" height="1024"/>
-        <image name="backArrow" width="13.5" height="24"/>
+        <image name="backArrow" width="11.5" height="21.5"/>
         <namedColor name="backgroundColor">
             <color red="0.98400002717971802" green="0.28999999165534973" blue="0.27500000596046448" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

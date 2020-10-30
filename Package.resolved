@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/jerometonnelier/ActionButton",
         "state": {
           "branch": null,
-          "revision": "fe2443c8834865df1620d9587a3a8d0441e4afeb",
-          "version": "1.0.0"
+          "revision": "aab1e02fc35751743c3e94ff6668627c06ba97f7",
+          "version": "1.0.2"
         }
       },
       {
@@ -21,7 +21,7 @@
       },
       {
         "package": "KCoordinatorKit",
-        "repositoryURL": "https://github.com/jerometonnelier/K-CoordinatorKit",
+        "repositoryURL": "https://github.com/jerometonnelier/KCoordinatorKit",
         "state": {
           "branch": null,
           "revision": "20bb96f4f55c366fbeba61e97287bd6ee4a14d03",
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/jerometonnelier/KExtensions",
         "state": {
           "branch": null,
-          "revision": "0deace24ba3d26c18a08f6d3a65df99adea48dc1",
-          "version": "1.0.13"
+          "revision": "43dd9976c8234987382d5c7780fd8c8992caa40a",
+          "version": "1.0.14"
         }
       },
       {
@@ -57,11 +57,11 @@
       },
       {
         "package": "PhoneNumberKit",
-        "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit",
+        "repositoryURL": "https://github.com/jerometonnelier/PhoneNumberKit",
         "state": {
           "branch": null,
-          "revision": "c7d7b0c91ef0ad7e413022edfcf5d6f75561e2d5",
-          "version": "3.3.1"
+          "revision": "d73665b4ae26aa57245bd4fdc5b6bab7a18033f3",
+          "version": "4.0.0"
         }
       },
       {
