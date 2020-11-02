@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PhoneNumberKit
 
 public class LoginUser: NSObject {
     public let email: String
@@ -19,10 +20,15 @@ public class LoginUser: NSObject {
 }
 
 public class SignupUser: LoginUser {
+    static let phoneNumberKit = PhoneNumberKit()
     public let phone: String
     public let countryCode: String
     public let firstname: String
     public let lastname: String
+    public var internationalPhone: String {
+        guard let nummber = try? SignupUser.phoneNumberKit.parse(phone) else { return phone }
+        return SignupUser.phoneNumberKit.format(nummber, toType: .international)
+    }
     
     public init(email: String,
                 password: String,

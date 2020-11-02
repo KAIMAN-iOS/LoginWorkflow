@@ -53,3 +53,11 @@ extension LoginWorkflowCoordinator: LoginLogicCoordinatorDelegate {
         showForm(.sigup)
     }
 }
+
+extension String {
+    func bundleLocale() -> String {
+        NSLocalizedString(self, bundle: .module, comment: self)
+    }
+}
+
+

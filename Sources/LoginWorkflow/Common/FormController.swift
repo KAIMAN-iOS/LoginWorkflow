@@ -124,11 +124,11 @@ public class FormController: UIViewController {
         fields.forEach { field in
             switch field {
             case .email:
-                let textfield = textField("email".local().uppercased(), field)
+                let textfield = textField("email".bundleLocale().uppercased(), field)
                 stackView.addArrangedSubview(textfield)
                 
             case .password:
-                let textField = textField("password".local().uppercased(), field)
+                let textField = textField("password".bundleLocale().uppercased(), field)
                 stackView.addArrangedSubview(textField)
                 textField.isSecureTextEntry = true
                 textField.sizeToFit()
@@ -138,9 +138,9 @@ public class FormController: UIViewController {
                 stack.axis = .horizontal
                 stack.spacing = 12
                 stack.distribution = .fillEqually
-                let firstname = textField("firstname".local().uppercased(), FormType.firstname)
+                let firstname = textField("firstname".bundleLocale().uppercased(), FormType.firstname)
                 stack.addArrangedSubview(firstname)
-                let name = textField("lastname".local().uppercased(), FormType.lastName)
+                let name = textField("lastname".bundleLocale().uppercased(), FormType.lastName)
                 stack.addArrangedSubview(name)
                 stackView.addArrangedSubview(stack)
                 
@@ -149,13 +149,13 @@ public class FormController: UIViewController {
                 stack.axis = .horizontal
                 stack.spacing = 12
                 stack.distribution = .fillProportionally
-                let code = textField("country code".local().uppercased(), FormType.countryCode)
+                let code = textField("country code".bundleLocale().uppercased(), FormType.countryCode)
                 updateCountryCode()
                 code.setContentHuggingPriority(.required, for: .horizontal)
 //                code.isEnabled = false
                 code.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCountryCodePicker)))
                 stack.addArrangedSubview(code)
-                let phone = textField("phone number".local().uppercased(), field)
+                let phone = textField("phone number".bundleLocale().uppercased(), field)
                 stack.addArrangedSubview(phone)
                 stackView.addArrangedSubview(stack)
                 
@@ -182,7 +182,7 @@ public class FormController: UIViewController {
                 
             case .forgetPassword:
                 let button = UIButton(frame: CGRect.zero)
-                button.setTitle("forgot password".local(), for: .normal)
+                button.setTitle("forgot password".bundleLocale(), for: .normal)
                 button.titleLabel?.font = FontType.footnote.font
                 button.tintColor = FormController.primaryColor
                 button.setTitleColor(FormController.primaryColor, for: .normal)
