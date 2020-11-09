@@ -33,6 +33,10 @@ public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
         flowDelegate = delegate
     }
     
+    deinit {
+        print("💀 DEINIT \(URL(fileURLWithPath: #file).lastPathComponent)")
+    }
+    
     public override func toPresentable() -> UIViewController {
         chooseController
     }

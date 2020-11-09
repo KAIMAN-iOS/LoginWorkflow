@@ -92,7 +92,7 @@ DRIVER</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEa-UH-af4" customClass="ActionButton" customModule="ActionButton">
-                                <rect key="frame" x="20" y="814" width="374" height="48"/>
+                                <rect key="frame" x="20" y="806" width="374" height="48"/>
                                 <color key="backgroundColor" name="selectedTitleColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="mMx-34-UPW"/>
@@ -107,7 +107,7 @@ DRIVER</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYw-Av-XXM">
-                                <rect key="frame" x="20" y="57" width="31.5" height="42"/>
+                                <rect key="frame" x="20" y="57" width="33.5" height="44"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" image="backArrow"/>
                                 <connections>
@@ -115,7 +115,7 @@ DRIVER</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdN-ju-hqQ">
-                                <rect key="frame" x="340" y="63" width="54" height="30"/>
+                                <rect key="frame" x="340" y="64" width="54" height="30"/>
                                 <color key="tintColor" name="selectedTitleColor"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
@@ -123,16 +123,16 @@ DRIVER</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lB-hO-aVL">
-                                <rect key="frame" x="30" y="115" width="111" height="48"/>
+                                <rect key="frame" x="30" y="117" width="111" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-ZH-33U">
-                                <rect key="frame" x="30" y="181" width="354" height="625"/>
+                                <rect key="frame" x="30" y="183" width="354" height="615"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gG-wP-Tcj">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="625"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="615"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="623" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="68t-bq-dUZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="623"/>
@@ -165,7 +165,7 @@ DRIVER</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Dfi-qZ-ani" firstAttribute="trailing" secondItem="vdN-ju-hqQ" secondAttribute="trailing" constant="20" id="IEC-PO-wo3"/>
-                            <constraint firstItem="aEa-UH-af4" firstAttribute="bottom" secondItem="Dfi-qZ-ani" secondAttribute="bottom" id="JqS-8l-Tvb"/>
+                            <constraint firstItem="aEa-UH-af4" firstAttribute="bottom" secondItem="Dfi-qZ-ani" secondAttribute="bottom" constant="-8" id="JqS-8l-Tvb"/>
                             <constraint firstItem="Dfi-qZ-ani" firstAttribute="trailing" secondItem="HmN-ZH-33U" secondAttribute="trailing" constant="30" id="Yuj-dL-bUr"/>
                             <constraint firstItem="5lB-hO-aVL" firstAttribute="top" secondItem="YYw-Av-XXM" secondAttribute="bottom" constant="16" id="aDP-fB-ttZ"/>
                             <constraint firstItem="vdN-ju-hqQ" firstAttribute="centerY" secondItem="YYw-Av-XXM" secondAttribute="centerY" id="c8v-FO-eKf"/>
@@ -193,16 +193,16 @@ DRIVER</string>
         </scene>
     </scenes>
     <resources>
-        <image name="AppIcon" width="1024" height="1024"/>
-        <image name="backArrow" width="11.5" height="21.5"/>
+        <image name="AppIcon" width="1013.5" height="1013.5"/>
+        <image name="backArrow" width="13.5" height="24"/>
         <namedColor name="backgroundColor">
-            <color red="0.98400002717971802" green="0.28999999165534973" blue="0.27500000596046448" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.97254901960784312" green="0.29803921568627451" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="selectedTitleColor">
-            <color red="0.98400002717971802" green="0.28999999165534973" blue="0.27500000596046448" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.97299998998641968" green="0.29800000786781311" blue="0.29800000786781311" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.13300000131130219" green="0.16899999976158142" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

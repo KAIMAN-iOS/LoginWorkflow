@@ -11,7 +11,7 @@ import TextFieldEffects
 import PhoneNumberKit
 import FontExtension
 
-enum FormType: Int {
+public enum FormType: Int {
     case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword
 }
 
@@ -24,9 +24,8 @@ extension SignUpType {
     }
 }
 
-class FieldTextField: AkiraTextField {
-    static var countryCode: String = Locale.current.regionCode ?? "FR"
-    var field: FormType = .email  {
+public class FieldTextField: AkiraTextField {
+    public var field: FormType = .email  {
         didSet {
             switch field {
             case .email: keyboardType = .emailAddress
@@ -36,18 +35,18 @@ class FieldTextField: AkiraTextField {
         }
     }
 
-    var isValid: Bool = false
+    public var isValid: Bool = false
     
-    func checkValidity() {
+    public func checkValidity() {
         switch field {
         case .name, .firstname, .lastName, .password: isValid = (text?.isEmpty ?? true) == false
-        case .phoneNumber: isValid = PhoneNumberKit().isValidPhoneNumber(text ?? "", withRegion: FieldTextField.countryCode, ignoreType: false)
+        case .phoneNumber: isValid = PhoneNumberKit().isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
         case .email: isValid = text?.isValidEmail ?? false
         default: ()
         }
     }
     
-    func validityString() -> String? {
+    public func validityString() -> String? {
         switch field {
         case .phoneNumber: return NSLocalizedString("phoneNumber empty", bundle: Bundle.module, comment: "")
         case .email: return NSLocalizedString("email empty", bundle: Bundle.module, comment: "")
@@ -58,6 +57,7 @@ class FieldTextField: AkiraTextField {
 
 public class FormController: UIViewController {
     
+    static var countryCode: String = Locale.current.regionCode ?? "FR"
    static func create(coordinatorDelegate: LoginWorkflowCoordinatorDelegate, signUpType: SignUpType = .login) -> FormController {
        let ctrl:FormController = UIStoryboard(name: "LoginWorkflow", bundle: Bundle.module).instantiateViewController(identifier: "FormController") as! FormController
        ctrl.coordinatorDelegate = coordinatorDelegate
@@ -84,10 +84,14 @@ public class FormController: UIViewController {
     private var textFields: [FieldTextField] = []
     lazy var phoneFormatter: PartialFormatter = {
         let formatter = PartialFormatter()
-        formatter.defaultRegion = FieldTextField.countryCode
+        formatter.defaultRegion = FormController.countryCode
         return formatter
     } ()
-
+    
+    deinit {
+        print("💀 DEINIT \(URL(fileURLWithPath: #file).lastPathComponent)")
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         ActionButton.globalShape = .rounded(value: 10.0)
@@ -125,10 +129,16 @@ public class FormController: UIViewController {
             switch field {
             case .email:
                 let textfield = textField("email".bundleLocale().uppercased(), field)
+                if signUpType == .login {
+                    textfield.textContentType = .username
+                }
                 stackView.addArrangedSubview(textfield)
                 
             case .password:
                 let textField = textField("password".bundleLocale().uppercased(), field)
+                if signUpType == .login {
+                    textField.textContentType = .password
+                }
                 stackView.addArrangedSubview(textField)
                 textField.isSecureTextEntry = true
                 textField.sizeToFit()
@@ -201,7 +211,7 @@ public class FormController: UIViewController {
     }
     
     func updateCountryCode() {
-        guard let code = numberKit.countryCode(for: FieldTextField.countryCode),
+        guard let code = numberKit.countryCode(for: FormController.countryCode),
               let textfield = textFields.filter({$0.field == .countryCode }).first else { return }
         textfield.text = "+\(code)"
         textfield.sizeToFit()
@@ -252,7 +262,7 @@ public class FormController: UIViewController {
                   let firstname = textFields.filter({ $0.field == .firstname }).first?.text,
                   let lastname = textFields.filter({ $0.field == .lastName }).first?.text,
                   let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text else { return }
-            let user = SignupUser(email: email, password: password, phone: phone, countryCode: FieldTextField.countryCode, firstname: firstname, lastname: lastname)
+            let user = SignupUser(email: email, password: password, phone: phone, countryCode: FormController.countryCode, firstname: firstname, lastname: lastname)
             nextButton.isLoading = true
             coordinatorDelegate?.signup(user, completion: { [weak self] in
                 self?.nextButton.isLoading = false
@@ -369,8 +379,8 @@ extension UITapGestureRecognizer {
 
 extension FormController: CountryCodePickerDelegate {
     public func countryCodePickerViewControllerDidPickCountry(_ country: CountryCodePickerViewController.Country) {
-        FieldTextField.countryCode = country.code
-        phoneFormatter.defaultRegion = FieldTextField.countryCode
+        FormController.countryCode = country.code
+        phoneFormatter.defaultRegion = FormController.countryCode
         updateCountryCode()
         dismiss(animated: true, completion: nil)
     }
