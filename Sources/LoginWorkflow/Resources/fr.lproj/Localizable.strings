@@ -15,3 +15,4 @@
 "phoneNumber empty" = "Le numéro de téléphone n'est pas valide";
 "password empty" = "Le mot de passe est obligatoire";
 "email empty" = "L'email' n'est pas valide";
+"verify" = "vérifier";

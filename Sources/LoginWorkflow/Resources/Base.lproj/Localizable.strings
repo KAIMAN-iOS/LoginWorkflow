@@ -15,3 +15,4 @@
 "phoneNumber empty" = "The phone number is not valid";
 "email empty" = "The Email is not valid";
 "password empty" = "Password is mandatory";
+"verify" = "verify";

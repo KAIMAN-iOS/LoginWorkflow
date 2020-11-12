@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="70F-Ax-1di">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -93,7 +92,7 @@ DRIVER</string>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEa-UH-af4" customClass="ActionButton" customModule="ActionButton">
                                 <rect key="frame" x="20" y="806" width="374" height="48"/>
-                                <color key="backgroundColor" name="selectedTitleColor"/>
+                                <color key="backgroundColor" name="backgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="mMx-34-UPW"/>
                                 </constraints>
@@ -193,19 +192,19 @@ DRIVER</string>
         </scene>
     </scenes>
     <resources>
-        <image name="AppIcon" width="1013.5" height="1013.5"/>
+        <image name="AppIcon" width="337.5" height="337.5"/>
         <image name="backArrow" width="13.5" height="24"/>
         <namedColor name="backgroundColor">
-            <color red="0.97254901960784312" green="0.29803921568627451" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.7843137255" green="0.31372549020000001" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="selectedTitleColor">
-            <color red="0.97299998998641968" green="0.29800000786781311" blue="0.29800000786781311" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.7843137255" green="0.31372549020000001" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
-            <color red="0.13300000131130219" green="0.16899999976158142" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.1176470588" green="0.12941176469999999" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>
