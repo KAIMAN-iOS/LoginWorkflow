@@ -308,7 +308,9 @@ public class FormController: UIViewController {
         case false:
             let errors = textFields.filter({ $0.text?.isEmpty ?? true == false && $0.isValid == false }).compactMap({ $0.validityString() })
             let format = ListFormatter()
-            showError(format.string(from: errors) ?? "")
+            guard let str = format.string(from: errors) ?? "", str.isEmpty == false else { return true }
+            showError(str)
+            
         case true: updateNextButton()
         }
         return true
