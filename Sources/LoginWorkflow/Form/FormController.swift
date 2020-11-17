@@ -35,6 +35,7 @@ public class FieldTextField: AkiraTextField {
             }
         }
     }
+    var shouldCheckValidity: Bool = true
 
     public var isValid: Bool = false
     
@@ -52,7 +53,8 @@ public class FieldTextField: AkiraTextField {
         case .countryCode:
             isValid = true
         
-        default: ()
+        default:
+            isValid = true
         }
     }
     
@@ -191,6 +193,7 @@ public class FormController: UIViewController {
                 let code = textField("country code".bundleLocale().capitalized, FormType.countryCode)
                 updateCountryCode()
                 code.setContentHuggingPriority(.required, for: .horizontal)
+                code.shouldCheckValidity = false
 //                code.isEnabled = false
                 code.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCountryCodePicker)))
                 stack.addArrangedSubview(code)
@@ -314,7 +317,7 @@ public class FormController: UIViewController {
     }
     
     func updateNextButton() {
-        nextButton.isEnabled = textFields.reduce(true, { $0 && $1.isValid })
+        nextButton.isEnabled = textFields.filter({ $0.shouldCheckValidity }).reduce(true, { $0 && $1.isValid })
     }
     
     func removeError() {
