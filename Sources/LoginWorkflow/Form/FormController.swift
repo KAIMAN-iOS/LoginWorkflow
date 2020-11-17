@@ -40,9 +40,18 @@ public class FieldTextField: AkiraTextField {
     
     public func checkValidity() {
         switch field {
-        case .name, .firstname, .lastName, .password: isValid = (text?.isEmpty ?? true) == false
-        case .phoneNumber: isValid = PhoneNumberKit().isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
-        case .email: isValid = text?.isValidEmail ?? false
+        case .name, .firstname, .lastName, .password:
+            isValid = (text?.isEmpty ?? true) == false
+            
+        case .phoneNumber:
+            isValid = PhoneNumberKit().isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
+            
+        case .email:
+            isValid = text?.isValidEmail ?? false
+            
+        case .countryCode:
+            isValid = true
+        
         default: ()
         }
     }
@@ -305,7 +314,7 @@ public class FormController: UIViewController {
     }
     
     func updateNextButton() {
-        nextButton.isEnabled = textFields.reduce(true, { $1.isValid })
+        nextButton.isEnabled = textFields.reduce(true, { $0 && $1.isValid })
     }
     
     func removeError() {

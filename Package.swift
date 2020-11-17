@@ -15,7 +15,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/jerometonnelier/TextFieldEffects", from: "1.7.0"),
+        .package(url: "https://github.com/jerometonnelier/TextFieldEffects", from: "1.7.1"),
         .package(url: "https://github.com/jerometonnelier/KCoordinatorKit", from: "1.0.1"),
         .package(url: "https://github.com/jerometonnelier/ActionButton", from: "1.0.0"),
         .package(url: "https://github.com/jerometonnelier/PhoneNumberKit", from: "4.0.0"),
