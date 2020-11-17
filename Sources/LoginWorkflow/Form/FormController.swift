@@ -10,6 +10,7 @@ import ActionButton
 import TextFieldEffects
 import PhoneNumberKit
 import FontExtension
+import SnapKit
 
 public enum FormType: Int {
     case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword
@@ -103,6 +104,10 @@ public class FormController: UIViewController {
         applyChanges()
     }
     
+    @objc func clearTextField(sender: UIButton) {
+        (sender.superview?.superview as? UITextField)?.text = nil
+    }
+    
     func applyChanges() {
         let textField: ((String, FormType) -> FieldTextField) = { text, field in
             let textField: FieldTextField = FieldTextField(frame: CGRect(origin: .zero, size: CGSize(width: self.stackView.bounds.width, height: 60)))
@@ -113,6 +118,21 @@ public class FormController: UIViewController {
             textField.textColor = FormController.textColor
             textField.placeholderColor = FormController.placeholderColor
             textField.borderColor = FormController.placeholderColor
+            textField.borderSize = (active: 0.4, inactive: 0.5)
+            textField.rightViewMode = .whileEditing
+            let button = UIButton()
+            button.tintColor = #colorLiteral(red: 0.6170696616, green: 0.6521494985, blue: 0.7113651633, alpha: 1)
+            button.addTarget(self, action: #selector(self.clearTextField(sender:)), for: .touchUpInside)
+            let view = UIView()
+            view.backgroundColor = .clear
+            view.addSubview(button)
+            button.snp.makeConstraints { make in
+                make.right.equalToSuperview().inset(8)
+                make.bottom.equalToSuperview().inset(12)
+                make.left.equalToSuperview()
+            }
+            button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+            textField.rightView = view
             textField.setContentCompressionResistancePriority(.required, for: .vertical)
             self.stackView.addArrangedSubview(textField)
             textField.heightAnchor.constraint(equalToConstant: 60).isActive = true
@@ -123,19 +143,19 @@ public class FormController: UIViewController {
         removeError()
         textFields.removeAll()
         stackView.clear()
-        stackView.spacing = 12
+        stackView.spacing = 16
         
         fields.forEach { field in
             switch field {
             case .email:
-                let textfield = textField("email".bundleLocale().uppercased(), field)
+                let textfield = textField("email".bundleLocale().capitalized, field)
                 if signUpType == .login {
                     textfield.textContentType = .username
                 }
                 stackView.addArrangedSubview(textfield)
                 
             case .password:
-                let textField = textField("password".bundleLocale().uppercased(), field)
+                let textField = textField("password".bundleLocale().capitalized, field)
                 if signUpType == .login {
                     textField.textContentType = .password
                 }
@@ -148,9 +168,9 @@ public class FormController: UIViewController {
                 stack.axis = .horizontal
                 stack.spacing = 12
                 stack.distribution = .fillEqually
-                let firstname = textField("firstname".bundleLocale().uppercased(), FormType.firstname)
+                let firstname = textField("firstname".bundleLocale().capitalized, FormType.firstname)
                 stack.addArrangedSubview(firstname)
-                let name = textField("lastname".bundleLocale().uppercased(), FormType.lastName)
+                let name = textField("lastname".bundleLocale().capitalized, FormType.lastName)
                 stack.addArrangedSubview(name)
                 stackView.addArrangedSubview(stack)
                 
@@ -159,13 +179,13 @@ public class FormController: UIViewController {
                 stack.axis = .horizontal
                 stack.spacing = 12
                 stack.distribution = .fillProportionally
-                let code = textField("country code".bundleLocale().uppercased(), FormType.countryCode)
+                let code = textField("country code".bundleLocale().capitalized, FormType.countryCode)
                 updateCountryCode()
                 code.setContentHuggingPriority(.required, for: .horizontal)
 //                code.isEnabled = false
                 code.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCountryCodePicker)))
                 stack.addArrangedSubview(code)
-                let phone = textField("phone number".bundleLocale().uppercased(), field)
+                let phone = textField("phone number".bundleLocale().capitalized, field)
                 stack.addArrangedSubview(phone)
                 stackView.addArrangedSubview(stack)
                 
@@ -173,12 +193,12 @@ public class FormController: UIViewController {
                 let attr = NSMutableAttributedString(attributedString: NSLocalizedString("terms and conditions", bundle: Bundle.module, comment: "terms and conditions").asAttributedString(for: FontType.footnote, textColor: #colorLiteral(red: 0.1234303191, green: 0.1703599989, blue: 0.2791167498, alpha: 1)))
                 if let termsRange = attr.string.range(of: NSLocalizedString("terms", bundle: Bundle.module, comment: "terms")) {
                     attr.addAttributes([.font : FontType.footnote.font.bold(),
-                                        .foregroundColor : #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1)],
+                                        .underlineStyle : NSUnderlineStyle.single.rawValue],
                                        range: NSRange(termsRange, in: attr.string))
                 }
                 if let policyRange = attr.string.range(of: NSLocalizedString("policy", bundle: Bundle.module, comment: "policy")) {
                     attr.addAttributes([.font : FontType.footnote.font.bold(),
-                                        .foregroundColor : #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1)],
+                                        .underlineStyle : NSUnderlineStyle.single.rawValue],
                                        range: NSRange(policyRange, in: attr.string))
                 }
                 let label = UILabel()
@@ -203,9 +223,11 @@ public class FormController: UIViewController {
             case .firstname, .lastName, .countryCode: ()
             }
         }
+        
         titleLabel.text = signUpType.title
         nextButton.setTitle(signUpType.title.uppercased(), for: .normal)
         nextButton.titleLabel?.font = FontType.default.font.bold()
+        changeFormButton.titleLabel?.font = FontType.custom(.body, traits: [UIFontDescriptor.SymbolicTraits.traitBold]).font
         changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.title : SignUpType.login.title, for: .normal)
         updateNextButton()
     }
