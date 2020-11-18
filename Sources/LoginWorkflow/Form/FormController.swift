@@ -20,7 +20,7 @@ extension SignUpType {
     var fields: [FormType] {
         switch self {
         case .login: return [.email, .password, .forgetPassword]
-        case .sigup: return [.name, .email, .phoneNumber, .password, .terms]
+        case .sigup: return [.name, .email, .phoneNumber, .password]
         }
     }
 }
@@ -124,13 +124,14 @@ public class FormController: UIViewController {
             let textField: FieldTextField = FieldTextField(frame: CGRect(origin: .zero, size: CGSize(width: self.stackView.bounds.width, height: 60)))
             textField.field = field
             textField.delegate = self
-            textField.placeholder = text
-            textField.font = FontType.default.font
+            textField.placeholder = text.uppercased()
+            textField.font = FontType.custom(.callout, traits: [.traitBold]).font
             textField.textColor = FormController.textColor
             textField.placeholderColor = FormController.placeholderColor
             textField.borderColor = FormController.placeholderColor
             textField.borderSize = (active: 0.4, inactive: 0.5)
             textField.rightViewMode = .whileEditing
+            textField.placeholderInsets = CGPoint(x: 6, y: 10)
             let button = UIButton()
             button.tintColor = #colorLiteral(red: 0.6170696616, green: 0.6521494985, blue: 0.7113651633, alpha: 1)
             button.addTarget(self, action: #selector(self.clearTextField(sender:)), for: .touchUpInside)
@@ -224,7 +225,7 @@ public class FormController: UIViewController {
                 
             case .forgetPassword:
                 let button = UIButton(frame: CGRect.zero)
-                button.setTitle("forgot password".bundleLocale(), for: .normal)
+                button.setTitle("forgot password".bundleLocale().capitalized, for: .normal)
                 button.titleLabel?.font = FontType.footnote.font
                 button.tintColor = FormController.primaryColor
                 button.setTitleColor(FormController.primaryColor, for: .normal)
@@ -330,25 +331,29 @@ public class FormController: UIViewController {
         error.configure(text, delegate: self)
         error.invalidateIntrinsicContentSize()
         removeError()
-        stackView.insertArrangedSubview(error, at: 0)
+        stackView.addArrangedSubview(error)
         updateNextButton()
     }
     
     @discardableResult
-    func checkValidity(for textField: FieldTextField) -> Bool {
-        textField.checkValidity()
-        removeError()
-        switch textField.isValid {
-        case false:
-            let errors = textFields.filter({ $0.text?.isEmpty ?? true == false && $0.isValid == false }).compactMap({ $0.validityString() })
-            let format = ListFormatter()
-            guard let str = format.string(from: errors), str.isEmpty == false else { return true }
-            showError(str)
-            
-        case true: updateNextButton()
+    func checkValidity() -> Bool {
+        defer {
+            updateNextButton()
         }
+        let errors = textFields.filter({ $0.text?.isEmpty ?? true == false && $0.isValid == false }).compactMap({ $0.validityString() })
+        guard errors.count > 0 else {
+            removeError()
+            return true
+        }
+        showError(errors.joined(separator: "\n"))
         return true
     }
+    
+    private static var listFormatter: ListFormatter = {
+        let list = ListFormatter()
+        list.locale = .current
+        return list
+    } ()
 }
 
 extension FormController: CloseDelegate {
@@ -360,13 +365,21 @@ extension FormController: CloseDelegate {
 
 extension FormController: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let field = textField as? FieldTextField else { return true }
-        return checkValidity(for: field)
+        if let textField = (textField as? FieldTextField),
+           textField.text?.isEmpty == false {
+            textField.checkValidity()
+            textField.textColor = textField.isValid ? #colorLiteral(red: 0.1153694466, green: 0.1294553578, blue: 0.1596243382, alpha: 1) : #colorLiteral(red: 0.8481773734, green: 0.2705589533, blue: 0.2560402751, alpha: 1)
+        }
+        return checkValidity()
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let field = textField as? FieldTextField else { return }
-        checkValidity(for: field)
+        if let textField = (textField as? FieldTextField),
+           textField.text?.isEmpty == false {
+            textField.checkValidity()
+            textField.textColor = textField.isValid ? #colorLiteral(red: 0.1153694466, green: 0.1294553578, blue: 0.1596243382, alpha: 1) : #colorLiteral(red: 0.8481773734, green: 0.2705589533, blue: 0.2560402751, alpha: 1)
+        }
+        checkValidity()
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

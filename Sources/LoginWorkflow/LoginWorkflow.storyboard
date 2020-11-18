@@ -18,21 +18,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="01u-Aw-Gmp">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login" translatesAutoresizingMaskIntoConstraints="NO" id="01u-Aw-Gmp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="n3K-ag-Nd6">
-                                <rect key="frame" x="20" y="805" width="374" height="48"/>
+                                <rect key="frame" x="20" y="802" width="374" height="51"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1o2-4d-rcO" customClass="SignUpButton" customModule="LoginWorkflow">
-                                        <rect key="frame" x="0.0" y="0.0" width="177" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="51"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="5" minY="15" maxX="5" maxY="15"/>
                                         <connections>
                                             <action selector="signup:" destination="70F-Ax-1di" eventType="touchUpInside" id="uah-Ty-E3u"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FY7-Ps-KHp" customClass="SignUpButton" customModule="LoginWorkflow">
-                                        <rect key="frame" x="197" y="0.0" width="177" height="48"/>
+                                        <rect key="frame" x="197" y="0.0" width="177" height="51"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="5" minY="15" maxX="5" maxY="15"/>
                                         <connections>
                                             <action selector="login:" destination="70F-Ax-1di" eventType="touchUpInside" id="wOb-py-id5"/>
@@ -47,12 +49,39 @@
                                     <constraint firstAttribute="height" constant="128" id="csz-Hd-6PI"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-HL-vy1">
-                                <rect key="frame" x="136" y="331" width="142.5" height="95.5"/>
-                                <string key="text">ATA
-DRIVER</string>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <color key="textColor" name="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-HL-vy1">
+                                <rect key="frame" x="110.5" y="331" width="193" height="112"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="my">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="0.99789029535864981" green="0.99578059071729963" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="NSColor" red="0.1176470588" green="0.12941176469999999" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="48" name="SFProText-Regular"/>
+                                            <font key="NSOriginalFont" size="48" name="SFProText-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Cloud">
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="0.99789029535864981" green="0.99578059071729963" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="NSColor" red="0.1176470588" green="0.12941176469999999" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="48" name="SFProText-Semibold"/>
+                                            <font key="NSOriginalFont" size="48" name="SFProText-Semibold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+Taxi</string>
+                                        <attributes>
+                                            <color key="NSBackgroundColor" red="0.99789029535864981" green="0.99578059071729963" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="NSColor" red="0.1176470588" green="0.12941176469999999" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="48" name="SFProText-Regular"/>
+                                            <font key="NSOriginalFont" size="48" name="SFProText-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -107,7 +136,7 @@ DRIVER</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYw-Av-XXM">
-                                <rect key="frame" x="20" y="57" width="33.5" height="44"/>
+                                <rect key="frame" x="20" y="57" width="31.5" height="42"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <state key="normal" image="backArrow"/>
                                 <connections>
@@ -115,7 +144,7 @@ DRIVER</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdN-ju-hqQ">
-                                <rect key="frame" x="340" y="64" width="54" height="30"/>
+                                <rect key="frame" x="340" y="63" width="54" height="30"/>
                                 <color key="tintColor" name="selectedTitleColor"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
@@ -123,16 +152,16 @@ DRIVER</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lB-hO-aVL">
-                                <rect key="frame" x="30" y="117" width="111" height="48"/>
+                                <rect key="frame" x="30" y="115" width="111" height="48"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-ZH-33U">
-                                <rect key="frame" x="30" y="183" width="354" height="615"/>
+                                <rect key="frame" x="30" y="181" width="354" height="617"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gG-wP-Tcj">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="615"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="617"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="623" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="68t-bq-dUZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="623"/>
@@ -194,18 +223,19 @@ DRIVER</string>
     </scenes>
     <resources>
         <image name="AppIcon" width="337.5" height="337.5"/>
-        <image name="backArrow" width="13.5" height="24"/>
+        <image name="Login" width="320.5" height="698"/>
+        <image name="backArrow" width="11.5" height="21.5"/>
         <namedColor name="backgroundColor">
-            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="selectedTitleColor">
-            <color red="0.84705882352941175" green="0.27058823529411763" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
-            <color red="0.13300000131130219" green="0.16899999976158142" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.16099999845027924" green="0.17599999904632568" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

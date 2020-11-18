@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/jerometonnelier/KExtensions",
         "state": {
           "branch": null,
-          "revision": "43dd9976c8234987382d5c7780fd8c8992caa40a",
-          "version": "1.0.14"
+          "revision": "085931de555250aec77be1421a1704928afeadec",
+          "version": "1.0.19"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/kean/Nuke",
         "state": {
           "branch": null,
-          "revision": "a2a56211cd80614e1ac90bf2e76c5329f4f6b3d0",
-          "version": "9.1.2"
+          "revision": "7df01b0d5b42b3fa8930cf0803264116c4e219e1",
+          "version": "9.1.3"
         }
       },
       {
@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/jerometonnelier/TextFieldEffects",
         "state": {
           "branch": null,
-          "revision": "2cea8aeac71fb8c92d593d4b9fc9dd27d6180f78",
-          "version": "1.7.1"
+          "revision": "34c87d76b1675f2001bec6e16462f8cc0b8dbbd2",
+          "version": "1.7.2"
         }
       }
     ]

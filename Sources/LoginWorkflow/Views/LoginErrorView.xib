@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,17 +17,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEr-nj-S9E">
-                    <rect key="frame" x="5" y="5" width="404" height="72"/>
+                    <rect key="frame" x="0.0" y="8" width="414" height="74"/>
                     <subviews>
                         <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1R-Vf-Az1">
-                            <rect key="frame" x="0.0" y="0.0" width="404" height="72"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="74"/>
                             <color key="backgroundColor" name="selectedTitleColor"/>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="N5t-RI-A2L">
-                            <rect key="frame" x="8" y="8" width="388" height="56"/>
+                            <rect key="frame" x="8" y="8" width="398" height="58"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqT-Mj-sNu">
-                                    <rect key="frame" x="0.0" y="0.0" width="40" height="56"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="58"/>
                                     <color key="tintColor" name="selectedTitleColor"/>
                                     <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                     <state key="normal" image="xmark.circle" catalog="system"/>
@@ -35,7 +36,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yf1-Vc-bEq">
-                                    <rect key="frame" x="48" y="0.0" width="340" height="56"/>
+                                    <rect key="frame" x="48" y="0.0" width="350" height="58"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" name="selectedTitleColor"/>
                                     <nil key="highlightedColor"/>
@@ -70,10 +71,10 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="bEr-nj-S9E" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="ZHa-TH-4A9"/>
-                <constraint firstItem="bEr-nj-S9E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="dtR-P8-bVh"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bEr-nj-S9E" secondAttribute="trailing" constant="5" id="p1a-UU-nw2"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bEr-nj-S9E" secondAttribute="bottom" constant="5" id="tfA-Df-sdS"/>
+                <constraint firstItem="bEr-nj-S9E" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZHa-TH-4A9"/>
+                <constraint firstItem="bEr-nj-S9E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="dtR-P8-bVh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bEr-nj-S9E" secondAttribute="trailing" id="p1a-UU-nw2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bEr-nj-S9E" secondAttribute="bottom" id="tfA-Df-sdS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
