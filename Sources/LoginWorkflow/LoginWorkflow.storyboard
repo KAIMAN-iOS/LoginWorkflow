@@ -49,60 +49,27 @@
                                     <constraint firstAttribute="height" constant="128" id="csz-Hd-6PI"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-HL-vy1">
-                                <rect key="frame" x="110.5" y="331" width="193" height="112"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="my">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="0.99789029535864981" green="0.99578059071729963" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <color key="NSColor" red="0.1176470588" green="0.12941176469999999" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="48" name="SFProText-Regular"/>
-                                            <font key="NSOriginalFont" size="48" name="SFProText-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Cloud">
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="0.99789029535864981" green="0.99578059071729963" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <color key="NSColor" red="0.1176470588" green="0.12941176469999999" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="48" name="SFProText-Semibold"/>
-                                            <font key="NSOriginalFont" size="48" name="SFProText-Semibold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">
-Taxi</string>
-                                        <attributes>
-                                            <color key="NSBackgroundColor" red="0.99789029535864981" green="0.99578059071729963" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <color key="NSColor" red="0.1176470588" green="0.12941176469999999" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="48" name="SFProText-Regular"/>
-                                            <font key="NSOriginalFont" size="48" name="SFProText-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="myCloudTaxi" translatesAutoresizingMaskIntoConstraints="NO" id="FmD-fe-yeB">
+                                <rect key="frame" x="128" y="313" width="158" height="99"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kd1-Jx-BAF"/>
                         <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="gJC-cd-ysP" firstAttribute="top" secondItem="Kd1-Jx-BAF" secondAttribute="top" constant="133" id="1bP-6c-0Lr"/>
                             <constraint firstItem="gJC-cd-ysP" firstAttribute="centerX" secondItem="6kv-zx-rZr" secondAttribute="centerX" id="Dc3-Vb-v8F"/>
-                            <constraint firstItem="nEd-HL-vy1" firstAttribute="top" secondItem="gJC-cd-ysP" secondAttribute="bottom" constant="26" id="Jfw-4u-0xf"/>
                             <constraint firstItem="Kd1-Jx-BAF" firstAttribute="trailing" secondItem="n3K-ag-Nd6" secondAttribute="trailing" constant="20" id="S5t-Pz-mrQ"/>
                             <constraint firstItem="01u-Aw-Gmp" firstAttribute="top" secondItem="6kv-zx-rZr" secondAttribute="top" id="VnB-KE-z3W"/>
                             <constraint firstItem="01u-Aw-Gmp" firstAttribute="trailing" secondItem="Kd1-Jx-BAF" secondAttribute="trailing" id="asl-DZ-lAm"/>
                             <constraint firstItem="Kd1-Jx-BAF" firstAttribute="bottom" secondItem="n3K-ag-Nd6" secondAttribute="bottom" constant="9" id="eOB-aX-lkq"/>
+                            <constraint firstItem="FmD-fe-yeB" firstAttribute="top" secondItem="gJC-cd-ysP" secondAttribute="bottom" constant="8" symbolic="YES" id="edx-4d-ZUM"/>
                             <constraint firstItem="01u-Aw-Gmp" firstAttribute="leading" secondItem="Kd1-Jx-BAF" secondAttribute="leading" id="fYN-Pc-veF"/>
-                            <constraint firstItem="nEd-HL-vy1" firstAttribute="centerX" secondItem="gJC-cd-ysP" secondAttribute="centerX" id="gt6-1o-6uY"/>
                             <constraint firstAttribute="bottom" secondItem="01u-Aw-Gmp" secondAttribute="bottom" id="lEI-9w-BkU"/>
                             <constraint firstItem="n3K-ag-Nd6" firstAttribute="leading" secondItem="Kd1-Jx-BAF" secondAttribute="leading" constant="20" id="mT9-OE-5Ub"/>
+                            <constraint firstItem="FmD-fe-yeB" firstAttribute="centerX" secondItem="gJC-cd-ysP" secondAttribute="centerX" id="yKt-QM-2Ls"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="appNameLabel" destination="nEd-HL-vy1" id="icK-GV-Kyu"/>
                         <outlet property="icon" destination="gJC-cd-ysP" id="mIu-J2-EYc"/>
                         <outlet property="loginButton" destination="FY7-Ps-KHp" id="l1L-x5-R79"/>
                         <outlet property="signUpButton" destination="1o2-4d-rcO" id="mpu-10-qzx"/>
@@ -225,6 +192,7 @@ Taxi</string>
         <image name="AppIcon" width="337.5" height="337.5"/>
         <image name="Login" width="320.5" height="698"/>
         <image name="backArrow" width="11.5" height="21.5"/>
+        <image name="myCloudTaxi" width="158" height="99"/>
         <namedColor name="backgroundColor">
             <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
@@ -232,10 +200,10 @@ Taxi</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="selectedTitleColor">
-            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.84705882352941175" green="0.27058823529411763" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
-            <color red="0.16099999845027924" green="0.17599999904632568" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.11800000071525574" green="0.1289999932050705" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>
