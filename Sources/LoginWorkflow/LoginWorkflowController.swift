@@ -7,6 +7,8 @@
 
 import UIKit
 import ATAConfiguration
+import UIViewExtension
+import StringExtension
 
 public class LoginWorkflowController: UIViewController {
  
@@ -19,7 +21,6 @@ public class LoginWorkflowController: UIViewController {
     }
     weak var logicDelegate: LoginLogicCoordinatorDelegate!
     @IBOutlet weak var icon: UIImageView! 
-    @IBOutlet weak var appNameLabel: UILabel!
     @IBOutlet weak var signUpButton: SignUpButton!  {
         didSet {
             signUpButton.signUpType = .sigup
@@ -32,18 +33,37 @@ public class LoginWorkflowController: UIViewController {
             loginButton.signUpType = .login
         }
     }
+    @IBOutlet weak var welcomeTitle: UILabel!  {
+        didSet {
+            welcomeTitle.text = "welcome title".bundleLocale().uppercased()
+        }
+    }
+
+    @IBOutlet weak var welcomeMessage: UILabel!  {
+        didSet {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 6
+            paragraphStyle.alignment = .right
+            welcomeMessage.attributedText = NSAttributedString(string: "welcome message".bundleLocale().uppercased(),
+                                                               attributes: [.paragraphStyle : paragraphStyle,
+                                                                            .font : UIFont.systemFont(ofSize: 11)])
+            welcomeMessage.superview?.layoutIfNeeded()
+            
+        }
+    }
+
+    @IBOutlet weak var welcomeView: UIView!  {
+        didSet {
+            welcomeView.setRoundedCorners(corners: [.topLeft, .bottomLeft], radius: 20.0)
+        }
+    }
+   
     
-    public var appName: String?
-    public var imageName: String?
     public var backgroundColor: UIColor?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        if let name = appName {
-            appNameLabel.text = name
-        }
-        if let name = imageName,
-           let image = UIImage(named: name) {
+        if let image = LoginWorkflowController.configuration.logo {
             icon.image = image
         }
         if let color = backgroundColor {

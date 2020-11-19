@@ -18,9 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login" translatesAutoresizingMaskIntoConstraints="NO" id="01u-Aw-Gmp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="n3K-ag-Nd6">
                                 <rect key="frame" x="20" y="802" width="374" height="51"/>
                                 <subviews>
@@ -42,37 +39,76 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon" translatesAutoresizingMaskIntoConstraints="NO" id="gJC-cd-ysP">
-                                <rect key="frame" x="143" y="177" width="128" height="128"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="myCloudTaxi" translatesAutoresizingMaskIntoConstraints="NO" id="CsK-Lw-60s">
+                                <rect key="frame" x="26" y="385.5" width="363" height="125"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exw-Om-Ias">
+                                <rect key="frame" x="0.0" y="510.5" width="414" height="283.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Bpo-db-vll">
+                                        <rect key="frame" x="107.5" y="0.0" width="326.5" height="152"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LA SUITE LOGICIELLE POUR TAXI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gCd-Hk-TOF">
+                                                <rect key="frame" x="43" y="20" width="238.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <color key="textColor" name="selectedButtonColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MUa-7L-5xh">
+                                                <rect key="frame" x="31.5" y="46" width="250" height="86"/>
+                                                <string key="text">APPLICATION CHAUFFEUR
+MANAGEMENT MATERIEL EMBARQUE
+GESTION DE VEHICULES
+PARTAGE DE COURSES ENTRE COLLEGUES
+ANIMATION DE GROUPES TAXI
+LA PROTECTION DU CHAUFFEUR</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" name="selectedButtonColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.058751136251965409" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="MUa-7L-5xh" secondAttribute="bottom" constant="20" symbolic="YES" id="1sq-GK-pNt"/>
+                                            <constraint firstItem="MUa-7L-5xh" firstAttribute="top" secondItem="gCd-Hk-TOF" secondAttribute="bottom" constant="8" symbolic="YES" id="4KD-Su-4bb"/>
+                                            <constraint firstItem="gCd-Hk-TOF" firstAttribute="top" secondItem="Bpo-db-vll" secondAttribute="top" constant="20" symbolic="YES" id="74g-ia-1aj"/>
+                                            <constraint firstAttribute="trailing" secondItem="gCd-Hk-TOF" secondAttribute="trailing" constant="45" id="CIh-QL-C16"/>
+                                            <constraint firstItem="gCd-Hk-TOF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bpo-db-vll" secondAttribute="leading" constant="20" symbolic="YES" id="gRQ-WD-Qse"/>
+                                            <constraint firstItem="MUa-7L-5xh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bpo-db-vll" secondAttribute="leading" constant="20" symbolic="YES" id="mAm-4K-C9h"/>
+                                            <constraint firstItem="MUa-7L-5xh" firstAttribute="trailing" secondItem="gCd-Hk-TOF" secondAttribute="trailing" id="yzP-dS-Hqq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="AOF-vh-gY2"/>
-                                    <constraint firstAttribute="height" constant="128" id="csz-Hd-6PI"/>
+                                    <constraint firstItem="Bpo-db-vll" firstAttribute="leading" secondItem="exw-Om-Ias" secondAttribute="centerX" multiplier="0.5" constant="4" id="HUT-IN-3Yl"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bpo-db-vll" secondAttribute="trailing" constant="-20" id="fWc-lt-HWb"/>
+                                    <constraint firstItem="Bpo-db-vll" firstAttribute="top" secondItem="exw-Om-Ias" secondAttribute="top" id="vy1-lT-3nw"/>
                                 </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="myCloudTaxi" translatesAutoresizingMaskIntoConstraints="NO" id="FmD-fe-yeB">
-                                <rect key="frame" x="128" y="313" width="158" height="99"/>
-                            </imageView>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kd1-Jx-BAF"/>
-                        <color key="backgroundColor" name="backgroundColor"/>
+                        <color key="backgroundColor" name="textColor"/>
                         <constraints>
-                            <constraint firstItem="gJC-cd-ysP" firstAttribute="top" secondItem="Kd1-Jx-BAF" secondAttribute="top" constant="133" id="1bP-6c-0Lr"/>
-                            <constraint firstItem="gJC-cd-ysP" firstAttribute="centerX" secondItem="6kv-zx-rZr" secondAttribute="centerX" id="Dc3-Vb-v8F"/>
+                            <constraint firstItem="exw-Om-Ias" firstAttribute="leading" secondItem="Kd1-Jx-BAF" secondAttribute="leading" id="4Ok-Qq-MLM"/>
+                            <constraint firstItem="n3K-ag-Nd6" firstAttribute="top" secondItem="exw-Om-Ias" secondAttribute="bottom" constant="8" symbolic="YES" id="Cir-g7-Bvm"/>
+                            <constraint firstItem="exw-Om-Ias" firstAttribute="top" secondItem="CsK-Lw-60s" secondAttribute="bottom" id="Par-63-yGQ"/>
+                            <constraint firstItem="Kd1-Jx-BAF" firstAttribute="trailing" secondItem="CsK-Lw-60s" secondAttribute="trailing" constant="25" id="QHu-VD-Qpm"/>
+                            <constraint firstItem="CsK-Lw-60s" firstAttribute="centerY" secondItem="6kv-zx-rZr" secondAttribute="centerY" id="ROc-Ns-aqx"/>
                             <constraint firstItem="Kd1-Jx-BAF" firstAttribute="trailing" secondItem="n3K-ag-Nd6" secondAttribute="trailing" constant="20" id="S5t-Pz-mrQ"/>
-                            <constraint firstItem="01u-Aw-Gmp" firstAttribute="top" secondItem="6kv-zx-rZr" secondAttribute="top" id="VnB-KE-z3W"/>
-                            <constraint firstItem="01u-Aw-Gmp" firstAttribute="trailing" secondItem="Kd1-Jx-BAF" secondAttribute="trailing" id="asl-DZ-lAm"/>
+                            <constraint firstItem="CsK-Lw-60s" firstAttribute="leading" secondItem="Kd1-Jx-BAF" secondAttribute="leading" constant="26" id="WZ6-6O-pgS"/>
                             <constraint firstItem="Kd1-Jx-BAF" firstAttribute="bottom" secondItem="n3K-ag-Nd6" secondAttribute="bottom" constant="9" id="eOB-aX-lkq"/>
-                            <constraint firstItem="FmD-fe-yeB" firstAttribute="top" secondItem="gJC-cd-ysP" secondAttribute="bottom" constant="8" symbolic="YES" id="edx-4d-ZUM"/>
-                            <constraint firstItem="01u-Aw-Gmp" firstAttribute="leading" secondItem="Kd1-Jx-BAF" secondAttribute="leading" id="fYN-Pc-veF"/>
-                            <constraint firstAttribute="bottom" secondItem="01u-Aw-Gmp" secondAttribute="bottom" id="lEI-9w-BkU"/>
+                            <constraint firstItem="exw-Om-Ias" firstAttribute="trailing" secondItem="6kv-zx-rZr" secondAttribute="trailing" id="h6u-bq-8Nl"/>
                             <constraint firstItem="n3K-ag-Nd6" firstAttribute="leading" secondItem="Kd1-Jx-BAF" secondAttribute="leading" constant="20" id="mT9-OE-5Ub"/>
-                            <constraint firstItem="FmD-fe-yeB" firstAttribute="centerX" secondItem="gJC-cd-ysP" secondAttribute="centerX" id="yKt-QM-2Ls"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="icon" destination="gJC-cd-ysP" id="mIu-J2-EYc"/>
+                        <outlet property="icon" destination="CsK-Lw-60s" id="Er2-hJ-ZiR"/>
                         <outlet property="loginButton" destination="FY7-Ps-KHp" id="l1L-x5-R79"/>
                         <outlet property="signUpButton" destination="1o2-4d-rcO" id="mpu-10-qzx"/>
+                        <outlet property="welcomeMessage" destination="MUa-7L-5xh" id="Ipl-jN-v7B"/>
+                        <outlet property="welcomeTitle" destination="gCd-Hk-TOF" id="7zw-f2-CT9"/>
+                        <outlet property="welcomeView" destination="Bpo-db-vll" id="pn3-CI-0C2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ct-P6-ziA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -189,18 +225,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AppIcon" width="337.5" height="337.5"/>
-        <image name="Login" width="320.5" height="698"/>
         <image name="backArrow" width="13.5" height="24"/>
-        <image name="myCloudTaxi" width="158" height="99"/>
+        <image name="myCloudTaxi" width="562" height="125"/>
         <namedColor name="backgroundColor">
-            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="selectedTitleColor">
-            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.11800000071525574" green="0.1289999932050705" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
