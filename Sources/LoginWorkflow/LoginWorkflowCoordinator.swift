@@ -8,6 +8,7 @@
 import UIKit
 import KCoordinatorKit
 import IQKeyboardManagerSwift
+import ATAConfiguration
 
 protocol LoginLogicCoordinatorDelegate: class {
     func showLogin()
@@ -26,9 +27,10 @@ public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
     private var chooseController: LoginWorkflowController!
     weak var flowDelegate: LoginWorkflowCoordinatorDelegate!
     
-    public init(router: RouterType, delegate: LoginWorkflowCoordinatorDelegate) {
+    public init(router: RouterType, delegate: LoginWorkflowCoordinatorDelegate, conf: ATAConfiguration) {
         super.init(router: router)
-        chooseController = LoginWorkflowController.create(coordinatorDelegate: self)
+//        LoginWorkflowCoordinator.configuration = conf
+        chooseController = LoginWorkflowController.create(coordinatorDelegate: self, conf: conf)
         IQKeyboardManager.shared.enable = true
         flowDelegate = delegate
     }

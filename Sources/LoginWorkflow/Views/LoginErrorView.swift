@@ -17,14 +17,24 @@ class LoginErrorView: UIView {
     static func load() -> LoginErrorView {
         Bundle.module.loadNibNamed("LoginErrorView", owner: nil, options: nil)!.first! as! LoginErrorView
     }
-    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!  {
+        didSet {
+            closeButton.tintColor = LoginWorkflowController.configuration.palette.primary
+        }
+    }
+
     @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var coloredBackgroundView: UIView!
+    @IBOutlet weak var coloredBackgroundView: UIView!  {
+        didSet {
+            coloredBackgroundView.backgroundColor = LoginWorkflowController.configuration.palette.primary
+        }
+    }
+
     @IBOutlet weak var strokedBackgroundView: UIView!  {
         didSet {
             strokedBackgroundView.cornerRadius = 5.0
             strokedBackgroundView.layer.borderWidth = 1.0
-            strokedBackgroundView.layer.borderColor = #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1).cgColor
+            strokedBackgroundView.layer.borderColor = LoginWorkflowController.configuration.palette.primary.cgColor
         }
     }
     weak var closeDelegate: CloseDelegate?
@@ -36,6 +46,6 @@ class LoginErrorView: UIView {
     
     func configure(_ text: String, delegate: CloseDelegate) {
         closeDelegate = delegate
-        errorLabel.set(text: text, for: FontType.footnote, textColor: #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1))
+        errorLabel.set(text: text, for: FontType.footnote, textColor: LoginWorkflowController.configuration.palette.primary)
     }
 }

@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "ATAConfiguration",
+        "repositoryURL": "https://github.com/jerometonnelier/ATAConfiguration",
+        "state": {
+          "branch": null,
+          "revision": "8ec9be62f1f5783ce0acb71ff1cb885ca8265df2",
+          "version": "1.0.3"
+        }
+      },
+      {
         "package": "IQKeyboardManagerSwift",
         "repositoryURL": "https://github.com/hackiftekhar/IQKeyboardManager.git",
         "state": {

@@ -90,9 +90,9 @@ public class FormController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
-    public static var textColor: UIColor = #colorLiteral(red: 0.1234303191, green: 0.1703599989, blue: 0.2791167498, alpha: 1)
+    public static var textColor: UIColor = LoginWorkflowController.configuration.palette.mainTexts
     public static var placeholderColor: UIColor = #colorLiteral(red: 0.6170696616, green: 0.6521494985, blue: 0.7113651633, alpha: 1)
-    public static var primaryColor: UIColor = #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1)
+    public static var primaryColor: UIColor = LoginWorkflowController.configuration.palette.primary
     private var textFields: [FieldTextField] = []
     lazy var phoneFormatter: PartialFormatter = {
         let formatter = PartialFormatter()
@@ -107,10 +107,10 @@ public class FormController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         ActionButton.globalShape = .rounded(value: 10.0)
-        ActionButton.primaryColor = #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1)
-        ActionButton.separatorColor = #colorLiteral(red: 0.6170696616, green: 0.6521494985, blue: 0.7113651633, alpha: 1)
-        ActionButton.mainTextsColor = #colorLiteral(red: 0.1234303191, green: 0.1703599989, blue: 0.2791167498, alpha: 1)
-        ActionButton.loadingColor = #colorLiteral(red: 1, green: 0.192286253, blue: 0.2298730612, alpha: 1).withAlphaComponent(0.7)
+        ActionButton.primaryColor = LoginWorkflowController.configuration.palette.primary
+        ActionButton.separatorColor = LoginWorkflowController.configuration.palette.placeholder
+        ActionButton.mainTextsColor = LoginWorkflowController.configuration.palette.mainTexts
+        ActionButton.loadingColor = LoginWorkflowController.configuration.palette.primary.withAlphaComponent(0.7)
 
         applyChanges()
     }
@@ -133,7 +133,7 @@ public class FormController: UIViewController {
             textField.rightViewMode = .whileEditing
             textField.placeholderInsets = CGPoint(x: 6, y: 10)
             let button = UIButton()
-            button.tintColor = #colorLiteral(red: 0.6170696616, green: 0.6521494985, blue: 0.7113651633, alpha: 1)
+            button.tintColor = LoginWorkflowController.configuration.palette.placeholder
             button.addTarget(self, action: #selector(self.clearTextField(sender:)), for: .touchUpInside)
             let view = UIView()
             view.backgroundColor = .clear
@@ -203,7 +203,7 @@ public class FormController: UIViewController {
                 stackView.addArrangedSubview(stack)
                 
             case .terms:
-                let attr = NSMutableAttributedString(attributedString: NSLocalizedString("terms and conditions", bundle: Bundle.module, comment: "terms and conditions").asAttributedString(for: FontType.footnote, textColor: #colorLiteral(red: 0.1234303191, green: 0.1703599989, blue: 0.2791167498, alpha: 1)))
+                let attr = NSMutableAttributedString(attributedString: NSLocalizedString("terms and conditions", bundle: Bundle.module, comment: "terms and conditions").asAttributedString(for: FontType.footnote, textColor: LoginWorkflowController.configuration.palette.mainTexts))
                 if let termsRange = attr.string.range(of: NSLocalizedString("terms", bundle: Bundle.module, comment: "terms")) {
                     attr.addAttributes([.font : FontType.footnote.font.bold(),
                                         .underlineStyle : NSUnderlineStyle.single.rawValue],
@@ -242,6 +242,7 @@ public class FormController: UIViewController {
         nextButton.titleLabel?.font = FontType.default.font.bold()
         changeFormButton.titleLabel?.font = FontType.custom(.body, traits: [UIFontDescriptor.SymbolicTraits.traitBold]).font
         changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.title : SignUpType.login.title, for: .normal)
+        changeFormButton.setTitleColor(LoginWorkflowController.configuration.palette.primary, for: .normal)
         updateNextButton()
     }
     
@@ -368,7 +369,7 @@ extension FormController: UITextFieldDelegate {
         if let textField = (textField as? FieldTextField),
            textField.text?.isEmpty == false {
             textField.checkValidity()
-            textField.textColor = textField.isValid ? #colorLiteral(red: 0.1153694466, green: 0.1294553578, blue: 0.1596243382, alpha: 1) : #colorLiteral(red: 0.8481773734, green: 0.2705589533, blue: 0.2560402751, alpha: 1)
+            textField.textColor = textField.isValid ? LoginWorkflowController.configuration.palette.mainTexts : LoginWorkflowController.configuration.palette.primary
         }
         return checkValidity()
     }
@@ -377,7 +378,7 @@ extension FormController: UITextFieldDelegate {
         if let textField = (textField as? FieldTextField),
            textField.text?.isEmpty == false {
             textField.checkValidity()
-            textField.textColor = textField.isValid ? #colorLiteral(red: 0.1153694466, green: 0.1294553578, blue: 0.1596243382, alpha: 1) : #colorLiteral(red: 0.8481773734, green: 0.2705589533, blue: 0.2560402751, alpha: 1)
+            textField.textColor = textField.isValid ? LoginWorkflowController.configuration.palette.mainTexts : LoginWorkflowController.configuration.palette.primary
         }
         checkValidity()
     }

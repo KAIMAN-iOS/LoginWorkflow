@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import ATAConfiguration
 
 public class LoginWorkflowController: UIViewController {
  
-    static func create(coordinatorDelegate: LoginLogicCoordinatorDelegate) -> LoginWorkflowController {
+    static var configuration: ATAConfiguration!
+    static func create(coordinatorDelegate: LoginLogicCoordinatorDelegate, conf: ATAConfiguration) -> LoginWorkflowController {
         let ctrl:LoginWorkflowController = UIStoryboard(name: "LoginWorkflow", bundle: Bundle.module).instantiateViewController(identifier: "LoginWorkflowController") as! LoginWorkflowController
         ctrl.logicDelegate = coordinatorDelegate
+        LoginWorkflowController.configuration = conf
         return ctrl
     }
     weak var logicDelegate: LoginLogicCoordinatorDelegate!
