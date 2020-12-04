@@ -6,14 +6,15 @@
 //
 
 import UIKit
+import Ampersand
 
 public enum SignUpType: Int {
     case login, sigup
     
     var title: String {
         switch self {
-        case .login: return NSLocalizedString("Log in", bundle: Bundle.module, comment: "Log in")
-        case .sigup: return NSLocalizedString("Sign up", bundle: Bundle.module, comment: "Sign up")
+        case .login: return NSLocalizedString("Log in", bundle: Bundle.module, comment: "Log in").uppercased()
+        case .sigup: return NSLocalizedString("Sign up", bundle: Bundle.module, comment: "Sign up").uppercased()
         }
     }
 }
@@ -30,6 +31,7 @@ public class SignUpButton: UIButton {
     
     public var signUpType: SignUpType = .login  {
         didSet {
+            titleLabel?.font = .applicationFont(forTextStyle: .callout)
             setTitle(signUpType.title, for: .normal)
         }
     }

@@ -46,6 +46,6 @@ class LoginErrorView: UIView {
     
     func configure(_ text: String, delegate: CloseDelegate) {
         closeDelegate = delegate
-        errorLabel.set(text: text, for: FontType.footnote, textColor: LoginWorkflowController.configuration.palette.primary)
+        errorLabel.set(text: text, for: .footnote, textColor: LoginWorkflowController.configuration.palette.primary)
     }
 }

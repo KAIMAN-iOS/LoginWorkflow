@@ -11,6 +11,7 @@ import TextFieldEffects
 import PhoneNumberKit
 import FontExtension
 import SnapKit
+import Ampersand
 
 public enum FormType: Int {
     case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword
@@ -125,7 +126,7 @@ public class FormController: UIViewController {
             textField.field = field
             textField.delegate = self
             textField.placeholder = text.uppercased()
-            textField.font = FontType.custom(.callout, traits: [.traitBold]).font
+            textField.font = .applicationFont(forTextStyle: .callout)
             textField.textColor = FormController.textColor
             textField.placeholderColor = FormController.placeholderColor
             textField.borderColor = FormController.placeholderColor
@@ -203,14 +204,14 @@ public class FormController: UIViewController {
                 stackView.addArrangedSubview(stack)
                 
             case .terms:
-                let attr = NSMutableAttributedString(attributedString: NSLocalizedString("terms and conditions", bundle: Bundle.module, comment: "terms and conditions").asAttributedString(for: FontType.footnote, textColor: LoginWorkflowController.configuration.palette.mainTexts))
+                let attr = NSMutableAttributedString(attributedString: NSLocalizedString("terms and conditions", bundle: Bundle.module, comment: "terms and conditions").asAttributedString(for: .footnote, textColor: LoginWorkflowController.configuration.palette.mainTexts))
                 if let termsRange = attr.string.range(of: NSLocalizedString("terms", bundle: Bundle.module, comment: "terms")) {
-                    attr.addAttributes([.font : FontType.footnote.font.bold(),
+                    attr.addAttributes([.font : UIFont.applicationFont(forTextStyle: .footnote),
                                         .underlineStyle : NSUnderlineStyle.single.rawValue],
                                        range: NSRange(termsRange, in: attr.string))
                 }
                 if let policyRange = attr.string.range(of: NSLocalizedString("policy", bundle: Bundle.module, comment: "policy")) {
-                    attr.addAttributes([.font : FontType.footnote.font.bold(),
+                    attr.addAttributes([.font : UIFont.applicationFont(forTextStyle: .footnote),
                                         .underlineStyle : NSUnderlineStyle.single.rawValue],
                                        range: NSRange(policyRange, in: attr.string))
                 }
@@ -226,7 +227,7 @@ public class FormController: UIViewController {
             case .forgetPassword:
                 let button = UIButton(frame: CGRect.zero)
                 button.setTitle("forgot password".bundleLocale().capitalized, for: .normal)
-                button.titleLabel?.font = FontType.footnote.font
+                button.titleLabel?.font = .applicationFont(forTextStyle: .footnote)
                 button.tintColor = FormController.primaryColor
                 button.setTitleColor(FormController.primaryColor, for: .normal)
                 button.contentHorizontalAlignment = .left
@@ -239,8 +240,8 @@ public class FormController: UIViewController {
         
         titleLabel.text = signUpType.title
         nextButton.setTitle(signUpType.title.uppercased(), for: .normal)
-        nextButton.titleLabel?.font = FontType.default.font.bold()
-        changeFormButton.titleLabel?.font = FontType.custom(.body, traits: [UIFontDescriptor.SymbolicTraits.traitBold]).font
+        nextButton.titleLabel?.font = .applicationFont(forTextStyle: .body)
+        changeFormButton.titleLabel?.font = .applicationFont(forTextStyle: .callout)
         changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.title : SignUpType.login.title, for: .normal)
         changeFormButton.setTitleColor(LoginWorkflowController.configuration.palette.primary, for: .normal)
         updateNextButton()
