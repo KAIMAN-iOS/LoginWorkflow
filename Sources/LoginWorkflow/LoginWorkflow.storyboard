@@ -19,20 +19,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="n3K-ag-Nd6">
-                                <rect key="frame" x="20" y="802" width="374" height="51"/>
+                                <rect key="frame" x="25" y="806" width="364" height="47"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1o2-4d-rcO" customClass="SignUpButton" customModule="LoginWorkflow">
-                                        <rect key="frame" x="0.0" y="0.0" width="177" height="51"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="172" height="47"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <inset key="contentEdgeInsets" minX="5" minY="15" maxX="5" maxY="15"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="13" maxX="5" maxY="13"/>
                                         <connections>
                                             <action selector="signup:" destination="70F-Ax-1di" eventType="touchUpInside" id="uah-Ty-E3u"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FY7-Ps-KHp" customClass="SignUpButton" customModule="LoginWorkflow">
-                                        <rect key="frame" x="197" y="0.0" width="177" height="51"/>
+                                        <rect key="frame" x="192" y="0.0" width="172" height="47"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <inset key="contentEdgeInsets" minX="5" minY="15" maxX="5" maxY="15"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="13" maxX="5" maxY="13"/>
                                         <connections>
                                             <action selector="login:" destination="70F-Ax-1di" eventType="touchUpInside" id="wOb-py-id5"/>
                                         </connections>
@@ -43,7 +43,7 @@
                                 <rect key="frame" x="26" y="385.5" width="363" height="125"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exw-Om-Ias">
-                                <rect key="frame" x="0.0" y="510.5" width="414" height="283.5"/>
+                                <rect key="frame" x="0.0" y="510.5" width="414" height="287.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Bpo-db-vll">
                                         <rect key="frame" x="107.5" y="0.0" width="326.5" height="152"/>
@@ -95,11 +95,11 @@ LA PROTECTION DU CHAUFFEUR</string>
                             <constraint firstItem="exw-Om-Ias" firstAttribute="top" secondItem="CsK-Lw-60s" secondAttribute="bottom" id="Par-63-yGQ"/>
                             <constraint firstItem="Kd1-Jx-BAF" firstAttribute="trailing" secondItem="CsK-Lw-60s" secondAttribute="trailing" constant="25" id="QHu-VD-Qpm"/>
                             <constraint firstItem="CsK-Lw-60s" firstAttribute="centerY" secondItem="6kv-zx-rZr" secondAttribute="centerY" id="ROc-Ns-aqx"/>
-                            <constraint firstItem="Kd1-Jx-BAF" firstAttribute="trailing" secondItem="n3K-ag-Nd6" secondAttribute="trailing" constant="20" id="S5t-Pz-mrQ"/>
+                            <constraint firstItem="Kd1-Jx-BAF" firstAttribute="trailing" secondItem="n3K-ag-Nd6" secondAttribute="trailing" constant="25" id="S5t-Pz-mrQ"/>
                             <constraint firstItem="CsK-Lw-60s" firstAttribute="leading" secondItem="Kd1-Jx-BAF" secondAttribute="leading" constant="26" id="WZ6-6O-pgS"/>
                             <constraint firstItem="Kd1-Jx-BAF" firstAttribute="bottom" secondItem="n3K-ag-Nd6" secondAttribute="bottom" constant="9" id="eOB-aX-lkq"/>
                             <constraint firstItem="exw-Om-Ias" firstAttribute="trailing" secondItem="6kv-zx-rZr" secondAttribute="trailing" id="h6u-bq-8Nl"/>
-                            <constraint firstItem="n3K-ag-Nd6" firstAttribute="leading" secondItem="Kd1-Jx-BAF" secondAttribute="leading" constant="20" id="mT9-OE-5Ub"/>
+                            <constraint firstItem="n3K-ag-Nd6" firstAttribute="leading" secondItem="Kd1-Jx-BAF" secondAttribute="leading" constant="25" id="mT9-OE-5Ub"/>
                         </constraints>
                     </view>
                     <connections>
@@ -228,13 +228,13 @@ LA PROTECTION DU CHAUFFEUR</string>
         <image name="backArrow" width="13.5" height="24"/>
         <image name="myCloudTaxi" width="562" height="125"/>
         <namedColor name="backgroundColor">
-            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="selectedTitleColor">
-            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.11800000071525574" green="0.1289999932050705" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

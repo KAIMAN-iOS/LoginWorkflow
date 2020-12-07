@@ -9,6 +9,7 @@ import UIKit
 import ATAConfiguration
 import UIViewExtension
 import StringExtension
+import Ampersand
 
 public class LoginWorkflowController: UIViewController {
  
@@ -36,6 +37,8 @@ public class LoginWorkflowController: UIViewController {
     @IBOutlet weak var welcomeTitle: UILabel!  {
         didSet {
             welcomeTitle.text = "welcome title".bundleLocale().uppercased()
+            welcomeTitle.textColor = UIColor.white.withAlphaComponent(0.8)
+            welcomeTitle.font = UIFont.applicationFont(ofSize: 13, weight: .thin)
         }
     }
 
@@ -46,7 +49,8 @@ public class LoginWorkflowController: UIViewController {
             paragraphStyle.alignment = .right
             welcomeMessage.attributedText = NSAttributedString(string: "welcome message".bundleLocale().uppercased(),
                                                                attributes: [.paragraphStyle : paragraphStyle,
-                                                                            .font : UIFont.systemFont(ofSize: 11)])
+                                                                            .font : UIFont.applicationFont(ofSize: 9, weight: .thin),
+                                                                            .foregroundColor : UIColor.white.withAlphaComponent(0.8)])
             welcomeMessage.superview?.layoutIfNeeded()
             
         }
@@ -55,6 +59,7 @@ public class LoginWorkflowController: UIViewController {
     @IBOutlet weak var welcomeView: UIView!  {
         didSet {
             welcomeView.setRoundedCorners(corners: [.topLeft, .bottomLeft], radius: 20.0)
+            welcomeView.backgroundColor = LoginWorkflowController.configuration.palette.mainTexts.darker(by: 2)
         }
     }
    
@@ -68,6 +73,8 @@ public class LoginWorkflowController: UIViewController {
         }
         if let color = backgroundColor {
             view.backgroundColor = color
+        } else {
+            view.backgroundColor = LoginWorkflowController.configuration.palette.mainTexts
         }
     }
     

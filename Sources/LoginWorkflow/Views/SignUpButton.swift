@@ -39,7 +39,7 @@ public class SignUpButton: UIButton {
     public override func layoutSubviews() {
         super.layoutSubviews()
         backgroundColor = hasFocus ? selectedBackgroundColor : .clear
-        layer.borderWidth = 1.0
+        layer.borderWidth = 0.5
         layer.borderColor = selectedBackgroundColor.cgColor
         setTitleColor(hasFocus ? selectedTitleColor : selectedBackgroundColor, for: .normal)
         layer.cornerRadius = 5.0
