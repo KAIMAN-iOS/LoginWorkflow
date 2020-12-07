@@ -107,7 +107,7 @@ public class FormController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        ActionButton.globalShape = .rounded(value: 10.0)
+        ActionButton.globalShape = .rounded(value: 5.0)
         ActionButton.primaryColor = LoginWorkflowController.configuration.palette.primary
         ActionButton.separatorColor = LoginWorkflowController.configuration.palette.placeholder
         ActionButton.mainTextsColor = LoginWorkflowController.configuration.palette.mainTexts
