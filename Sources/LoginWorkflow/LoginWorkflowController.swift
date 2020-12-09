@@ -63,7 +63,7 @@ public class LoginWorkflowController: UIViewController {
         }
     }
    
-    
+    public override var prefersStatusBarHidden: Bool { true }
     public var backgroundColor: UIColor?
     
     public override func viewDidLoad() {
