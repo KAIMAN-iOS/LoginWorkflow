@@ -107,11 +107,11 @@ public class FormController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        ActionButton.globalShape = .rounded(value: 5.0)
-        ActionButton.primaryColor = LoginWorkflowController.configuration.palette.primary
-        ActionButton.separatorColor = LoginWorkflowController.configuration.palette.placeholder
-        ActionButton.mainTextsColor = LoginWorkflowController.configuration.palette.mainTexts
-        ActionButton.loadingColor = LoginWorkflowController.configuration.palette.primary.withAlphaComponent(0.7)
+//        ActionButton.globalShape = .rounded(value: 5.0)
+//        ActionButton.primaryColor = LoginWorkflowController.configuration.palette.primary
+//        ActionButton.separatorColor = LoginWorkflowController.configuration.palette.placeholder
+//        ActionButton.mainTextsColor = LoginWorkflowController.configuration.palette.mainTexts
+//        ActionButton.loadingColor = LoginWorkflowController.configuration.palette.primary.withAlphaComponent(0.7)
 
         applyChanges()
     }
@@ -227,10 +227,10 @@ public class FormController: UIViewController {
             case .forgetPassword:
                 let button = UIButton(frame: CGRect.zero)
                 button.setTitle("forgot password".bundleLocale().capitalized, for: .normal)
-                button.titleLabel?.font = .applicationFont(forTextStyle: .footnote)
+                button.titleLabel?.font = .applicationFont(forTextStyle: .callout)
                 button.tintColor = FormController.primaryColor
                 button.setTitleColor(FormController.primaryColor, for: .normal)
-                button.contentHorizontalAlignment = .left
+                button.contentHorizontalAlignment = .right
                 button.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
                 stackView.addArrangedSubview(button)
                 
@@ -238,12 +238,12 @@ public class FormController: UIViewController {
             }
         }
         
-        titleLabel.text = signUpType.title
-        nextButton.setTitle(signUpType.title.uppercased(), for: .normal)
+        titleLabel.set(text: signUpType.title.capitalized, for: .largeTitle, textColor: LoginWorkflowController.configuration.palette.mainTexts)
+        nextButton.setTitle(signUpType.title.lowercased(), for: .normal)
         nextButton.titleLabel?.font = .applicationFont(forTextStyle: .body)
         changeFormButton.titleLabel?.font = .applicationFont(forTextStyle: .callout)
-        changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.title : SignUpType.login.title, for: .normal)
-        changeFormButton.setTitleColor(LoginWorkflowController.configuration.palette.primary, for: .normal)
+        changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.title.lowercased() : SignUpType.login.title.lowercased(), for: .normal)
+        changeFormButton.setTitleColor(LoginWorkflowController.configuration.palette.mainTexts, for: .normal)
         updateNextButton()
     }
     
