@@ -141,7 +141,7 @@ public class FormController: UIViewController {
             view.addSubview(button)
             button.snp.makeConstraints { make in
                 make.right.equalToSuperview().inset(8)
-                make.bottom.equalToSuperview().inset(12)
+                make.bottom.equalToSuperview().inset(5)
                 make.left.equalToSuperview()
             }
             button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
