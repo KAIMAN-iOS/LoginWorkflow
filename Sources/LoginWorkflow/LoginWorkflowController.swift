@@ -38,7 +38,7 @@ public class LoginWorkflowController: UIViewController {
         didSet {
             welcomeTitle.text = "welcome title".bundleLocale().uppercased()
             welcomeTitle.textColor = UIColor.white.withAlphaComponent(0.8)
-            welcomeTitle.font = UIFont.applicationFont(ofSize: 13, weight: .thin)
+            welcomeTitle.font = UIFont.applicationFont(ofSize: 13, weight: .ultraLight)
         }
     }
 
@@ -49,8 +49,8 @@ public class LoginWorkflowController: UIViewController {
             paragraphStyle.alignment = .right
             welcomeMessage.attributedText = NSAttributedString(string: "welcome message".bundleLocale().uppercased(),
                                                                attributes: [.paragraphStyle : paragraphStyle,
-                                                                            .font : UIFont.applicationFont(ofSize: 9, weight: .thin),
-                                                                            .foregroundColor : UIColor.white.withAlphaComponent(0.8)])
+                                                                            .font : UIFont.applicationFont(ofSize: 10, weight: .ultraLight),
+                                                                            .foregroundColor : UIColor.white])
             welcomeMessage.superview?.layoutIfNeeded()
             
         }

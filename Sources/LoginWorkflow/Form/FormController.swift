@@ -300,7 +300,7 @@ public class FormController: UIViewController {
                   let lastname = textFields.filter({ $0.field == .lastName }).first?.text,
                   let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text else { return }
             let user = SignupUser(email: email, password: password, phone: phone, countryCode: FormController.countryCode, firstname: firstname, lastname: lastname)
-            nextButton.isLoading = true
+//            nextButton.isLoading = true
             coordinatorDelegate?.signup(user, completion: { [weak self] in
                 self?.nextButton.isLoading = false
             })
@@ -356,6 +356,11 @@ public class FormController: UIViewController {
         list.locale = .current
         return list
     } ()
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 }
 
 extension FormController: CloseDelegate {
