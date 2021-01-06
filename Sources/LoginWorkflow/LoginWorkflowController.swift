@@ -68,6 +68,7 @@ public class LoginWorkflowController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        title = ""
         if let image = LoginWorkflowController.configuration.logo {
             icon.image = image
         }
@@ -76,6 +77,11 @@ public class LoginWorkflowController: UIViewController {
         } else {
             view.backgroundColor = LoginWorkflowController.configuration.palette.mainTexts
         }
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     @IBAction func login(_ sender: Any) {

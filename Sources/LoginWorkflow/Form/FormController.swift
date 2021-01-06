@@ -12,6 +12,7 @@ import PhoneNumberKit
 import FontExtension
 import SnapKit
 import Ampersand
+import UIViewControllerExtension
 
 public enum FormType: Int {
     case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword
@@ -88,9 +89,6 @@ public class FormController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var nextButton: ActionButton!
     @IBOutlet weak var changeFormButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     public static var textColor: UIColor = LoginWorkflowController.configuration.palette.mainTexts
     public static var placeholderColor: UIColor = #colorLiteral(red: 0.6170696616, green: 0.6521494985, blue: 0.7113651633, alpha: 1)
     public static var primaryColor: UIColor = LoginWorkflowController.configuration.palette.primary
@@ -107,12 +105,9 @@ public class FormController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-//        ActionButton.globalShape = .rounded(value: 5.0)
-//        ActionButton.primaryColor = LoginWorkflowController.configuration.palette.primary
-//        ActionButton.separatorColor = LoginWorkflowController.configuration.palette.placeholder
-//        ActionButton.mainTextsColor = LoginWorkflowController.configuration.palette.mainTexts
-//        ActionButton.loadingColor = LoginWorkflowController.configuration.palette.primary.withAlphaComponent(0.7)
-
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = ""
+        hideBackButtonText = true
         applyChanges()
     }
     
@@ -226,7 +221,7 @@ public class FormController: UIViewController {
                 
             case .forgetPassword:
                 let button = UIButton(frame: CGRect.zero)
-                button.setTitle("forgot password".bundleLocale().capitalized, for: .normal)
+                button.setTitle("forgot password".bundleLocale().capitalizingFirstLetter(), for: .normal)
                 button.titleLabel?.font = .applicationFont(forTextStyle: .callout)
                 button.tintColor = FormController.primaryColor
                 button.setTitleColor(FormController.primaryColor, for: .normal)
@@ -238,11 +233,14 @@ public class FormController: UIViewController {
             }
         }
         
-        titleLabel.set(text: signUpType.title.capitalized, for: .largeTitle, textColor: LoginWorkflowController.configuration.palette.mainTexts)
+//        titleLabel.set(text: signUpType.title.capitalized, for: .largeTitle, textColor: LoginWorkflowController.configuration.palette.mainTexts)
+        navigationItem.title = signUpType.title.capitalized
         nextButton.setTitle(signUpType.title.lowercased(), for: .normal)
         nextButton.titleLabel?.font = .applicationFont(forTextStyle: .body)
         changeFormButton.titleLabel?.font = .applicationFont(forTextStyle: .callout)
-        changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.title.lowercased() : SignUpType.login.title.lowercased(), for: .normal)
+        changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.title.capitalized : SignUpType.login.title.capitalized, for: .normal)
+        changeFormButton.sizeToFit()
+        changeFormButton.superview?.sizeToFit()
         changeFormButton.setTitleColor(LoginWorkflowController.configuration.palette.mainTexts, for: .normal)
         updateNextButton()
     }
@@ -276,10 +274,6 @@ public class FormController: UIViewController {
     @IBAction func changeForm() {
         signUpType = signUpType == .login ? .sigup : .login
         applyChanges()
-    }
-    
-    @IBAction func back() {
-        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func next() {
@@ -359,7 +353,7 @@ public class FormController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 

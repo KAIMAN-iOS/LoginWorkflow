@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="70F-Ax-1di">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="70F-Ax-1di">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -138,33 +138,11 @@ LA PROTECTION DU CHAUFFEUR</string>
                                     <action selector="next" destination="1cb-9h-QE6" eventType="touchUpInside" id="THv-Kt-khQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYw-Av-XXM">
-                                <rect key="frame" x="20" y="57" width="33.5" height="44"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" image="backArrow"/>
-                                <connections>
-                                    <action selector="back" destination="1cb-9h-QE6" eventType="touchUpInside" id="5t0-U9-da8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdN-ju-hqQ">
-                                <rect key="frame" x="340" y="64" width="54" height="30"/>
-                                <color key="tintColor" name="selectedTitleColor"/>
-                                <state key="normal" title="Sign Up"/>
-                                <connections>
-                                    <action selector="changeForm" destination="1cb-9h-QE6" eventType="touchUpInside" id="dJZ-L8-pgY"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lB-hO-aVL">
-                                <rect key="frame" x="30" y="117" width="111" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <color key="textColor" name="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-ZH-33U">
-                                <rect key="frame" x="30" y="183" width="354" height="615"/>
+                                <rect key="frame" x="30" y="96" width="354" height="702"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gG-wP-Tcj">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="615"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="702"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="623" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="68t-bq-dUZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="623"/>
@@ -196,48 +174,53 @@ LA PROTECTION DU CHAUFFEUR</string>
                         <viewLayoutGuide key="safeArea" id="Dfi-qZ-ani"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Dfi-qZ-ani" firstAttribute="trailing" secondItem="vdN-ju-hqQ" secondAttribute="trailing" constant="20" id="IEC-PO-wo3"/>
+                            <constraint firstItem="HmN-ZH-33U" firstAttribute="top" secondItem="Dfi-qZ-ani" secondAttribute="top" constant="8" id="6Xw-Ea-T86"/>
                             <constraint firstItem="aEa-UH-af4" firstAttribute="bottom" secondItem="Dfi-qZ-ani" secondAttribute="bottom" constant="-8" id="JqS-8l-Tvb"/>
                             <constraint firstItem="Dfi-qZ-ani" firstAttribute="trailing" secondItem="HmN-ZH-33U" secondAttribute="trailing" constant="30" id="Yuj-dL-bUr"/>
-                            <constraint firstItem="5lB-hO-aVL" firstAttribute="top" secondItem="YYw-Av-XXM" secondAttribute="bottom" constant="16" id="aDP-fB-ttZ"/>
-                            <constraint firstItem="vdN-ju-hqQ" firstAttribute="centerY" secondItem="YYw-Av-XXM" secondAttribute="centerY" id="c8v-FO-eKf"/>
                             <constraint firstItem="Dfi-qZ-ani" firstAttribute="trailing" secondItem="aEa-UH-af4" secondAttribute="trailing" constant="20" id="e5c-vS-kt9"/>
-                            <constraint firstItem="5lB-hO-aVL" firstAttribute="leading" secondItem="YYw-Av-XXM" secondAttribute="leading" constant="10" id="f1N-xL-iMh"/>
-                            <constraint firstItem="HmN-ZH-33U" firstAttribute="top" secondItem="5lB-hO-aVL" secondAttribute="bottom" constant="18" id="ga4-BK-riX"/>
-                            <constraint firstItem="YYw-Av-XXM" firstAttribute="top" secondItem="Dfi-qZ-ani" secondAttribute="top" constant="13" id="hKl-Kp-1gE"/>
-                            <constraint firstItem="YYw-Av-XXM" firstAttribute="leading" secondItem="Dfi-qZ-ani" secondAttribute="leading" constant="20" id="m6a-YT-FMn"/>
                             <constraint firstItem="aEa-UH-af4" firstAttribute="leading" secondItem="Dfi-qZ-ani" secondAttribute="leading" constant="20" id="psm-q0-bZx"/>
                             <constraint firstItem="aEa-UH-af4" firstAttribute="top" secondItem="HmN-ZH-33U" secondAttribute="bottom" constant="8" symbolic="YES" id="vEB-I6-FY7"/>
                             <constraint firstItem="HmN-ZH-33U" firstAttribute="leading" secondItem="Dfi-qZ-ani" secondAttribute="leading" constant="30" id="vjp-ow-ag2"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Skc-bx-JxR">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="XJW-5B-Nkv">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="vdN-ju-hqQ">
+                                <rect key="frame" x="340" y="7" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="selectedTitleColor"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="changeForm" destination="1cb-9h-QE6" eventType="touchUpInside" id="dJZ-L8-pgY"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="backButton" destination="YYw-Av-XXM" id="cCB-0m-6yT"/>
                         <outlet property="changeFormButton" destination="vdN-ju-hqQ" id="gsD-pq-deZ"/>
                         <outlet property="nextButton" destination="aEa-UH-af4" id="yM1-WT-qSC"/>
                         <outlet property="stackView" destination="68t-bq-dUZ" id="R3i-xa-d1b"/>
-                        <outlet property="titleLabel" destination="5lB-hO-aVL" id="2xc-sl-vPV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nm8-9B-0ml" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142.02898550724638" y="180.80357142857142"/>
+            <point key="canvasLocation" x="-158" y="181"/>
         </scene>
     </scenes>
     <resources>
-        <image name="backArrow" width="13.5" height="24"/>
         <image name="myCloudTaxi" width="562" height="125"/>
         <namedColor name="backgroundColor">
-            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="selectedButtonColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="selectedTitleColor">
-            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
-            <color red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.16099999845027924" green="0.17599999904632568" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>
