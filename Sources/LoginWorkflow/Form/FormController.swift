@@ -50,7 +50,7 @@ public class FieldTextField: AkiraTextField {
             isValid = PhoneNumberKit().isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
             
         case .email:
-            isValid = text?.isValidEmail ?? false
+            isValid = text?.trimmingCharacters(in: .whitespacesAndNewlines).isValidEmail ?? false
             
         case .countryCode:
             isValid = true
@@ -223,8 +223,8 @@ public class FormController: UIViewController {
                 let button = UIButton(frame: CGRect.zero)
                 button.setTitle("forgot password".bundleLocale().capitalizingFirstLetter(), for: .normal)
                 button.titleLabel?.font = .applicationFont(forTextStyle: .callout)
-                button.tintColor = FormController.primaryColor
-                button.setTitleColor(FormController.primaryColor, for: .normal)
+                button.tintColor = FormController.textColor
+                button.setTitleColor(FormController.textColor, for: .normal)
                 button.contentHorizontalAlignment = .right
                 button.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
                 stackView.addArrangedSubview(button)
