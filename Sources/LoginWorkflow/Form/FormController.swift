@@ -121,7 +121,7 @@ public class FormController: UIViewController {
             textField.field = field
             textField.delegate = self
             textField.placeholder = text.uppercased()
-            textField.font = .applicationFont(forTextStyle: .callout)
+            textField.font = .applicationFont(forTextStyle: .body)
             textField.textColor = FormController.textColor
             textField.placeholderColor = FormController.placeholderColor
             textField.borderColor = FormController.placeholderColor
@@ -222,7 +222,7 @@ public class FormController: UIViewController {
             case .forgetPassword:
                 let button = UIButton(frame: CGRect.zero)
                 button.setTitle("forgot password".bundleLocale().capitalizingFirstLetter(), for: .normal)
-                button.titleLabel?.font = .applicationFont(forTextStyle: .callout)
+                button.titleLabel?.font = .applicationFont(forTextStyle: .body)
                 button.tintColor = FormController.textColor
                 button.setTitleColor(FormController.textColor, for: .normal)
                 button.contentHorizontalAlignment = .right
@@ -237,7 +237,7 @@ public class FormController: UIViewController {
         navigationItem.title = signUpType.title.capitalized
         nextButton.setTitle(signUpType.title.lowercased(), for: .normal)
         nextButton.titleLabel?.font = .applicationFont(forTextStyle: .body)
-        changeFormButton.titleLabel?.font = .applicationFont(forTextStyle: .callout)
+        changeFormButton.titleLabel?.font = .applicationFont(forTextStyle: .body)
         changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.title.capitalized : SignUpType.login.title.capitalized, for: .normal)
         changeFormButton.sizeToFit()
         changeFormButton.superview?.sizeToFit()

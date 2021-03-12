@@ -5,9 +5,9 @@
         "package": "ActionButton",
         "repositoryURL": "https://github.com/jerometonnelier/ActionButton",
         "state": {
-          "branch": null,
-          "revision": "3ae3d2b60324051f8ee9cb0ab63feb5866ef454c",
-          "version": "1.0.3"
+          "branch": "master",
+          "revision": "d3d27b14d00446b435c84664211d0f4f5155c5f8",
+          "version": null
         }
       },
       {
@@ -23,9 +23,9 @@
         "package": "ATAConfiguration",
         "repositoryURL": "https://github.com/jerometonnelier/ATAConfiguration",
         "state": {
-          "branch": null,
-          "revision": "8ec9be62f1f5783ce0acb71ff1cb885ca8265df2",
-          "version": "1.0.3"
+          "branch": "master",
+          "revision": "0c1bb6372ec4b9fca70ea96d406cfe958fd786fc",
+          "version": null
         }
       },
       {
@@ -41,9 +41,9 @@
         "package": "KCoordinatorKit",
         "repositoryURL": "https://github.com/jerometonnelier/KCoordinatorKit",
         "state": {
-          "branch": null,
+          "branch": "master",
           "revision": "20bb96f4f55c366fbeba61e97287bd6ee4a14d03",
-          "version": "1.0.1"
+          "version": null
         }
       },
       {
@@ -95,9 +95,9 @@
         "package": "TextFieldEffects",
         "repositoryURL": "https://github.com/jerometonnelier/TextFieldEffects",
         "state": {
-          "branch": null,
+          "branch": "master",
           "revision": "34c87d76b1675f2001bec6e16462f8cc0b8dbbd2",
-          "version": "1.7.2"
+          "version": null
         }
       }
     ]

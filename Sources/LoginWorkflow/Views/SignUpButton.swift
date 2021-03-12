@@ -31,7 +31,7 @@ public class SignUpButton: UIButton {
     
     public var signUpType: SignUpType = .login  {
         didSet {
-            titleLabel?.font = .applicationFont(forTextStyle: .callout)
+            titleLabel?.font = .applicationFont(forTextStyle: .body)
             setTitle(signUpType.title, for: .normal)
         }
     }
