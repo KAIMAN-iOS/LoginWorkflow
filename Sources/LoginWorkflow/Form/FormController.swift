@@ -54,7 +54,12 @@ public class FieldTextField: AkiraTextField {
             }
         }
     }
-    var shouldCheckValidity: Bool = true
+    var shouldCheckValidity: Bool {
+        switch field {
+        case .country, .countryCode, .disclaimer : return false
+        default: return true
+        }
+    }
     
     public var isValid: Bool = false
     
@@ -260,8 +265,6 @@ public class FormController: UIViewController {
                 let code = textField("country code".bundleLocale().capitalized, FormType.countryCode)
                 updateCountryCode()
                 code.setContentHuggingPriority(.required, for: .horizontal)
-                code.shouldCheckValidity = false
-                //                code.isEnabled = false
                 code.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCountryCodePicker)))
                 stack.addArrangedSubview(code)
                 let phone = textField("phone number".bundleLocale().capitalized, field)
@@ -528,6 +531,6 @@ extension FormController: UIPickerViewDataSource {
 
 extension FormController: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCountry = SupportedCountries(rawValue: row)!
+        selectedCountry = SupportedCountries(rawValue: row) ?? .france
     }
 }
