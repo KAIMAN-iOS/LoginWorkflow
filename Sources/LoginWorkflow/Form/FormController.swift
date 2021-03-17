@@ -13,21 +13,38 @@ import FontExtension
 import SnapKit
 import Ampersand
 import UIViewControllerExtension
+import TextFieldExtension
 
-public enum FormType: Int {
-    case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword
-}
-
-extension SignUpType {
-    var fields: [FormType] {
+extension LoginWorkflow.Mode {
+    internal func fields(for type: SignUpType) -> [FormType] {
         switch self {
-        case .login: return [.email, .password, .forgetPassword]
-        case .sigup: return [.name, .email, .phoneNumber, .password]
+        case .driver:
+            switch type {
+            case .login: return [.email, .password, .forgetPassword]
+            case .sigup: return [.disclaimer, .name, .email, .phoneNumber, .password, .country]
+            }
+            
+        case .passenger:
+            switch type {
+            case .login: return [.email, .password, .forgetPassword]
+            case .sigup: return [.name, .phoneNumber]
+            }
+            
+        case .business:
+            switch type {
+            case .login: return [.email, .password, .forgetPassword]
+            case .sigup: return [.name, .email, .phoneNumber, .password]
+            }
         }
     }
 }
 
+public enum FormType: Int {
+    case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword, disclaimer, country
+}
+
 public class FieldTextField: AkiraTextField {
+    
     public var field: FormType = .email  {
         didSet {
             switch field {
@@ -38,7 +55,7 @@ public class FieldTextField: AkiraTextField {
         }
     }
     var shouldCheckValidity: Bool = true
-
+    
     public var isValid: Bool = false
     
     public func checkValidity() {
@@ -52,9 +69,9 @@ public class FieldTextField: AkiraTextField {
         case .email:
             isValid = text?.trimmingCharacters(in: .whitespacesAndNewlines).isValidEmail ?? false
             
-        case .countryCode:
+        case .countryCode, .country:
             isValid = true
-        
+            
         default:
             isValid = true
         }
@@ -71,19 +88,47 @@ public class FieldTextField: AkiraTextField {
 
 public class FormController: UIViewController {
     
+    enum SupportedCountries: Int, CaseIterable {
+        case france
+        
+        var title: String {
+            switch self {
+            case .france: return "FRANCE"
+            }
+        }
+        var code: String {
+            switch self {
+            case .france: return "FR"
+            }
+        }
+        
+        static func from(regionCode: String?) -> SupportedCountries {
+            guard let code = regionCode else { return .france }
+            switch code.lowercased() {
+            case "fr" : return .france
+            default: return .france
+            }
+        }
+    }
+    var selectedCountry: SupportedCountries!
     static var countryCode: String = Locale.current.regionCode ?? "FR"
-   static func create(coordinatorDelegate: LoginWorkflowCoordinatorDelegate, signUpType: SignUpType = .login) -> FormController {
-       let ctrl:FormController = UIStoryboard(name: "LoginWorkflow", bundle: Bundle.module).instantiateViewController(identifier: "FormController") as! FormController
-       ctrl.coordinatorDelegate = coordinatorDelegate
+    static func create(coordinatorDelegate: LoginWorkflowCoordinatorDelegate, signUpType: SignUpType = .login) -> FormController {
+        let ctrl:FormController = UIStoryboard(name: "LoginWorkflow", bundle: Bundle.module).instantiateViewController(identifier: "FormController") as! FormController
+        ctrl.coordinatorDelegate = coordinatorDelegate
         ctrl.signUpType = signUpType
-       return ctrl
-   }
-   weak var coordinatorDelegate: LoginWorkflowCoordinatorDelegate?
+        return ctrl
+    }
+    weak var coordinatorDelegate: LoginWorkflowCoordinatorDelegate?
+    var mode: LoginWorkflow.Mode = .driver  {
+        didSet {
+            updateFields()
+        }
+    }
     
     var fields: [FormType] = []
     public var signUpType: SignUpType = .login  {
         didSet {
-            fields = signUpType.fields
+            updateFields()
         }
     }
     @IBOutlet weak var stackView: UIStackView!
@@ -103,11 +148,16 @@ public class FormController: UIViewController {
         print("💀 DEINIT \(URL(fileURLWithPath: #file).lastPathComponent)")
     }
     
+    func updateFields() {
+        fields = mode.fields(for: signUpType)
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         title = ""
         hideBackButtonText = true
+        loadCurrentCountry()
         applyChanges()
     }
     
@@ -155,11 +205,31 @@ public class FormController: UIViewController {
         
         fields.forEach { field in
             switch field {
+            case .disclaimer:
+                let label = UILabel()
+                label.set(text: "driver disclaimer".bundleLocale(), for: .body, textColor: LoginWorkflowController.configuration.palette.mainTexts)
+                label.numberOfLines = 0
+                stackView.addArrangedSubview(label)
+                
             case .email:
                 let textfield = textField("email".bundleLocale().capitalized, field)
                 if signUpType == .login {
                     textfield.textContentType = .username
                 }
+                stackView.addArrangedSubview(textfield)
+                
+            case .country:
+                let textfield = textField("country".bundleLocale().capitalized, field)
+                if signUpType == .login {
+                    textfield.textContentType = .username
+                }
+                let screenWidth = UIScreen.main.bounds.width
+                let picker = UIPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))
+                picker.delegate = self
+                picker.dataSource = self
+                textfield.inputView = picker
+                textfield.addKeyboardControlView(with: LoginWorkflowController.configuration.palette.secondary, target: textfield, buttonStyle: .body)
+                textfield.text = selectedCountry.title
                 stackView.addArrangedSubview(textfield)
                 
             case .password:
@@ -191,7 +261,7 @@ public class FormController: UIViewController {
                 updateCountryCode()
                 code.setContentHuggingPriority(.required, for: .horizontal)
                 code.shouldCheckValidity = false
-//                code.isEnabled = false
+                //                code.isEnabled = false
                 code.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCountryCodePicker)))
                 stack.addArrangedSubview(code)
                 let phone = textField("phone number".bundleLocale().capitalized, field)
@@ -233,7 +303,7 @@ public class FormController: UIViewController {
             }
         }
         
-//        titleLabel.set(text: signUpType.title.capitalized, for: .largeTitle, textColor: LoginWorkflowController.configuration.palette.mainTexts)
+        //        titleLabel.set(text: signUpType.title.capitalized, for: .largeTitle, textColor: LoginWorkflowController.configuration.palette.mainTexts)
         navigationItem.title = signUpType.title.capitalized
         nextButton.setTitle(signUpType.title.lowercased(), for: .normal)
         nextButton.titleLabel?.font = .applicationFont(forTextStyle: .body)
@@ -276,6 +346,14 @@ public class FormController: UIViewController {
         applyChanges()
     }
     
+    func loadCurrentCountry() {
+        guard let code = Locale.current.regionCode else {
+            selectedCountry = .france
+            return
+        }
+        selectedCountry = SupportedCountries.from(regionCode: code)
+    }
+    
     @IBAction func next() {
         switch signUpType {
         case .login:
@@ -293,8 +371,14 @@ public class FormController: UIViewController {
                   let firstname = textFields.filter({ $0.field == .firstname }).first?.text,
                   let lastname = textFields.filter({ $0.field == .lastName }).first?.text,
                   let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text else { return }
-            let user = SignupUser(email: email, password: password, phone: phone, countryCode: FormController.countryCode, firstname: firstname, lastname: lastname)
-//            nextButton.isLoading = true
+            let user = SignupUser(email: email,
+                                  password: password,
+                                  phone: phone,
+                                  countryCode: selectedCountry.code,
+                                  internationalCode: FormController.countryCode,
+                                  firstname: firstname,
+                                  lastname: lastname)
+            //            nextButton.isLoading = true
             coordinatorDelegate?.signup(user, completion: { [weak self] in
                 self?.nextButton.isLoading = false
             })
@@ -433,5 +517,17 @@ extension FormController: CountryCodePickerDelegate {
         phoneFormatter.defaultRegion = FormController.countryCode
         updateCountryCode()
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension FormController: UIPickerViewDataSource {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { SupportedCountries.allCases.count }
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { SupportedCountries(rawValue: row)!.title }
+}
+
+extension FormController: UIPickerViewDelegate {
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCountry = SupportedCountries(rawValue: row)!
     }
 }

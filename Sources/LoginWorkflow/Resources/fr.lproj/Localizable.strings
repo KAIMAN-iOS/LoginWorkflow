@@ -18,3 +18,5 @@
 "verify" = "vérifier";
 "welcome title" = "LA SUITE LOGICIELLE POUR TAXI";
 "welcome message" = "application chauffeur\nmanagement matériel embarqué\ngestion de vehicules\npartage de courses entre collègues\nanimation de groupes taxi\nPROTECTION & SÉCURITÉ DU CHAUFFEUR ";
+"driver disclaimer" = "Application destinée aux chauffeurs et aux compagnies de taxi.\nInscription gratuite. ";
+"country" = "Pays";

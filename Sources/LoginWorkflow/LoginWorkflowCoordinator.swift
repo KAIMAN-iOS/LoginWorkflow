@@ -23,14 +23,22 @@ public protocol LoginWorkflowCoordinatorDelegate: class {
     func signup(_ user: SignupUser, completion: @escaping (() -> Void))
 }
 
+public struct LoginWorkflow {
+    public enum Mode {
+        case driver, passenger, business
+    }
+}
+
 public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
     private var chooseController: LoginWorkflowController!
     weak var flowDelegate: LoginWorkflowCoordinatorDelegate!
+    var mode: LoginWorkflow.Mode = .driver
     
-    public init(router: RouterType, delegate: LoginWorkflowCoordinatorDelegate, conf: ATAConfiguration) {
+    public init(router: RouterType, mode: LoginWorkflow.Mode = .driver, delegate: LoginWorkflowCoordinatorDelegate, conf: ATAConfiguration) {
         super.init(router: router)
 //        LoginWorkflowCoordinator.configuration = conf
         chooseController = LoginWorkflowController.create(coordinatorDelegate: self, conf: conf)
+        self.mode = mode
         IQKeyboardManager.shared.enable = true
         flowDelegate = delegate
     }
@@ -45,6 +53,7 @@ public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
     
     private func showForm(_ signUpType: SignUpType) {
         let form: FormController = FormController.create(coordinatorDelegate: flowDelegate, signUpType: signUpType)
+        form.mode = mode
         router.navigationController.setNavigationBarHidden(true, animated: false)
         router.push(form, animated: true, completion: nil)
     }

@@ -22,7 +22,8 @@ public class LoginUser: NSObject {
 public class SignupUser: LoginUser {
     static let phoneNumberKit = PhoneNumberKit()
     public let phone: String
-    public let countryCode: String
+    public let countryCode: String // "fr"
+    public let internationalCode: String // "+33"
     public let firstname: String
     public let lastname: String
     public var internationalPhone: String {
@@ -34,12 +35,14 @@ public class SignupUser: LoginUser {
                 password: String,
                 phone: String,
                 countryCode: String,
+                internationalCode: String,
                 firstname: String,
                 lastname: String) {
         self.phone = phone
         self.countryCode = countryCode
         self.firstname = firstname
         self.lastname = lastname
+        self.internationalCode = internationalCode
         super.init(email: email, password: password)
     }
 }
