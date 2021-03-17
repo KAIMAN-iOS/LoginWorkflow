@@ -381,7 +381,7 @@ public class FormController: UIViewController {
                                   internationalCode: FormController.countryCode,
                                   firstname: firstname,
                                   lastname: lastname)
-            //            nextButton.isLoading = true
+            nextButton.isLoading = true
             coordinatorDelegate?.signup(user, completion: { [weak self] in
                 self?.nextButton.isLoading = false
             })
