@@ -369,23 +369,52 @@ public class FormController: UIViewController {
             })
             
         case .sigup:
-            guard let email = textFields.filter({ $0.field == .email }).first?.text,
-                  let password = textFields.filter({ $0.field == .password }).first?.text,
-                  let firstname = textFields.filter({ $0.field == .firstname }).first?.text,
-                  let lastname = textFields.filter({ $0.field == .lastName }).first?.text,
-                  let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text else { return }
-            let user = SignupUser(email: email,
-                                  password: password,
-                                  phone: phone,
-                                  countryCode: selectedCountry.code,
-                                  internationalCode: FormController.countryCode,
-                                  firstname: firstname,
-                                  lastname: lastname)
-            nextButton.isLoading = true
-            coordinatorDelegate?.signup(user, completion: { [weak self] in
-                self?.nextButton.isLoading = false
-            })
+            switch mode {
+            case .driver: loginDriver()
+            case .passenger: loginPassenger()
+            case .business: loginBusiness()
+            }
         }
+    }
+    
+    func loginBusiness() {
+        
+    }
+    
+    func loginPassenger() {
+        guard let firstname = textFields.filter({ $0.field == .firstname }).first?.text,
+              let lastname = textFields.filter({ $0.field == .lastName }).first?.text,
+              let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text else { return }
+        let user = SignupUser(email: "",
+                              password: "",
+                              phone: phone,
+                              countryCode: selectedCountry.code,
+                              internationalCode: FormController.countryCode,
+                              firstname: firstname,
+                              lastname: lastname)
+        nextButton.isLoading = true
+        coordinatorDelegate?.signup(user, completion: { [weak self] in
+            self?.nextButton.isLoading = false
+        })
+    }
+    
+    func loginDriver() {
+        guard let email = textFields.filter({ $0.field == .email }).first?.text,
+              let password = textFields.filter({ $0.field == .password }).first?.text,
+              let firstname = textFields.filter({ $0.field == .firstname }).first?.text,
+              let lastname = textFields.filter({ $0.field == .lastName }).first?.text,
+              let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text else { return }
+        let user = SignupUser(email: email,
+                              password: password,
+                              phone: phone,
+                              countryCode: selectedCountry.code,
+                              internationalCode: FormController.countryCode,
+                              firstname: firstname,
+                              lastname: lastname)
+        nextButton.isLoading = true
+        coordinatorDelegate?.signup(user, completion: { [weak self] in
+            self?.nextButton.isLoading = false
+        })
     }
     
     @objc func showTerms() {

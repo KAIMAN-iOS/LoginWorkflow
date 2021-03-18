@@ -209,6 +209,12 @@ LA PROTECTION DU CHAUFFEUR</string>
         </scene>
     </scenes>
     <designables>
+        <designable name="1o2-4d-rcO">
+            <size key="intrinsicContentSize" width="10" height="47"/>
+        </designable>
+        <designable name="FY7-Ps-KHp">
+            <size key="intrinsicContentSize" width="10" height="47"/>
+        </designable>
         <designable name="aEa-UH-af4">
             <size key="intrinsicContentSize" width="66" height="48"/>
         </designable>
