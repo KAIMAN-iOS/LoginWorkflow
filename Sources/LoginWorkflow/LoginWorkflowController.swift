@@ -64,7 +64,7 @@ public class LoginWorkflowController: UIViewController {
     }
    
     public override var prefersStatusBarHidden: Bool { true }
-    public var backgroundColor: UIColor?
+    public var backgroundColor: UIColor? = #colorLiteral(red: 0.09803921729, green: 0.09803921729, blue: 0.09803921729, alpha: 1)
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ public class LoginWorkflowController: UIViewController {
         if let color = backgroundColor {
             view.backgroundColor = color
         } else {
-            view.backgroundColor = LoginWorkflowController.configuration.palette.mainTexts
+            view.backgroundColor = LoginWorkflowController.configuration.palette.background
         }
     }
     

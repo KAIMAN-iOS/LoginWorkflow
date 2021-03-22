@@ -159,6 +159,7 @@ public class FormController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = LoginWorkflowController.configuration.palette.background
         navigationController?.navigationBar.prefersLargeTitles = true
         title = ""
         hideBackButtonText = true

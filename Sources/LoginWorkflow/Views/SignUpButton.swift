@@ -21,8 +21,8 @@ public enum SignUpType: Int {
 
 public class SignUpButton: UIButton {
     
-    public var selectedBackgroundColor: UIColor = LoginWorkflowController.configuration.palette.textOnPrimary
-    public var selectedTitleColor: UIColor = LoginWorkflowController.configuration.palette.mainTexts
+    public var selectedBackgroundColor: UIColor = LoginWorkflowController.configuration.palette.textOnDark
+    public var selectedTitleColor: UIColor = #colorLiteral(red: 0.09803921729, green: 0.09803921729, blue: 0.09803921729, alpha: 1)//LoginWorkflowController.configuration.palette.mainTexts
     public var hasFocus: Bool = false {
         didSet {
             layoutIfNeeded()
