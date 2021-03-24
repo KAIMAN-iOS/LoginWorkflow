@@ -20,6 +20,7 @@ let package = Package(
         .package(url: "https://github.com/jerometonnelier/ActionButton", .branch("master")),
         .package(url: "https://github.com/jerometonnelier/PhoneNumberKit", from: "4.0.0"),
         .package(url: "https://github.com/SnapKit/SnapKit", from: "5.0.0"),
+        .package(name: "Lottie", url: "https://github.com/airbnb/lottie-ios", from: "3.2.1"),
         .package(name: "IQKeyboardManagerSwift", url: "https://github.com/hackiftekhar/IQKeyboardManager.git", from: "6.5.0"),
         .package(url: "https://github.com/jerometonnelier/ATAConfiguration", .branch("master")),
     ],
@@ -28,6 +29,13 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "LoginWorkflow",
-            dependencies: ["TextFieldEffects", "KCoordinatorKit", "PhoneNumberKit", "ActionButton", "IQKeyboardManagerSwift", "SnapKit", "ATAConfiguration"])
+            dependencies: ["TextFieldEffects",
+                           "KCoordinatorKit",
+                           "PhoneNumberKit",
+                           "ActionButton",
+                           "IQKeyboardManagerSwift",
+                           "SnapKit",
+                           "ATAConfiguration",
+                           "Lottie"])
     ]
 )

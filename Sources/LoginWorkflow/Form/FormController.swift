@@ -14,6 +14,7 @@ import SnapKit
 import Ampersand
 import UIViewControllerExtension
 import TextFieldExtension
+import Lottie
 
 extension LoginWorkflow.Mode {
     internal func fields(for type: SignUpType) -> [FormType] {
@@ -26,8 +27,8 @@ extension LoginWorkflow.Mode {
             
         case .passenger:
             switch type {
-            case .login: return [.email, .password, .forgetPassword]
-            case .sigup: return [.name, .phoneNumber]
+            case .login: return [.animation, .phoneNumber]
+            case .sigup: return [.animation, .name, .phoneNumber]
             }
             
         case .business:
@@ -40,7 +41,7 @@ extension LoginWorkflow.Mode {
 }
 
 public enum FormType: Int {
-    case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword, disclaimer, country
+    case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword, disclaimer, country, animation
 }
 
 public class FieldTextField: AkiraTextField {
@@ -92,7 +93,7 @@ public class FieldTextField: AkiraTextField {
 }
 
 public class FormController: UIViewController {
-    
+    var animation: Animation?
     enum SupportedCountries: Int, CaseIterable {
         case france
         
@@ -304,6 +305,20 @@ public class FormController: UIViewController {
                 stackView.addArrangedSubview(button)
                 
             case .firstname, .lastName, .countryCode: ()
+                
+            case .animation:
+                guard let anim = animation else { return }
+                let animationView = AnimationView(animation: anim)
+                stackView.addArrangedSubview(animationView)
+                animationView.snp.makeConstraints({
+                    $0.width.equalToSuperview()
+                    $0.height.equalTo(100)
+                })
+                animationView.contentMode = .scaleAspectFit
+                animationView.loopMode = .loop
+                animationView.translatesAutoresizingMaskIntoConstraints = false
+                animationView.isUserInteractionEnabled = false
+                animationView.play()
             }
         }
         
@@ -361,28 +376,47 @@ public class FormController: UIViewController {
     @IBAction func next() {
         switch signUpType {
         case .login:
-            guard let email = textFields.filter({ $0.field == .email }).first?.text,
-                  let password = textFields.filter({ $0.field == .password }).first?.text else { return }
-            let user = LoginUser(email: email, password: password)
-            nextButton.isLoading = true
-            coordinatorDelegate?.login(user, completion: { [weak self] in
-                self?.nextButton.isLoading = false
-            })
-            
-        case .sigup:
             switch mode {
             case .driver: loginDriver()
             case .passenger: loginPassenger()
             case .business: loginBusiness()
             }
+            
+        case .sigup:
+            switch mode {
+            case .driver: createDriver()
+            case .passenger: createPassenger()
+            case .business: createBusiness()
+            }
         }
     }
     
+    func loginDriver() {
+        guard let email = textFields.filter({ $0.field == .email }).first?.text,
+              let password = textFields.filter({ $0.field == .password }).first?.text else { return }
+        let user = LoginUser(email: email, password: password)
+        nextButton.isLoading = true
+        coordinatorDelegate?.login(user, completion: { [weak self] in
+            self?.nextButton.isLoading = false
+        })
+    }
     func loginBusiness() {
-        
     }
     
     func loginPassenger() {
+        guard let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text else { return }
+        let user = LoginUser(email: phone, password: "")
+        nextButton.isLoading = true
+        coordinatorDelegate?.login(user, completion: { [weak self] in
+            self?.nextButton.isLoading = false
+        })
+    }
+    
+    func createBusiness() {
+        
+    }
+    
+    func createPassenger() {
         guard let firstname = textFields.filter({ $0.field == .firstname }).first?.text,
               let lastname = textFields.filter({ $0.field == .lastName }).first?.text,
               let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text else { return }
@@ -399,7 +433,7 @@ public class FormController: UIViewController {
         })
     }
     
-    func loginDriver() {
+    func createDriver() {
         guard let email = textFields.filter({ $0.field == .email }).first?.text,
               let password = textFields.filter({ $0.field == .password }).first?.text,
               let firstname = textFields.filter({ $0.field == .firstname }).first?.text,

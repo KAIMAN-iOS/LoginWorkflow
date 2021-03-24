@@ -10,6 +10,7 @@ import ATAConfiguration
 import UIViewExtension
 import StringExtension
 import Ampersand
+import Lottie
 
 public class LoginWorkflowController: UIViewController {
  
@@ -20,6 +21,7 @@ public class LoginWorkflowController: UIViewController {
         LoginWorkflowController.configuration = conf
         return ctrl
     }
+    var animation: Animation?
     weak var logicDelegate: LoginLogicCoordinatorDelegate!
     @IBOutlet weak var icon: UIImageView! 
     @IBOutlet weak var signUpButton: SignUpButton!  {
