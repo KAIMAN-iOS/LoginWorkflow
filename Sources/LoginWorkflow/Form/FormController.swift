@@ -21,7 +21,7 @@ extension LoginWorkflow.Mode {
         switch self {
         case .driver:
             switch type {
-            case .login: return [.email, .password, .forgetPassword]
+            case .login: return [.email, .password, .forgetPassword, .animation]
             case .sigup: return [.disclaimer, .name, .email, .phoneNumber, .password, .country]
             }
             
@@ -312,7 +312,7 @@ public class FormController: UIViewController {
                 stackView.addArrangedSubview(animationView)
                 animationView.snp.makeConstraints({
                     $0.width.equalToSuperview()
-                    $0.height.equalTo(100)
+                    $0.height.equalTo(200)
                 })
                 animationView.contentMode = .scaleAspectFit
                 animationView.loopMode = .loop
