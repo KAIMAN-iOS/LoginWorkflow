@@ -21,14 +21,14 @@ extension LoginWorkflow.Mode {
         switch self {
         case .driver:
             switch type {
-            case .login: return [.email, .password, .forgetPassword, .animation]
+            case .login: return [.email, .password, .forgetPassword]
             case .sigup: return [.disclaimer, .name, .email, .phoneNumber, .password, .country]
             }
             
         case .passenger:
             switch type {
-            case .login: return [.animation, .phoneNumber]
-            case .sigup: return [.animation, .name, .phoneNumber]
+            case .login: return [.spacer, .phoneNumber, .animation]
+            case .sigup: return [.spacer, .name, .phoneNumber, .animation]
             }
             
         case .business:
@@ -38,10 +38,54 @@ extension LoginWorkflow.Mode {
             }
         }
     }
+    
+    internal func navigationBarTintColor(for type: SignUpType) -> UIColor {
+        switch (self, type) {
+        case (.driver, .login): return .clear
+        case (.passenger, _): return LoginWorkflowController.configuration.palette.primary
+        default: return LoginWorkflowController.configuration.palette.background
+        }
+    }
+    
+    internal func navigationTintColor(for type: SignUpType) -> UIColor {
+        switch (self, type) {
+        case (.driver, .login): return .white
+        case (.passenger, _): return LoginWorkflowController.configuration.palette.textOnPrimary
+        default: return LoginWorkflowController.configuration.palette.mainTexts
+        }
+    }
+    
+    internal func textFieldBorderColor(for type: SignUpType) -> UIColor {
+        switch (self, type) {
+        case (.driver, .login): return .clear
+        default: return FormController.placeholderColor
+        }
+    }
+    
+    internal func textFieldPlaceholderColor(for type: SignUpType) -> UIColor {
+        switch (self, type) {
+        case (.driver, .login): return LoginWorkflowController.configuration.palette.textOnDark.withAlphaComponent(0.7)
+        default: return FormController.placeholderColor
+        }
+    }
+    
+    internal func textFieldBackgroundColor(for type: SignUpType) -> UIColor {
+        switch (self, type) {
+        case (.driver, .login): return UIColor.white.withAlphaComponent(0.5)
+        default: return .clear
+        }
+    }
+    
+    internal func backgroundImage(for type: SignUpType) -> UIImage? {
+        switch (self, type) {
+        case (.driver, .login): return UIImage(named: "LoginBlur", in: .module, with: nil)
+        default: return nil
+        }
+    }
 }
 
 public enum FormType: Int {
-    case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword, disclaimer, country, animation
+    case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword, disclaimer, country, animation, spacer
 }
 
 public class FieldTextField: AkiraTextField {
@@ -93,6 +137,7 @@ public class FieldTextField: AkiraTextField {
 }
 
 public class FormController: UIViewController {
+    var loginBackgroundImage: UIImage? = nil
     var animation: Animation?
     enum SupportedCountries: Int, CaseIterable {
         case france
@@ -137,6 +182,7 @@ public class FormController: UIViewController {
             updateFields()
         }
     }
+    @IBOutlet weak var backgrumdImage: UIImageView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var nextButton: ActionButton!
     @IBOutlet weak var changeFormButton: UIButton!
@@ -176,15 +222,18 @@ public class FormController: UIViewController {
         let textField: ((String, FormType) -> FieldTextField) = { text, field in
             let textField: FieldTextField = FieldTextField(frame: CGRect(origin: .zero, size: CGSize(width: self.stackView.bounds.width, height: 60)))
             textField.field = field
+            textField.tintColor = LoginWorkflowController.configuration.palette.primary
             textField.delegate = self
             textField.placeholder = text.uppercased()
             textField.font = .applicationFont(forTextStyle: .body)
             textField.textColor = FormController.textColor
-            textField.placeholderColor = FormController.placeholderColor
-            textField.borderColor = FormController.placeholderColor
+            textField.placeholderColor = self.mode.textFieldPlaceholderColor(for: self.signUpType)
+            textField.borderColor = self.mode.textFieldBorderColor(for: self.signUpType)
+            textField.borderLayer.backgroundColor = self.mode.textFieldBackgroundColor(for: self.signUpType).cgColor
             textField.borderSize = (active: 0.4, inactive: 0.5)
             textField.rightViewMode = .whileEditing
             textField.placeholderInsets = CGPoint(x: 6, y: 10)
+//            textField.backgroundColor = self.mode.textFieldBackgroundColor(for: self.signUpType)
             let button = UIButton()
             button.tintColor = LoginWorkflowController.configuration.palette.placeholder
             button.addTarget(self, action: #selector(self.clearTextField(sender:)), for: .touchUpInside)
@@ -297,9 +346,9 @@ public class FormController: UIViewController {
             case .forgetPassword:
                 let button = UIButton(frame: CGRect.zero)
                 button.setTitle("forgot password".bundleLocale().capitalizingFirstLetter(), for: .normal)
-                button.titleLabel?.font = .applicationFont(forTextStyle: .body)
-                button.tintColor = FormController.textColor
-                button.setTitleColor(FormController.textColor, for: .normal)
+                button.titleLabel?.font = .applicationFont(forTextStyle: .footnote)
+                button.tintColor = mode.navigationTintColor(for: signUpType)
+                button.setTitleColor(mode.navigationTintColor(for: signUpType), for: .normal)
                 button.contentHorizontalAlignment = .right
                 button.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
                 stackView.addArrangedSubview(button)
@@ -319,19 +368,40 @@ public class FormController: UIViewController {
                 animationView.translatesAutoresizingMaskIntoConstraints = false
                 animationView.isUserInteractionEnabled = false
                 animationView.play()
+                
+            case .spacer:
+                let view = UIView()
+                stackView.addArrangedSubview(view)
+                view.snp.makeConstraints({
+                    $0.width.equalToSuperview()
+                    $0.height.equalTo(50)
+                })
             }
         }
         
-        //        titleLabel.set(text: signUpType.title.capitalized, for: .largeTitle, textColor: LoginWorkflowController.configuration.palette.mainTexts)
-        navigationItem.title = signUpType.title.capitalized
-        nextButton.setTitle(signUpType.title.lowercased(), for: .normal)
+        navigationItem.title = signUpType.itemTitle.capitalizingFirstLetter()
+        nextButton.setTitle(signUpType.itemTitle.lowercased(), for: .normal)
         nextButton.titleLabel?.font = .applicationFont(forTextStyle: .body)
         changeFormButton.titleLabel?.font = .applicationFont(forTextStyle: .body)
-        changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.title.capitalized : SignUpType.login.title.capitalized, for: .normal)
+        changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.itemTitle.capitalized : SignUpType.login.itemTitle.capitalized, for: .normal)
         changeFormButton.sizeToFit()
         changeFormButton.superview?.sizeToFit()
-        changeFormButton.setTitleColor(LoginWorkflowController.configuration.palette.mainTexts, for: .normal)
+        changeFormButton.setTitleColor(mode.navigationTintColor(for: signUpType), for: .normal)
         updateNextButton()
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithTransparentBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor : mode.navigationTintColor(for: signUpType),
+                                                .font : UIFont.applicationFont(forTextStyle: .body)]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor : mode.navigationTintColor(for: signUpType),
+                                                     .font : UIFont.applicationFont(forTextStyle: .largeTitle)]
+        navBarAppearance.backgroundColor = mode.navigationBarTintColor(for: signUpType)
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        navigationController?.navigationBar.tintColor = mode.navigationTintColor(for: signUpType)
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.shadowImage = UIImage()
+        backgrumdImage.image = mode.backgroundImage(for: signUpType)
     }
     
     func updateCountryCode() {
@@ -505,6 +575,13 @@ public class FormController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        navigationController?.navigationBar.barTintColor = LoginWorkflowController.configuration.palette.background
+//        navigationController?.navigationBar.tintColor = LoginWorkflowController.configuration.palette.mainTexts
+//        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : LoginWorkflowController.configuration.palette.mainTexts]
     }
 }
 

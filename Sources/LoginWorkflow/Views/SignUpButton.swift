@@ -13,8 +13,15 @@ public enum SignUpType: Int {
     
     var title: String {
         switch self {
-        case .login: return NSLocalizedString("Log in", bundle: Bundle.module, comment: "Log in").uppercased()
-        case .sigup: return NSLocalizedString("Sign up", bundle: Bundle.module, comment: "Sign up").uppercased()
+        case .login: return NSLocalizedString("Log in", bundle: Bundle.module, comment: "Log in")
+        case .sigup: return NSLocalizedString("Sign up title", bundle: Bundle.module, comment: "Sign up")
+        }
+    }
+    
+    var itemTitle: String {
+        switch self {
+        case .login: return NSLocalizedString("Log in", bundle: Bundle.module, comment: "Log in")
+        case .sigup: return NSLocalizedString("Sign up", bundle: Bundle.module, comment: "Sign up")
         }
     }
 }
@@ -42,6 +49,6 @@ public class SignUpButton: UIButton {
         layer.borderWidth = 0.5
         layer.borderColor = selectedBackgroundColor.cgColor
         setTitleColor(hasFocus ? selectedTitleColor : selectedBackgroundColor, for: .normal)
-        layer.cornerRadius = 5.0
+        layer.cornerRadius = bounds.midY
     }
 }

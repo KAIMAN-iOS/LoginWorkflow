@@ -32,6 +32,7 @@ public struct LoginWorkflow {
 
 public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
     private var chooseController: LoginWorkflowController!
+    private var loginBackgroundImage: UIImage? = nil
     weak var flowDelegate: LoginWorkflowCoordinatorDelegate!
     var mode: LoginWorkflow.Mode = .driver
     
@@ -42,7 +43,7 @@ public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
                 conf: ATAConfiguration) {
         super.init(router: router)
 //        LoginWorkflowCoordinator.configuration = conf
-        chooseController = LoginWorkflowController.create(coordinatorDelegate: self, conf: conf)
+        chooseController = LoginWorkflowController.create(coordinatorDelegate: self, conf: conf, mode: mode)
         chooseController.animation = animation
         self.mode = mode
         IQKeyboardManager.shared.enable = true
@@ -61,7 +62,7 @@ public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
         let form: FormController = FormController.create(coordinatorDelegate: flowDelegate, signUpType: signUpType)
         form.mode = mode
         form.animation = chooseController.animation
-        router.navigationController.setNavigationBarHidden(true, animated: false)
+//        router.navigationController.setNavigationBarHidden(false, animated: true)
         router.push(form, animated: true, completion: nil)
     }
 }

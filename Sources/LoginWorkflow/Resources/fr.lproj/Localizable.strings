@@ -5,6 +5,7 @@
 "country code" = "Code pays";
 "phone number" = "téléphone";
 "Sign up" = "S'inscrire";
+"Sign up title" = "S'inscrire en quelques secondes";
 "Log in" = "Se connecter";
 "forgot password" = "Mot de passe oublié ?";
 "terms and conditions" = "En cliquant sur \"S'inscrire\", vous acceptez nos conditions générales d'utilisation ainsi que notre politique de protection de la vie privée";
@@ -20,3 +21,5 @@
 "welcome message" = "application chauffeur\nmanagement matériel embarqué\ngestion de vehicules\npartage de courses entre collègues\nanimation de groupes taxi\nPROTECTION & SÉCURITÉ DU CHAUFFEUR ";
 "driver disclaimer" = "Application destinée aux chauffeurs et aux compagnies de taxi.\nInscription gratuite. ";
 "country" = "Pays";
+"welcome passenger" = "Application grauite à destination des passagers";
+"welcome driver" = "Application grauite pour chauffeur de taxi";
