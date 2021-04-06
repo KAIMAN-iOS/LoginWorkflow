@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/jerometonnelier/ActionButton",
         "state": {
           "branch": "master",
-          "revision": "d3d27b14d00446b435c84664211d0f4f5155c5f8",
+          "revision": "54fa3a54c2935e6562a2467d245ab65d7518bccc",
           "version": null
         }
       },
@@ -24,7 +24,16 @@
         "repositoryURL": "https://github.com/jerometonnelier/ATAConfiguration",
         "state": {
           "branch": "master",
-          "revision": "0c1bb6372ec4b9fca70ea96d406cfe958fd786fc",
+          "revision": "d4b2dbcc96550102fd5222bbfeebf62a6d72e60d",
+          "version": null
+        }
+      },
+      {
+        "package": "Haptica",
+        "repositoryURL": "https://github.com/efremidze/Haptica",
+        "state": {
+          "branch": "master",
+          "revision": "4084702c85102c2d17d58e42ec5a750094944864",
           "version": null
         }
       },
@@ -51,8 +60,17 @@
         "repositoryURL": "https://github.com/jerometonnelier/KExtensions",
         "state": {
           "branch": null,
-          "revision": "8e29ed4a1b0ee56f1bd7f858acb1b88bd7d5c810",
-          "version": "1.0.20"
+          "revision": "08cb0df7c365de5ca2e7da425b3f2831c5834b8a",
+          "version": "1.0.29"
+        }
+      },
+      {
+        "package": "Lottie",
+        "repositoryURL": "https://github.com/airbnb/lottie-ios",
+        "state": {
+          "branch": null,
+          "revision": "b3c60ba1716baab6faeeb217d8ce1da336f92718",
+          "version": "3.2.1"
         }
       },
       {
@@ -69,8 +87,17 @@
         "repositoryURL": "https://github.com/kean/Nuke",
         "state": {
           "branch": null,
-          "revision": "ef122e4512e84020dca9d8f598408fdb38658946",
-          "version": "9.2.0"
+          "revision": "200016df418ed8dc70ba918d52c29634f434541c",
+          "version": "9.5.0"
+        }
+      },
+      {
+        "package": "Peep",
+        "repositoryURL": "https://github.com/efremidze/Peep",
+        "state": {
+          "branch": null,
+          "revision": "6ba6217b6fa53d53e635f20ed225261398b32116",
+          "version": "3.0.0"
         }
       },
       {
