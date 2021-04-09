@@ -2,10 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="70F-Ax-1di">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,7 +52,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="myCloudTaxi" translatesAutoresizingMaskIntoConstraints="NO" id="CsK-Lw-60s">
-                                <rect key="frame" x="26" y="29.5" width="363" height="837"/>
+                                <rect key="frame" x="26" y="385.5" width="363" height="125"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kd1-Jx-BAF"/>
@@ -88,51 +88,9 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h9E-il-MGp">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEa-UH-af4" customClass="ActionButton" customModule="ActionButton">
-                                <rect key="frame" x="20" y="806" width="374" height="48"/>
-                                <color key="backgroundColor" name="backgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="mMx-34-UPW"/>
-                                </constraints>
-                                <color key="tintColor" name="selectedButtonColor"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="15" maxX="10" maxY="15"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" name="selectedButtonColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="next" destination="1cb-9h-QE6" eventType="touchUpInside" id="THv-Kt-khQ"/>
-                                </connections>
-                            </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-ZH-33U">
-                                <rect key="frame" x="20" y="96" width="374" height="702"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gG-wP-Tcj">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="702"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="354" placeholderIntrinsicHeight="623" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="68t-bq-dUZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="623"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="746" translatesAutoresizingMaskIntoConstraints="NO" id="HmN-ZH-33U" customClass="ScrollingStackView" customModule="UIViewExtension">
+                                <rect key="frame" x="20" y="96" width="374" height="746"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="Wrh-GW-Ypi" firstAttribute="bottom" secondItem="6gG-wP-Tcj" secondAttribute="bottom" id="137-tC-c5w"/>
-                                    <constraint firstItem="68t-bq-dUZ" firstAttribute="bottom" secondItem="fa8-ub-5ly" secondAttribute="bottom" id="1Z9-Xk-Cau"/>
-                                    <constraint firstItem="6gG-wP-Tcj" firstAttribute="height" secondItem="HmN-ZH-33U" secondAttribute="height" id="2TO-x2-3Mp"/>
-                                    <constraint firstItem="68t-bq-dUZ" firstAttribute="trailing" secondItem="fa8-ub-5ly" secondAttribute="trailing" id="5ar-GK-hRl"/>
-                                    <constraint firstItem="6gG-wP-Tcj" firstAttribute="top" secondItem="Wrh-GW-Ypi" secondAttribute="top" id="JW5-xq-a51"/>
-                                    <constraint firstItem="68t-bq-dUZ" firstAttribute="leading" secondItem="fa8-ub-5ly" secondAttribute="leading" id="S1P-DJ-DLA"/>
-                                    <constraint firstItem="Wrh-GW-Ypi" firstAttribute="trailing" secondItem="6gG-wP-Tcj" secondAttribute="trailing" id="Tz8-NQ-UfT"/>
-                                    <constraint firstItem="Wrh-GW-Ypi" firstAttribute="trailing" secondItem="68t-bq-dUZ" secondAttribute="trailing" id="Zfk-KB-Sy6"/>
-                                    <constraint firstItem="6gG-wP-Tcj" firstAttribute="width" secondItem="HmN-ZH-33U" secondAttribute="width" id="ZzT-je-bb3"/>
-                                    <constraint firstItem="6gG-wP-Tcj" firstAttribute="leading" secondItem="Wrh-GW-Ypi" secondAttribute="leading" id="bhh-7Z-ay0"/>
-                                    <constraint firstItem="68t-bq-dUZ" firstAttribute="top" secondItem="Wrh-GW-Ypi" secondAttribute="top" id="dVn-iM-Dka"/>
-                                    <constraint firstItem="68t-bq-dUZ" firstAttribute="top" secondItem="fa8-ub-5ly" secondAttribute="top" id="mFL-g9-EGv"/>
-                                    <constraint firstItem="68t-bq-dUZ" firstAttribute="leading" secondItem="Wrh-GW-Ypi" secondAttribute="leading" id="riD-MQ-Vhs"/>
-                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="fa8-ub-5ly"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Wrh-GW-Ypi"/>
                             </scrollView>
@@ -140,17 +98,14 @@
                         <viewLayoutGuide key="safeArea" id="Dfi-qZ-ani"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HmN-ZH-33U" firstAttribute="trailing" secondItem="aEa-UH-af4" secondAttribute="trailing" id="4Tf-kU-Ibt"/>
                             <constraint firstItem="HmN-ZH-33U" firstAttribute="top" secondItem="Dfi-qZ-ani" secondAttribute="top" constant="8" id="6Xw-Ea-T86"/>
                             <constraint firstItem="h9E-il-MGp" firstAttribute="leading" secondItem="0qT-as-Lrf" secondAttribute="leading" id="Dwr-aT-mjr"/>
-                            <constraint firstItem="aEa-UH-af4" firstAttribute="bottom" secondItem="Dfi-qZ-ani" secondAttribute="bottom" constant="-8" id="JqS-8l-Tvb"/>
+                            <constraint firstItem="Dfi-qZ-ani" firstAttribute="bottom" secondItem="HmN-ZH-33U" secondAttribute="bottom" constant="20" id="Q3V-HX-cym"/>
                             <constraint firstItem="h9E-il-MGp" firstAttribute="top" secondItem="0qT-as-Lrf" secondAttribute="top" id="dPp-U8-Hfn"/>
                             <constraint firstAttribute="trailing" secondItem="h9E-il-MGp" secondAttribute="trailing" id="dWD-aR-LlP"/>
-                            <constraint firstItem="Dfi-qZ-ani" firstAttribute="trailing" secondItem="aEa-UH-af4" secondAttribute="trailing" constant="20" id="e5c-vS-kt9"/>
-                            <constraint firstItem="HmN-ZH-33U" firstAttribute="leading" secondItem="aEa-UH-af4" secondAttribute="leading" id="iay-Cp-5uB"/>
+                            <constraint firstItem="HmN-ZH-33U" firstAttribute="leading" secondItem="Dfi-qZ-ani" secondAttribute="leading" constant="20" id="eh6-Ea-FQc"/>
                             <constraint firstAttribute="bottom" secondItem="h9E-il-MGp" secondAttribute="bottom" id="ist-We-jKq"/>
-                            <constraint firstItem="aEa-UH-af4" firstAttribute="leading" secondItem="Dfi-qZ-ani" secondAttribute="leading" constant="20" id="psm-q0-bZx"/>
-                            <constraint firstItem="aEa-UH-af4" firstAttribute="top" secondItem="HmN-ZH-33U" secondAttribute="bottom" constant="8" symbolic="YES" id="vEB-I6-FY7"/>
+                            <constraint firstItem="Dfi-qZ-ani" firstAttribute="trailing" secondItem="HmN-ZH-33U" secondAttribute="trailing" constant="20" id="rNn-Wv-FoH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Skc-bx-JxR">
@@ -170,8 +125,7 @@
                     <connections>
                         <outlet property="backgrumdImage" destination="h9E-il-MGp" id="K6M-oi-AJD"/>
                         <outlet property="changeFormButton" destination="vdN-ju-hqQ" id="gsD-pq-deZ"/>
-                        <outlet property="nextButton" destination="aEa-UH-af4" id="yM1-WT-qSC"/>
-                        <outlet property="stackView" destination="68t-bq-dUZ" id="R3i-xa-d1b"/>
+                        <outlet property="stackView" destination="HmN-ZH-33U" id="yZZ-DK-tUf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nm8-9B-0ml" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -180,23 +134,23 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="aEa-UH-af4">
-            <size key="intrinsicContentSize" width="66" height="48"/>
+        <designable name="1o2-4d-rcO">
+            <size key="intrinsicContentSize" width="10" height="47"/>
+        </designable>
+        <designable name="FY7-Ps-KHp">
+            <size key="intrinsicContentSize" width="10" height="47"/>
+        </designable>
+        <designable name="HmN-ZH-33U">
+            <size key="intrinsicContentSize" width="374" height="746"/>
         </designable>
     </designables>
     <resources>
-        <image name="myCloudTaxi" width="3180" height="837"/>
-        <namedColor name="backgroundColor">
+        <image name="myCloudTaxi" width="562" height="125"/>
+        <namedColor name="selectedTitleColor">
             <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="selectedButtonColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </namedColor>
-        <namedColor name="selectedTitleColor">
-            <color red="0.84705882352941175" green="0.27058823529411763" blue="0.25882352941176473" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="textColor">
-            <color red="0.16099999845027924" green="0.17599999904632568" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.11800000071525574" green="0.1289999932050705" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

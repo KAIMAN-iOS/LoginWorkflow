@@ -7,7 +7,6 @@
 
 import UIKit
 import KCoordinatorKit
-import IQKeyboardManagerSwift
 import ATAConfiguration
 import Lottie
 
@@ -46,7 +45,6 @@ public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
         chooseController = LoginWorkflowController.create(coordinatorDelegate: self, conf: conf, mode: mode)
         chooseController.animation = animation
         self.mode = mode
-        IQKeyboardManager.shared.enable = true
         flowDelegate = delegate
     }
     

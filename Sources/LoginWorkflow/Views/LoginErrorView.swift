@@ -35,6 +35,7 @@ class LoginErrorView: UIView {
             strokedBackgroundView.cornerRadius = 5.0
             strokedBackgroundView.layer.borderWidth = 1.0
             strokedBackgroundView.layer.borderColor = LoginWorkflowController.configuration.palette.primary.cgColor
+            strokedBackgroundView.backgroundColor = .white
         }
     }
     weak var closeDelegate: CloseDelegate?

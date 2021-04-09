@@ -15,6 +15,7 @@ import Ampersand
 import UIViewControllerExtension
 import TextFieldExtension
 import Lottie
+import UIViewExtension
 
 extension LoginWorkflow.Mode {
     internal func fields(for type: SignUpType) -> [FormType] {
@@ -49,7 +50,6 @@ extension LoginWorkflow.Mode {
     
     internal func navigationTintColor(for type: SignUpType) -> UIColor {
         switch (self, type) {
-        case (.driver, .login): return .white
         case (.passenger, _): return LoginWorkflowController.configuration.palette.textOnPrimary
         default: return LoginWorkflowController.configuration.palette.mainTexts
         }
@@ -57,21 +57,20 @@ extension LoginWorkflow.Mode {
     
     internal func textFieldBorderColor(for type: SignUpType) -> UIColor {
         switch (self, type) {
-        case (.driver, .login): return .clear
         default: return FormController.placeholderColor
         }
     }
     
     internal func textFieldPlaceholderColor(for type: SignUpType) -> UIColor {
         switch (self, type) {
-        case (.driver, .login): return LoginWorkflowController.configuration.palette.textOnDark.withAlphaComponent(0.7)
+//        case (.driver, .login): return LoginWorkflowController.configuration.palette.textOnDark.withAlphaComponent(0.7)
         default: return FormController.placeholderColor
         }
     }
     
     internal func textFieldBackgroundColor(for type: SignUpType) -> UIColor {
         switch (self, type) {
-        case (.driver, .login): return UIColor.white.withAlphaComponent(0.5)
+//        case (.driver, .login): return UIColor.white.withAlphaComponent(0.5)
         default: return .clear
         }
     }
@@ -88,7 +87,41 @@ public enum FormType: Int {
     case email = 0, password, name, firstname, lastName, countryCode, phoneNumber, terms, forgetPassword, disclaimer, country, animation, spacer
 }
 
-public class FieldTextField: AkiraTextField {
+public class FieldTextField: HoshiTextField {
+    public static var textColor: UIColor = .black
+    public static var placeholderColor: UIColor = .gray
+    public static var backgroundColor: UIColor = .clear
+    public static var keyboardColor: UIColor = .lightGray
+    public static var alertColor: UIColor = .red
+    init() {
+        super.init(frame: .zero)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    private func commonInit() {
+        textColor = FieldTextField.textColor
+        placeholderColor = FieldTextField.placeholderColor
+        backgroundColor = FieldTextField.backgroundColor
+        setContentCompressionResistancePriority(.required, for: .vertical)
+        setContentCompressionResistancePriority(.required, for: .horizontal)
+        font = .applicationFont(forTextStyle: .body)
+        placeholderColor = FieldTextField.placeholderColor
+        borderActiveColor = FieldTextField.placeholderColor
+        borderInactiveColor = FieldTextField.placeholderColor
+        borderThickness = (active: 1, inactive: 0.5)
+        rightViewMode = .whileEditing
+        addKeyboardControlView(with: FieldTextField.keyboardColor, target: self, buttonStyle: .footnote)
+    }
     
     public var field: FormType = .email  {
         didSet {
@@ -106,7 +139,12 @@ public class FieldTextField: AkiraTextField {
         }
     }
     
-    public var isValid: Bool = false
+    public var isValid: Bool = false  {
+        didSet {
+            borderActiveColor = isValid ? FieldTextField.placeholderColor : FieldTextField.alertColor
+            borderInactiveColor = isValid ? FieldTextField.placeholderColor : FieldTextField.alertColor
+        }
+    }
     
     public func checkValidity() {
         switch field {
@@ -183,8 +221,13 @@ public class FormController: UIViewController {
         }
     }
     @IBOutlet weak var backgrumdImage: UIImageView!
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var nextButton: ActionButton!
+    @IBOutlet weak var stackView: ScrollingStackView!
+    lazy var nextButton: ActionButton =  {
+        let btn = ActionButton()
+        btn.actionButtonType = .confirmation
+        return btn
+    } ()
+
     @IBOutlet weak var changeFormButton: UIButton!
     public static var textColor: UIColor = LoginWorkflowController.configuration.palette.mainTexts
     public static var placeholderColor: UIColor = #colorLiteral(red: 0.6170696616, green: 0.6521494985, blue: 0.7113651633, alpha: 1)
@@ -228,11 +271,11 @@ public class FormController: UIViewController {
             textField.font = .applicationFont(forTextStyle: .body)
             textField.textColor = FormController.textColor
             textField.placeholderColor = self.mode.textFieldPlaceholderColor(for: self.signUpType)
-            textField.borderColor = self.mode.textFieldBorderColor(for: self.signUpType)
-            textField.borderLayer.backgroundColor = self.mode.textFieldBackgroundColor(for: self.signUpType).cgColor
-            textField.borderSize = (active: 0.4, inactive: 0.5)
+            textField.borderActiveColor = self.mode.textFieldBorderColor(for: self.signUpType)
+//            textField.borderLayer.backgroundColor = self.mode.textFieldBackgroundColor(for: self.signUpType).cgColor
+//            textField.borderThickness = (active: 0.4, inactive: 0.5)
             textField.rightViewMode = .whileEditing
-            textField.placeholderInsets = CGPoint(x: 6, y: 10)
+//            textField.placeholderInsets = CGPoint(x: 6, y: 10)
 //            textField.backgroundColor = self.mode.textFieldBackgroundColor(for: self.signUpType)
             let button = UIButton()
             button.tintColor = LoginWorkflowController.configuration.palette.placeholder
@@ -257,13 +300,13 @@ public class FormController: UIViewController {
         removeError()
         textFields.removeAll()
         stackView.clear()
-        stackView.spacing = 16
+        stackView.spacing = 13
         
         fields.forEach { field in
             switch field {
             case .disclaimer:
                 let label = UILabel()
-                label.set(text: "driver disclaimer".bundleLocale(), for: .body, textColor: LoginWorkflowController.configuration.palette.mainTexts)
+                label.set(text: "driver disclaimer".bundleLocale(), for: .footnote, textColor: LoginWorkflowController.configuration.palette.mainTexts)
                 label.numberOfLines = 0
                 stackView.addArrangedSubview(label)
                 
@@ -378,6 +421,12 @@ public class FormController: UIViewController {
                 })
             }
         }
+        stackView.setCustomSpacing(40, after: stackView.arrangedSubviews.last!)
+        stackView.addArrangedSubview(nextButton)
+        nextButton.snp.remakeConstraints {
+            $0.height.equalTo(50)
+        }
+        nextButton.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
         
         navigationItem.title = signUpType.itemTitle.capitalizingFirstLetter()
         nextButton.setTitle(signUpType.itemTitle.lowercased(), for: .normal)
@@ -443,7 +492,7 @@ public class FormController: UIViewController {
         selectedCountry = SupportedCountries.from(regionCode: code)
     }
     
-    @IBAction func next() {
+    @objc func nextPage() {
         switch signUpType {
         case .login:
             switch mode {
@@ -548,7 +597,7 @@ public class FormController: UIViewController {
         error.configure(text, delegate: self)
         error.invalidateIntrinsicContentSize()
         removeError()
-        stackView.addArrangedSubview(error)
+        stackView.insertArrangedSubview(error, at: stackView.arrangedSubviews.count - 1)
         updateNextButton()
     }
     
