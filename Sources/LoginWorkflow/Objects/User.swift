@@ -7,6 +7,7 @@
 
 import Foundation
 import PhoneNumberKit
+import ATACommonObjects
 
 public class LoginUser: NSObject {
     public let email: String
@@ -20,15 +21,14 @@ public class LoginUser: NSObject {
 }
 
 public class SignupUser: LoginUser {
-    static let phoneNumberKit = PhoneNumberKit()
     public let phone: String
     public let countryCode: String // "fr"
     public let internationalCode: String // "+33"
     public let firstname: String
     public let lastname: String
     public var internationalPhone: String {
-        guard let nummber = try? SignupUser.phoneNumberKit.parse(phone) else { return phone }
-        return SignupUser.phoneNumberKit.format(nummber, toType: .international)
+        guard let nummber = try? BaseUser.numberKit.parse("\(internationalCode)\(phone)") else { return phone }
+        return BaseUser.numberKit.format(nummber, toType: .international)
     }
     
     public init(email: String,

@@ -16,6 +16,7 @@ import UIViewControllerExtension
 import TextFieldExtension
 import Lottie
 import UIViewExtension
+import ATACommonObjects
 
 extension LoginWorkflow.Mode {
     internal func fields(for type: SignUpType) -> [FormType] {
@@ -152,7 +153,7 @@ public class FieldTextField: HoshiTextField {
             isValid = (text?.isEmpty ?? true) == false
             
         case .phoneNumber:
-            isValid = PhoneNumberKit().isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
+            isValid = BaseUser.numberKit.isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
             
         case .email:
             isValid = text?.trimmingCharacters(in: .whitespacesAndNewlines).isValidEmail ?? false
@@ -523,8 +524,9 @@ public class FormController: UIViewController {
     }
     
     func loginPassenger() {
-        guard let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text else { return }
-        let user = LoginUser(email: phone, password: "")
+        guard let phone = textFields.filter({ $0.field == .phoneNumber }).first?.text,
+              let code = numberKit.countryCode(for: FormController.countryCode) else { return }
+        let user = LoginUser(email: phone, password: "+\(code)")
         nextButton.isLoading = true
         coordinatorDelegate?.login(user, completion: { [weak self] in
             self?.nextButton.isLoading = false
