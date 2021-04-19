@@ -140,14 +140,17 @@
         <designable name="FY7-Ps-KHp">
             <size key="intrinsicContentSize" width="10" height="47"/>
         </designable>
+        <designable name="HmN-ZH-33U">
+            <size key="intrinsicContentSize" width="374" height="746"/>
+        </designable>
     </designables>
     <resources>
         <image name="myCloudTaxi" width="3180" height="837"/>
         <namedColor name="selectedTitleColor">
-            <color red="0.7839999794960022" green="0.31400001049041748" blue="0.28200000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.84700000286102295" green="0.27099999785423279" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
-            <color red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.11800000071525574" green="0.1289999932050705" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "LoginWorkflow",
-    defaultLocalization: "en",
+    defaultLocalization: "fr",
     platforms: [.iOS(.v13)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
@@ -16,6 +16,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/jerometonnelier/TextFieldEffects", .branch("master")),
+        .package(url: "https://github.com/jerometonnelier/ATACommonObjects", .branch("master")),
         .package(url: "https://github.com/jerometonnelier/KCoordinatorKit", .branch("master")),
         .package(url: "https://github.com/jerometonnelier/ActionButton", .branch("master")),
         .package(url: "https://github.com/jerometonnelier/PhoneNumberKit", from: "4.0.0"),
@@ -34,6 +35,7 @@ let package = Package(
                            "ActionButton",
                            "SnapKit",
                            "ATAConfiguration",
+                           "ATACommonObjects",
                            "Lottie"])
     ]
 )

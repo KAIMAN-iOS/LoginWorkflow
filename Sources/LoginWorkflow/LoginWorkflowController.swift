@@ -52,6 +52,10 @@ public class LoginWorkflowController: UIViewController {
         } else {
             view.backgroundColor = LoginWorkflowController.configuration.palette.background
         }
+        if mode == .passenger {
+            signUpButton.isHidden = true
+            loginButton.setTitle("start experience".bundleLocale().uppercased(), for: .normal)
+        }
     }
     
     public override func viewWillAppear(_ animated: Bool) {

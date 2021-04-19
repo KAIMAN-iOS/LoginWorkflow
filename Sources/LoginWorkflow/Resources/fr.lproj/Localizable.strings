@@ -21,5 +21,6 @@
 "welcome message" = "application chauffeur\nmanagement matériel embarqué\ngestion de vehicules\npartage de courses entre collègues\nanimation de groupes taxi\nPROTECTION & SÉCURITÉ DU CHAUFFEUR ";
 "driver disclaimer" = "Application destinée aux chauffeurs et aux compagnies de taxi.\nInscription gratuite. ";
 "country" = "Pays";
-"welcome passenger" = "Application grauite à destination des passagers";
+"welcome passenger" = "Réserver un taxi n’a jamais été aussi facile";
 "welcome driver" = "Application grauite pour chauffeur de taxi";
+"start experience" = "démarrer l'expérience";

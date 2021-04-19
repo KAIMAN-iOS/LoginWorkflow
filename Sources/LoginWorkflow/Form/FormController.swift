@@ -202,18 +202,15 @@ public class FormController: UIViewController {
     }
     var selectedCountry: SupportedCountries!
     static var countryCode: String = Locale.current.regionCode ?? "FR"
-    static func create(coordinatorDelegate: LoginWorkflowCoordinatorDelegate, signUpType: SignUpType = .login) -> FormController {
+    static func create(coordinatorDelegate: LoginWorkflowCoordinatorDelegate, signUpType: SignUpType = .login, mode: LoginWorkflow.Mode) -> FormController {
         let ctrl:FormController = UIStoryboard(name: "LoginWorkflow", bundle: Bundle.module).instantiateViewController(identifier: "FormController") as! FormController
         ctrl.coordinatorDelegate = coordinatorDelegate
+        ctrl.mode = mode
         ctrl.signUpType = signUpType
         return ctrl
     }
+    var mode: LoginWorkflow.Mode!
     weak var coordinatorDelegate: LoginWorkflowCoordinatorDelegate?
-    var mode: LoginWorkflow.Mode = .driver  {
-        didSet {
-            updateFields()
-        }
-    }
     
     var fields: [FormType] = []
     public var signUpType: SignUpType = .login  {
@@ -437,6 +434,7 @@ public class FormController: UIViewController {
         changeFormButton.sizeToFit()
         changeFormButton.superview?.sizeToFit()
         changeFormButton.setTitleColor(mode.navigationTintColor(for: signUpType), for: .normal)
+        changeFormButton.isHidden = mode == .passenger
         updateNextButton()
         
         let navBarAppearance = UINavigationBarAppearance()
@@ -496,14 +494,14 @@ public class FormController: UIViewController {
     @objc func nextPage() {
         switch signUpType {
         case .login:
-            switch mode {
+            switch mode! {
             case .driver: loginDriver()
             case .passenger: loginPassenger()
             case .business: loginBusiness()
             }
             
         case .sigup:
-            switch mode {
+            switch mode! {
             case .driver: createDriver()
             case .passenger: createPassenger()
             case .business: createBusiness()

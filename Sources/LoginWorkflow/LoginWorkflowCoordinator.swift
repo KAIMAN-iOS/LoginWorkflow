@@ -57,8 +57,7 @@ public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
     }
     
     private func showForm(_ signUpType: SignUpType) {
-        let form: FormController = FormController.create(coordinatorDelegate: flowDelegate, signUpType: signUpType)
-        form.mode = mode
+        let form: FormController = FormController.create(coordinatorDelegate: flowDelegate, signUpType: signUpType, mode: mode)
         form.animation = chooseController.animation
 //        router.navigationController.setNavigationBarHidden(false, animated: true)
         router.push(form, animated: true, completion: nil)
