@@ -27,8 +27,9 @@ public class SignupUser: LoginUser {
     public let firstname: String
     public let lastname: String
     public var internationalPhone: String {
-        guard let nummber = try? BaseUser.numberKit.parse("\(internationalCode)\(phone)") else { return phone }
-        return BaseUser.numberKit.format(nummber, toType: .international)
+        guard let internationalCode = BaseUser.numberKit.countryCode(for: countryCode),
+            let nummber = try? BaseUser.numberKit.parse("\(internationalCode)\(phone)") else { return phone }
+        return BaseUser.numberKit.format(nummber, toType: .e164)
     }
     
     public init(email: String,
