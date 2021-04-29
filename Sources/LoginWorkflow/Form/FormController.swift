@@ -444,6 +444,10 @@ public class FormController: UIViewController {
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor : mode.navigationTintColor(for: signUpType),
                                                      .font : UIFont.applicationFont(forTextStyle: .largeTitle)]
         navBarAppearance.backgroundColor = mode.navigationBarTintColor(for: signUpType)
+        let backImage = UIImage(named: "back")?
+            .withRenderingMode(.alwaysTemplate)
+            .withAlignmentRectInsets(UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0))
+        navBarAppearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = mode.navigationTintColor(for: signUpType)
@@ -624,13 +628,6 @@ public class FormController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        navigationController?.navigationBar.barTintColor = LoginWorkflowController.configuration.palette.background
-//        navigationController?.navigationBar.tintColor = LoginWorkflowController.configuration.palette.mainTexts
-//        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : LoginWorkflowController.configuration.palette.mainTexts]
     }
 }
 
