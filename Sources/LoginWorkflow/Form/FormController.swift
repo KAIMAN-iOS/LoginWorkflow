@@ -310,16 +310,11 @@ public class FormController: UIViewController {
                 
             case .email:
                 let textfield = textField("email".bundleLocale().capitalized, field)
-                if signUpType == .login {
-                    textfield.textContentType = .username
-                }
+                textfield.textContentType = signUpType == .login ? .username : .emailAddress
                 stackView.addArrangedSubview(textfield)
                 
             case .country:
                 let textfield = textField("country".bundleLocale().capitalized, field)
-                if signUpType == .login {
-                    textfield.textContentType = .username
-                }
                 let screenWidth = UIScreen.main.bounds.width
                 let picker = UIPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))
                 picker.delegate = self
@@ -331,9 +326,7 @@ public class FormController: UIViewController {
                 
             case .password:
                 let textField = textField("password".bundleLocale().capitalized, field)
-                if signUpType == .login {
-                    textField.textContentType = .password
-                }
+                textField.textContentType = signUpType == .login ? .password : .newPassword
                 stackView.addArrangedSubview(textField)
                 textField.isSecureTextEntry = true
                 textField.sizeToFit()
@@ -344,8 +337,10 @@ public class FormController: UIViewController {
                 stack.spacing = 12
                 stack.distribution = .fillEqually
                 let firstname = textField("firstname".bundleLocale().capitalized, FormType.firstname)
+                firstname.textContentType = .givenName
                 stack.addArrangedSubview(firstname)
                 let name = textField("lastname".bundleLocale().capitalized, FormType.lastName)
+                name.textContentType = .familyName
                 stack.addArrangedSubview(name)
                 stackView.addArrangedSubview(stack)
                 
@@ -360,6 +355,7 @@ public class FormController: UIViewController {
                 code.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCountryCodePicker)))
                 stack.addArrangedSubview(code)
                 let phone = textField("phone number".bundleLocale().capitalized, field)
+                phone.textContentType = .telephoneNumber
                 stack.addArrangedSubview(phone)
                 stackView.addArrangedSubview(stack)
                 
