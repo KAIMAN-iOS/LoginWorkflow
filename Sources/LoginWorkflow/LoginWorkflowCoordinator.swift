@@ -9,13 +9,14 @@ import UIKit
 import KCoordinatorKit
 import ATAConfiguration
 import Lottie
+import ATAViews
 
-protocol LoginLogicCoordinatorDelegate: class {
+protocol LoginLogicCoordinatorDelegate: NSObjectProtocol {
     func showLogin()
     func showSignUp()
 }
 
-public protocol LoginWorkflowCoordinatorDelegate: class {
+public protocol LoginWorkflowCoordinatorDelegate: NSObjectProtocol {
     func forgotPassword()
     func showTerms()
     func showPrivacy()
@@ -41,6 +42,7 @@ public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
                 animation: Animation? = nil,
                 conf: ATAConfiguration) {
         super.init(router: router)
+        BorderedErrorView.configuration = conf
 //        LoginWorkflowCoordinator.configuration = conf
         chooseController = LoginWorkflowController.create(coordinatorDelegate: self, conf: conf, mode: mode)
         chooseController.animation = animation
