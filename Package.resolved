@@ -29,20 +29,20 @@
         }
       },
       {
-        "package": "ATACommonObjects",
-        "repositoryURL": "https://github.com/KAIMAN-IOS/ATACommonObjects",
-        "state": {
-          "branch": "master",
-          "revision": "50daafb4efb12454ddd24700f02f5a31da83cedf",
-          "version": null
-        }
-      },
-      {
         "package": "ATAConfiguration",
         "repositoryURL": "https://github.com/KAIMAN-IOS/ATAConfiguration",
         "state": {
           "branch": "master",
           "revision": "bee5d53f06f15f9a7c036bc7ed29e504eb230c35",
+          "version": null
+        }
+      },
+      {
+        "package": "ATAViews",
+        "repositoryURL": "https://github.com/KAIMAN-IOS/ATAViews",
+        "state": {
+          "branch": "master",
+          "revision": "3e4fa55ee7ca1d237ee9c62e814b3ded184d5df6",
           "version": null
         }
       },
@@ -119,6 +119,15 @@
         }
       },
       {
+        "package": "PhoneNumberKit",
+        "repositoryURL": "https://github.com/KAIMAN-IOS/PhoneNumberKit",
+        "state": {
+          "branch": null,
+          "revision": "d73665b4ae26aa57245bd4fdc5b6bab7a18033f3",
+          "version": "4.0.0"
+        }
+      },
+      {
         "package": "PromiseKit",
         "repositoryURL": "https://github.com/mxcl/PromiseKit",
         "state": {
@@ -134,15 +143,6 @@
           "branch": null,
           "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
           "version": "5.0.1"
-        }
-      },
-      {
-        "package": "SwiftLocation",
-        "repositoryURL": "https://github.com/malcommac/SwiftLocation",
-        "state": {
-          "branch": null,
-          "revision": "f8ec8e97095eb3a5312370ad94b921768217625f",
-          "version": "5.1.0"
         }
       },
       {

@@ -16,7 +16,8 @@ import UIViewControllerExtension
 import TextFieldExtension
 import Lottie
 import UIViewExtension
-import ATACommonObjects
+//import ATACommonObjects
+import ATAViews
 
 extension LoginWorkflow.Mode {
     internal func fields(for type: SignUpType) -> [FormType] {
@@ -153,7 +154,7 @@ public class FieldTextField: HoshiTextField {
             isValid = (text?.isEmpty ?? true) == false
             
         case .phoneNumber:
-            isValid = BaseUser.numberKit.isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
+            isValid = SignupUser.numberKit.isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
             
         case .email:
             isValid = text?.trimmingCharacters(in: .whitespacesAndNewlines).isValidEmail ?? false
@@ -588,12 +589,12 @@ public class FormController: UIViewController {
     }
     
     func removeError() {
-        let errors = stackView.arrangedSubviews.compactMap({ $0 as? LoginErrorView })
+        let errors = stackView.arrangedSubviews.compactMap({ $0 as? BorderedErrorView })
         errors.forEach({ $0.removeFromSuperview(); self.stackView.removeArrangedSubview($0) })
     }
     
     func showError(_ text: String) {
-        let error: LoginErrorView = LoginErrorView.load()
+        let error: BorderedErrorView = BorderedErrorView.load()
         error.configure(text, delegate: self)
         error.invalidateIntrinsicContentSize()
         removeError()
@@ -628,7 +629,7 @@ public class FormController: UIViewController {
 }
 
 extension FormController: CloseDelegate {
-    func close(_ view: UIView) {
+    public func close(_ view: UIView) {
         stackView.removeArrangedSubview(view)
         view.removeFromSuperview()
     }
