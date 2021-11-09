@@ -271,6 +271,7 @@ public class FormController: UIViewController {
             textField.textColor = FormController.textColor
             textField.placeholderColor = self.mode.textFieldPlaceholderColor(for: self.signUpType)
             textField.borderActiveColor = self.mode.textFieldBorderColor(for: self.signUpType)
+            textField.spellCheckingType = .no
 //            textField.borderLayer.backgroundColor = self.mode.textFieldBackgroundColor(for: self.signUpType).cgColor
 //            textField.borderThickness = (active: 0.4, inactive: 0.5)
             textField.rightViewMode = .whileEditing
