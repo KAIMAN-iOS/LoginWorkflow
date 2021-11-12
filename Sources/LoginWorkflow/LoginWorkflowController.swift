@@ -46,6 +46,8 @@ public class LoginWorkflowController: UIViewController {
         subtitle.set(text: (mode == .driver ? "welcome driver" : "welcome passenger").bundleLocale(), for: .footnote, textColor: LoginWorkflowController.configuration.palette.textOnDark)
         if let image = LoginWorkflowController.configuration.logo {
             icon.image = image
+        } else {
+            icon.image = mode == .driver ? UIImage(named: "myCloudTaxi", in: .module, with: nil) : UIImage(named: "1001TaxisBlack", in: .module, with: nil)
         }
         if let color = backgroundColor {
             view.backgroundColor = color
