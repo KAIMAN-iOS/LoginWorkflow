@@ -328,7 +328,7 @@ public class FormController: UIViewController {
                 
             case .password:
                 let textField = textField("password".bundleLocale().capitalized, field)
-                textField.textContentType = signUpType == .login ? .password : .newPassword
+                textField.textContentType = .password
                 stackView.addArrangedSubview(textField)
                 textField.isSecureTextEntry = true
                 textField.sizeToFit()
