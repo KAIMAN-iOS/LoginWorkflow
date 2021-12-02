@@ -428,7 +428,7 @@ public class FormController: UIViewController {
         nextButton.setTitle(signUpType.itemTitle.lowercased(), for: .normal)
         nextButton.titleLabel?.font = .applicationFont(forTextStyle: .body)
         changeFormButton.titleLabel?.font = .applicationFont(forTextStyle: .body)
-        changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.itemTitle.capitalized : SignUpType.login.itemTitle.capitalized, for: .normal)
+        changeFormButton.setTitle(signUpType == .login ? SignUpType.sigup.itemTitle : SignUpType.login.itemTitle, for: .normal)
         changeFormButton.sizeToFit()
         changeFormButton.superview?.sizeToFit()
         changeFormButton.setTitleColor(mode.navigationTintColor(for: signUpType), for: .normal)
