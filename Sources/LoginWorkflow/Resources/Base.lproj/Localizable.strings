@@ -14,6 +14,7 @@
 "firstname empty" = "Le prénom est obligatoire";
 "lastName empty" = "Le nom est obligatoire";
 "phoneNumber empty" = "Le numéro de téléphone n'est pas valide";
+"password too short" = "Le mot de passe doit faire 8 caractères minimum";
 "password empty" = "Le mot de passe est obligatoire";
 "email empty" = "L'email' n'est pas valide";
 "verify" = "vérifier";

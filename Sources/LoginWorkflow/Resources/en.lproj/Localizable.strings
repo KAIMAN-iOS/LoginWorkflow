@@ -15,6 +15,7 @@
 "lastName empty" = "Le nom est obligatoire";
 "phoneNumber empty" = "Le numéro de téléphone n'est pas valide";
 "password empty" = "Le mot de passe est obligatoire";
+"password too short" = "Le mot de passe doit faire 8 caractères minimum";
 "email empty" = "L'email' n'est pas valide";
 "verify" = "vérifier";
 "welcome title" = "LA SUITE LOGICIELLE POUR TAXI";

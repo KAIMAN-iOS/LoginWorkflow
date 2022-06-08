@@ -150,25 +150,29 @@ public class FieldTextField: HoshiTextField {
     
     public func checkValidity() {
         switch field {
-        case .name, .firstname, .lastName, .password:
-            isValid = (text?.isEmpty ?? true) == false
-            
-        case .phoneNumber:
-            isValid = SignupUser.numberKit.isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
-            
-        case .email:
-            isValid = text?.trimmingCharacters(in: .whitespacesAndNewlines).isValidEmail ?? false
-            
-        case .countryCode, .country:
-            isValid = true
-            
-        default:
-            isValid = true
+            case .name, .firstname, .lastName:
+                isValid = (text?.isEmpty ?? true) == false
+                
+            case .password:
+                isValid = (text?.count ?? 0) >= 8
+                
+            case .phoneNumber:
+                isValid = SignupUser.numberKit.isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
+                
+            case .email:
+                isValid = text?.trimmingCharacters(in: .whitespacesAndNewlines).isValidEmail ?? false
+                
+            case .countryCode, .country:
+                isValid = true
+                
+            default:
+                isValid = true
         }
     }
     
     public func validityString() -> String? {
         switch field {
+            case .password: return NSLocalizedString("password too short", bundle: Bundle.module, comment: "")
         case .phoneNumber: return NSLocalizedString("phoneNumber empty", bundle: Bundle.module, comment: "")
         case .email: return NSLocalizedString("email empty", bundle: Bundle.module, comment: "")
         default: return nil
