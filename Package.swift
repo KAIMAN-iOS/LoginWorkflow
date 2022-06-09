@@ -21,7 +21,7 @@ let package = Package(
         .package(url: "https://github.com/KAIMAN-IOS/ActionButton", .branch("master")),
         .package(url: "https://github.com/KAIMAN-IOS/PhoneNumberKit", from: "4.0.0"),
         .package(url: "https://github.com/SnapKit/SnapKit", from: "5.0.0"),
-        .package(name: "Lottie", url: "https://github.com/airbnb/lottie-ios", from: "3.2.1"),
+        .package(name: "Lottie", url: "https://github.com/airbnb/lottie-ios", from: "3.2.1"), 
         .package(url: "https://github.com/KAIMAN-IOS/ATAConfiguration", .branch("master")),
         .package(url: "https://github.com/KAIMAN-IOS/ATAViews", .branch("master")),
     ],

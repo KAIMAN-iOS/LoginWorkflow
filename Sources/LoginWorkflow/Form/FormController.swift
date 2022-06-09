@@ -148,13 +148,13 @@ public class FieldTextField: HoshiTextField {
         }
     }
     
-    public func checkValidity() {
+    public func checkValidity(for mode: SignUpType) {
         switch field {
             case .name, .firstname, .lastName:
                 isValid = (text?.isEmpty ?? true) == false
                 
             case .password:
-                isValid = (text?.count ?? 0) >= 8
+                isValid = (text?.count ?? 0) >= ( mode == .login ? 0 : 8)
                 
             case .phoneNumber:
                 isValid = SignupUser.numberKit.isValidPhoneNumber(text ?? "", withRegion: FormController.countryCode, ignoreType: false)
@@ -644,7 +644,7 @@ extension FormController: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let textField = (textField as? FieldTextField),
            textField.text?.isEmpty == false {
-            textField.checkValidity()
+            textField.checkValidity(for: signUpType)
             textField.textColor = textField.isValid ? LoginWorkflowController.configuration.palette.mainTexts : LoginWorkflowController.configuration.palette.primary
         }
         return checkValidity()
@@ -653,7 +653,7 @@ extension FormController: UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         if let textField = (textField as? FieldTextField),
            textField.text?.isEmpty == false {
-            textField.checkValidity()
+            textField.checkValidity(for: signUpType)
             textField.textColor = textField.isValid ? LoginWorkflowController.configuration.palette.mainTexts : LoginWorkflowController.configuration.palette.primary
         }
         checkValidity()
