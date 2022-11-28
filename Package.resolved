@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
-          "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
-          "version": "5.4.3"
+          "revision": "78424be314842833c04bc3bef5b72e85fff99204",
+          "version": "5.6.4"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/darjeelingsteve/Ampersand",
         "state": {
           "branch": null,
-          "revision": "9498afe66ef14428c80647a4b1046c9aab97655a",
-          "version": "1.1.0"
+          "revision": "4c35dbed17551133c880d0a095029285875da7fe",
+          "version": "1.2.1"
         }
       },
       {
@@ -33,7 +33,7 @@
         "repositoryURL": "https://github.com/KAIMAN-IOS/ATAConfiguration",
         "state": {
           "branch": "master",
-          "revision": "bee5d53f06f15f9a7c036bc7ed29e504eb230c35",
+          "revision": "aa7a5616b132fa09f5b7f3899b8f35a8a978c88e",
           "version": null
         }
       },
@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/KAIMAN-IOS/ATAViews",
         "state": {
           "branch": "master",
-          "revision": "3e4fa55ee7ca1d237ee9c62e814b3ded184d5df6",
+          "revision": "73008c2170aac4cf0526e93a6d41be893ffe3c78",
           "version": null
         }
       },
@@ -51,7 +51,7 @@
         "repositoryURL": "https://github.com/efremidze/Haptica",
         "state": {
           "branch": "master",
-          "revision": "4084702c85102c2d17d58e42ec5a750094944864",
+          "revision": "6f9e9f97ec0a7394dc6af50e86c7d5ea1d28b2cc",
           "version": null
         }
       },
@@ -69,7 +69,7 @@
         "repositoryURL": "https://github.com/KAIMAN-iOS/KExtensions",
         "state": {
           "branch": "master",
-          "revision": "629b5a7cc44c0d37e0b96db01371cc87965f57c2",
+          "revision": "1939fdb6eddc4cd1c53c7de2fba4d2d9e53e15d2",
           "version": null
         }
       },
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/airbnb/lottie-ios",
         "state": {
           "branch": null,
-          "revision": "79a0b70547f7c40ea54c67487f935fa2f2eaaadc",
-          "version": "3.2.3"
+          "revision": "b4bd0604ded9574807f41b4004b57dd1226a30a4",
+          "version": "3.5.0"
         }
       },
       {
@@ -132,8 +132,8 @@
         "repositoryURL": "https://github.com/mxcl/PromiseKit",
         "state": {
           "branch": null,
-          "revision": "d2f7ba14bcdc45e18f4f60ad9df883fb9055f081",
-          "version": "6.15.3"
+          "revision": "43772616c46a44a9977e41924ae01d0e55f2f9ca",
+          "version": "6.18.1"
         }
       },
       {
@@ -141,8 +141,8 @@
         "repositoryURL": "https://github.com/SnapKit/SnapKit",
         "state": {
           "branch": null,
-          "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
-          "version": "5.0.1"
+          "revision": "f222cbdf325885926566172f6f5f06af95473158",
+          "version": "5.6.0"
         }
       },
       {

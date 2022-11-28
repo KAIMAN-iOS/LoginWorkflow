@@ -22,7 +22,7 @@ public class LoginWorkflowController: UIViewController {
         LoginWorkflowController.configuration = conf
         return ctrl
     }
-    var animation: Animation?
+    var animation: LottieAnimation?
     weak var logicDelegate: LoginLogicCoordinatorDelegate!
     @IBOutlet weak var icon: UIImageView! 
     @IBOutlet weak var signUpButton: SignUpButton!  {

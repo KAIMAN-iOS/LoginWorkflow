@@ -182,7 +182,7 @@ public class FieldTextField: HoshiTextField {
 
 public class FormController: UIViewController {
     var loginBackgroundImage: UIImage? = nil
-    var animation: Animation?
+    var animation: LottieAnimation?
     enum SupportedCountries: Int, CaseIterable {
         case france
         
@@ -400,7 +400,7 @@ public class FormController: UIViewController {
                 
             case .animation:
                 guard let anim = animation else { return }
-                let animationView = AnimationView(animation: anim)
+                    let animationView = LottieAnimationView(animation: anim)
                 stackView.addArrangedSubview(animationView)
                 animationView.snp.makeConstraints({
                     $0.width.equalToSuperview()

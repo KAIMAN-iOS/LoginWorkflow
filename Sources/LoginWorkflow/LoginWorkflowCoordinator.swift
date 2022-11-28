@@ -39,7 +39,7 @@ public class LoginWorkflowCoordinator<DeepLinkType>: Coordinator<DeepLinkType> {
     public init(router: RouterType,
                 mode: LoginWorkflow.Mode = .driver,
                 delegate: LoginWorkflowCoordinatorDelegate,
-                animation: Animation? = nil,
+                animation: LottieAnimation? = nil,
                 conf: ATAConfiguration) {
         super.init(router: router)
         BorderedErrorView.configuration = conf
