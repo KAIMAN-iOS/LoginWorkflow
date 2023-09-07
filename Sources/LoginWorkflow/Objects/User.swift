@@ -29,7 +29,7 @@ public class SignupUser: LoginUser {
     public let lastname: String
     public var internationalPhone: String {
         guard let internationalCode = SignupUser.numberKit.countryCode(for: countryCode),
-            let nummber = try? SignupUser.numberKit.parse("\(internationalCode)\(phone)") else { return phone }
+            let nummber = try? SignupUser.numberKit.parse("+\(internationalCode)\(phone)") else { return phone }
         return SignupUser.numberKit.format(nummber, toType: .e164)
     }
     
