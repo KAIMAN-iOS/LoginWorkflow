@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by GG on 19/10/2020.
 //
@@ -22,65 +22,65 @@ import ATAViews
 extension LoginWorkflow.Mode {
     internal func fields(for type: SignUpType) -> [FormType] {
         switch self {
-        case .driver:
-            switch type {
-            case .login: return [.email, .password, .forgetPassword]
-            case .sigup: return [.disclaimer, .name, .email, .phoneNumber, .password, .country]
-            }
-            
-        case .passenger:
-            switch type {
-            case .login: return [.spacer, .phoneNumber, .animation]
-            case .sigup: return [.spacer, .name, .phoneNumber, .animation]
-            }
-            
-        case .business:
-            switch type {
-            case .login: return [.email, .password, .forgetPassword]
-            case .sigup: return [.name, .email, .phoneNumber, .password]
-            }
+            case .driver:
+                switch type {
+                    case .login: return [.email, .password, .forgetPassword]
+                    case .sigup: return [.disclaimer, .name, .email, .phoneNumber, .password, .country]
+                }
+                
+            case .passenger:
+                switch type {
+                    case .login: return [.spacer, .phoneNumber, .animation]
+                    case .sigup: return [.spacer, .name, .phoneNumber, .animation]
+                }
+                
+            case .business:
+                switch type {
+                    case .login: return [.email, .password, .forgetPassword]
+                    case .sigup: return [.name, .email, .phoneNumber, .password]
+                }
         }
     }
     
     internal func navigationBarTintColor(for type: SignUpType) -> UIColor {
         switch (self, type) {
-        case (.driver, .login): return .clear
-        case (.passenger, _): return LoginWorkflowController.configuration.palette.primary
-        default: return LoginWorkflowController.configuration.palette.background
+            case (.driver, .login): return .clear
+            case (.passenger, _): return LoginWorkflowController.configuration.palette.primary
+            default: return LoginWorkflowController.configuration.palette.background
         }
     }
     
     internal func navigationTintColor(for type: SignUpType) -> UIColor {
         switch (self, type) {
-        case (.passenger, _): return LoginWorkflowController.configuration.palette.textOnPrimary
-        default: return LoginWorkflowController.configuration.palette.mainTexts
+            case (.passenger, _): return LoginWorkflowController.configuration.palette.textOnPrimary
+            default: return LoginWorkflowController.configuration.palette.mainTexts
         }
     }
     
     internal func textFieldBorderColor(for type: SignUpType) -> UIColor {
         switch (self, type) {
-        default: return FormController.placeholderColor
+            default: return FormController.placeholderColor
         }
     }
     
     internal func textFieldPlaceholderColor(for type: SignUpType) -> UIColor {
         switch (self, type) {
-//        case (.driver, .login): return LoginWorkflowController.configuration.palette.textOnDark.withAlphaComponent(0.7)
-        default: return FormController.placeholderColor
+                //        case (.driver, .login): return LoginWorkflowController.configuration.palette.textOnDark.withAlphaComponent(0.7)
+            default: return FormController.placeholderColor
         }
     }
     
     internal func textFieldBackgroundColor(for type: SignUpType) -> UIColor {
         switch (self, type) {
-//        case (.driver, .login): return UIColor.white.withAlphaComponent(0.5)
-        default: return .clear
+                //        case (.driver, .login): return UIColor.white.withAlphaComponent(0.5)
+            default: return .clear
         }
     }
     
     internal func backgroundImage(for type: SignUpType) -> UIImage? {
         switch (self, type) {
-        case (.driver, .login): return UIImage(named: "LoginBlur", in: .module, with: nil)
-        default: return nil
+            case (.driver, .login): return UIImage(named: "LoginBlur", in: .module, with: nil)
+            default: return nil
         }
     }
 }
@@ -128,16 +128,16 @@ public class FieldTextField: HoshiTextField {
     public var field: FormType = .email  {
         didSet {
             switch field {
-            case .email: keyboardType = .emailAddress
-            case .phoneNumber: keyboardType = .phonePad
-            default: keyboardType = .asciiCapable
+                case .email: keyboardType = .emailAddress
+                case .phoneNumber: keyboardType = .phonePad
+                default: keyboardType = .asciiCapable
             }
         }
     }
     var shouldCheckValidity: Bool {
         switch field {
-        case .country, .countryCode, .disclaimer : return false
-        default: return true
+            case .country, .countryCode, .disclaimer : return false
+            default: return true
         }
     }
     
@@ -173,9 +173,9 @@ public class FieldTextField: HoshiTextField {
     public func validityString() -> String? {
         switch field {
             case .password: return NSLocalizedString("password too short", bundle: Bundle.module, comment: "")
-        case .phoneNumber: return NSLocalizedString("phoneNumber empty", bundle: Bundle.module, comment: "")
-        case .email: return NSLocalizedString("email empty", bundle: Bundle.module, comment: "")
-        default: return nil
+            case .phoneNumber: return NSLocalizedString("phoneNumber empty", bundle: Bundle.module, comment: "")
+            case .email: return NSLocalizedString("email empty", bundle: Bundle.module, comment: "")
+            default: return nil
         }
     }
 }
@@ -185,23 +185,43 @@ public class FormController: UIViewController {
     var animation: LottieAnimation?
     enum SupportedCountries: Int, CaseIterable {
         case france
+        case nouvelleCaledonie
+        case belgique
+        case espagne
+        case algerie
+        case tunisie
         
         var title: String {
             switch self {
-            case .france: return "FRANCE"
+                case .france: return "FRANCE"
+                case .nouvelleCaledonie: return "FRANCE - NOUVELLE CALEDONIE"
+                case .belgique: return "BELGIQUE"
+                case .espagne: return "ESPAGNE"
+                case .algerie: return "ALGERIE"
+                case .tunisie: return "TUNISIE"
             }
         }
         var code: String {
             switch self {
-            case .france: return "FR"
+                case .france: return "FR"
+                case .nouvelleCaledonie: return "NC"
+                case .belgique: return "BE"
+                case .espagne: return "SP"
+                case .algerie: return "GZ"
+                case .tunisie: return "TN"
             }
         }
         
         static func from(regionCode: String?) -> SupportedCountries {
             guard let code = regionCode else { return .france }
             switch code.lowercased() {
-            case "fr" : return .france
-            default: return .france
+                case "fr" : return .france
+                case "cn" : return .nouvelleCaledonie
+                case "es" : return .espagne
+                case "be" : return .belgique
+                case "gz" : return .algerie
+                case "tn" : return .tunisie
+                default: return .france
             }
         }
     }
@@ -223,14 +243,14 @@ public class FormController: UIViewController {
             updateFields()
         }
     }
-    @IBOutlet weak var backgrumdImage: UIImageView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var stackView: ScrollingStackView!
     lazy var nextButton: ActionButton =  {
         let btn = ActionButton()
         btn.actionButtonType = .confirmation
         return btn
     } ()
-
+    
     @IBOutlet weak var changeFormButton: UIButton!
     public static var textColor: UIColor = LoginWorkflowController.configuration.palette.mainTexts
     public static var placeholderColor: UIColor = #colorLiteral(red: 0.6170696616, green: 0.6521494985, blue: 0.7113651633, alpha: 1)
@@ -276,11 +296,11 @@ public class FormController: UIViewController {
             textField.placeholderColor = self.mode.textFieldPlaceholderColor(for: self.signUpType)
             textField.borderActiveColor = self.mode.textFieldBorderColor(for: self.signUpType)
             textField.spellCheckingType = .no
-//            textField.borderLayer.backgroundColor = self.mode.textFieldBackgroundColor(for: self.signUpType).cgColor
-//            textField.borderThickness = (active: 0.4, inactive: 0.5)
+            //            textField.borderLayer.backgroundColor = self.mode.textFieldBackgroundColor(for: self.signUpType).cgColor
+            //            textField.borderThickness = (active: 0.4, inactive: 0.5)
             textField.rightViewMode = .whileEditing
-//            textField.placeholderInsets = CGPoint(x: 6, y: 10)
-//            textField.backgroundColor = self.mode.textFieldBackgroundColor(for: self.signUpType)
+            //            textField.placeholderInsets = CGPoint(x: 6, y: 10)
+            //            textField.backgroundColor = self.mode.textFieldBackgroundColor(for: self.signUpType)
             let button = UIButton()
             button.tintColor = LoginWorkflowController.configuration.palette.placeholder
             button.addTarget(self, action: #selector(self.clearTextField(sender:)), for: .touchUpInside)
@@ -308,117 +328,118 @@ public class FormController: UIViewController {
         
         fields.forEach { field in
             switch field {
-            case .disclaimer:
-                let label = UILabel()
-                label.set(text: "driver disclaimer".bundleLocale(), for: .footnote, textColor: LoginWorkflowController.configuration.palette.mainTexts)
-                label.numberOfLines = 0
-                stackView.addArrangedSubview(label)
-                
-            case .email:
-                let textfield = textField("email".bundleLocale().capitalized, field)
-                textfield.textContentType = signUpType == .login ? .username : .emailAddress
-                stackView.addArrangedSubview(textfield)
-                
-            case .country:
-                let textfield = textField("country".bundleLocale().capitalized, field)
-                let screenWidth = UIScreen.main.bounds.width
-                let picker = UIPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))
-                picker.delegate = self
-                picker.dataSource = self
-                textfield.inputView = picker
-                textfield.addKeyboardControlView(with: LoginWorkflowController.configuration.palette.secondary, target: textfield, buttonStyle: .body)
-                textfield.text = selectedCountry.title
-                stackView.addArrangedSubview(textfield)
-                
-            case .password:
-                let textField = textField("password".bundleLocale().capitalized, field)
-                textField.textContentType = .password
-                stackView.addArrangedSubview(textField)
-                textField.isSecureTextEntry = true
-                textField.sizeToFit()
-                
-            case .name:
-                let stack = UIStackView()
-                stack.axis = .horizontal
-                stack.spacing = 12
-                stack.distribution = .fillEqually
-                let firstname = textField("firstname".bundleLocale().capitalized, FormType.firstname)
-                firstname.textContentType = .givenName
-                stack.addArrangedSubview(firstname)
-                let name = textField("lastname".bundleLocale().capitalized, FormType.lastName)
-                name.textContentType = .familyName
-                stack.addArrangedSubview(name)
-                stackView.addArrangedSubview(stack)
-                
-            case .phoneNumber:
-                let stack = UIStackView()
-                stack.axis = .horizontal
-                stack.spacing = 12
-                stack.distribution = .fillProportionally
-                let code = textField("country code".bundleLocale().capitalized, FormType.countryCode)
-                updateCountryCode()
-                code.setContentHuggingPriority(.required, for: .horizontal)
-                code.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCountryCodePicker)))
-                stack.addArrangedSubview(code)
-                let phone = textField("phone number".bundleLocale().capitalized, field)
-                phone.textContentType = .telephoneNumber
-                stack.addArrangedSubview(phone)
-                stackView.addArrangedSubview(stack)
-                
-            case .terms:
-                let attr = NSMutableAttributedString(attributedString: NSLocalizedString("terms and conditions", bundle: Bundle.module, comment: "terms and conditions").asAttributedString(for: .footnote, textColor: LoginWorkflowController.configuration.palette.mainTexts))
-                if let termsRange = attr.string.range(of: NSLocalizedString("terms", bundle: Bundle.module, comment: "terms")) {
-                    attr.addAttributes([.font : UIFont.applicationFont(forTextStyle: .footnote),
-                                        .underlineStyle : NSUnderlineStyle.single.rawValue],
-                                       range: NSRange(termsRange, in: attr.string))
-                }
-                if let policyRange = attr.string.range(of: NSLocalizedString("policy", bundle: Bundle.module, comment: "policy")) {
-                    attr.addAttributes([.font : UIFont.applicationFont(forTextStyle: .footnote),
-                                        .underlineStyle : NSUnderlineStyle.single.rawValue],
-                                       range: NSRange(policyRange, in: attr.string))
-                }
-                let label = UILabel()
-                label.numberOfLines = 0
-                label.attributedText = attr
-                label.isUserInteractionEnabled = true
-                let tapgesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnLabel(_ :)))
-                tapgesture.numberOfTapsRequired = 1
-                label.addGestureRecognizer(tapgesture)
-                stackView.addArrangedSubview(label)
-                
-            case .forgetPassword:
-                let button = UIButton(frame: CGRect.zero)
-                button.setTitle("forgot password".bundleLocale().capitalizingFirstLetter(), for: .normal)
-                button.titleLabel?.font = .applicationFont(forTextStyle: .footnote)
-                button.tintColor = mode.navigationTintColor(for: signUpType)
-                button.setTitleColor(mode.navigationTintColor(for: signUpType), for: .normal)
-                button.contentHorizontalAlignment = .right
-                button.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
-                stackView.addArrangedSubview(button)
-                
-            case .firstname, .lastName, .countryCode: ()
-                
-            case .animation:
-                guard let anim = animation else { return }
+                case .disclaimer:
+                    let label = UILabel()
+                    label.set(text: "driver disclaimer".bundleLocale(), for: .footnote, textColor: LoginWorkflowController.configuration.palette.mainTexts)
+                    label.numberOfLines = 0
+                    stackView.addArrangedSubview(label)
+                    
+                case .email:
+                    let textfield = textField("email".bundleLocale().capitalized, field)
+                    textfield.textContentType = signUpType == .login ? .username : .emailAddress
+                    stackView.addArrangedSubview(textfield)
+                    
+                case .country:
+                    let textfield = textField("country".bundleLocale().capitalized, field)
+                    let screenWidth = UIScreen.main.bounds.width
+                    let picker = UIPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))
+                    picker.delegate = self
+                    picker.dataSource = self
+                    textfield.inputView = picker
+                    textfield.addKeyboardControlView(with: LoginWorkflowController.configuration.palette.secondary, target: textfield, buttonStyle: .body)
+                    textfield.text = selectedCountry.title
+                    textfield.tag = field.rawValue
+                    stackView.addArrangedSubview(textfield)
+                    
+                case .password:
+                    let textField = textField("password".bundleLocale().capitalized, field)
+                    textField.textContentType = .password
+                    stackView.addArrangedSubview(textField)
+                    textField.isSecureTextEntry = true
+                    textField.sizeToFit()
+                    
+                case .name:
+                    let stack = UIStackView()
+                    stack.axis = .horizontal
+                    stack.spacing = 12
+                    stack.distribution = .fillEqually
+                    let firstname = textField("firstname".bundleLocale().capitalized, FormType.firstname)
+                    firstname.textContentType = .givenName
+                    stack.addArrangedSubview(firstname)
+                    let name = textField("lastname".bundleLocale().capitalized, FormType.lastName)
+                    name.textContentType = .familyName
+                    stack.addArrangedSubview(name)
+                    stackView.addArrangedSubview(stack)
+                    
+                case .phoneNumber:
+                    let stack = UIStackView()
+                    stack.axis = .horizontal
+                    stack.spacing = 12
+                    stack.distribution = .fillProportionally
+                    let code = textField("country code".bundleLocale().capitalized, FormType.countryCode)
+                    updateCountryCode()
+                    code.setContentHuggingPriority(.required, for: .horizontal)
+                    code.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCountryCodePicker)))
+                    stack.addArrangedSubview(code)
+                    let phone = textField("phone number".bundleLocale().capitalized, field)
+                    phone.textContentType = .telephoneNumber
+                    stack.addArrangedSubview(phone)
+                    stackView.addArrangedSubview(stack)
+                    
+                case .terms:
+                    let attr = NSMutableAttributedString(attributedString: NSLocalizedString("terms and conditions", bundle: Bundle.module, comment: "terms and conditions").asAttributedString(for: .footnote, textColor: LoginWorkflowController.configuration.palette.mainTexts))
+                    if let termsRange = attr.string.range(of: NSLocalizedString("terms", bundle: Bundle.module, comment: "terms")) {
+                        attr.addAttributes([.font : UIFont.applicationFont(forTextStyle: .footnote),
+                                            .underlineStyle : NSUnderlineStyle.single.rawValue],
+                                           range: NSRange(termsRange, in: attr.string))
+                    }
+                    if let policyRange = attr.string.range(of: NSLocalizedString("policy", bundle: Bundle.module, comment: "policy")) {
+                        attr.addAttributes([.font : UIFont.applicationFont(forTextStyle: .footnote),
+                                            .underlineStyle : NSUnderlineStyle.single.rawValue],
+                                           range: NSRange(policyRange, in: attr.string))
+                    }
+                    let label = UILabel()
+                    label.numberOfLines = 0
+                    label.attributedText = attr
+                    label.isUserInteractionEnabled = true
+                    let tapgesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnLabel(_ :)))
+                    tapgesture.numberOfTapsRequired = 1
+                    label.addGestureRecognizer(tapgesture)
+                    stackView.addArrangedSubview(label)
+                    
+                case .forgetPassword:
+                    let button = UIButton(frame: CGRect.zero)
+                    button.setTitle("forgot password".bundleLocale().capitalizingFirstLetter(), for: .normal)
+                    button.titleLabel?.font = .applicationFont(forTextStyle: .footnote)
+                    button.tintColor = mode.navigationTintColor(for: signUpType)
+                    button.setTitleColor(mode.navigationTintColor(for: signUpType), for: .normal)
+                    button.contentHorizontalAlignment = .right
+                    button.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
+                    stackView.addArrangedSubview(button)
+                    
+                case .firstname, .lastName, .countryCode: ()
+                    
+                case .animation:
+                    guard let anim = animation else { return }
                     let animationView = LottieAnimationView(animation: anim)
-                stackView.addArrangedSubview(animationView)
-                animationView.snp.makeConstraints({
-                    $0.width.equalToSuperview()
-                    $0.height.equalTo(200)
-                })
-                animationView.contentMode = .scaleAspectFit
-                animationView.loopMode = .loop
-                animationView.translatesAutoresizingMaskIntoConstraints = false
-                animationView.isUserInteractionEnabled = false
-                animationView.play()
-                
-            case .spacer:
-                let view = UIView()
-                stackView.addArrangedSubview(view)
-                view.snp.makeConstraints({
-                    $0.width.equalToSuperview()
-                    $0.height.equalTo(50)
-                })
+                    stackView.addArrangedSubview(animationView)
+                    animationView.snp.makeConstraints({
+                        $0.width.equalToSuperview()
+                        $0.height.equalTo(200)
+                    })
+                    animationView.contentMode = .scaleAspectFit
+                    animationView.loopMode = .loop
+                    animationView.translatesAutoresizingMaskIntoConstraints = false
+                    animationView.isUserInteractionEnabled = false
+                    animationView.play()
+                    
+                case .spacer:
+                    let view = UIView()
+                    stackView.addArrangedSubview(view)
+                    view.snp.makeConstraints({
+                        $0.width.equalToSuperview()
+                        $0.height.equalTo(50)
+                    })
             }
         }
         stackView.setCustomSpacing(40, after: stackView.arrangedSubviews.last!)
@@ -455,7 +476,7 @@ public class FormController: UIViewController {
         navigationController?.navigationBar.tintColor = mode.navigationTintColor(for: signUpType)
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.shadowImage = UIImage()
-        backgrumdImage.image = mode.backgroundImage(for: signUpType)
+        backgroundImage.image = mode.backgroundImage(for: signUpType)
     }
     
     func updateCountryCode() {
@@ -499,19 +520,19 @@ public class FormController: UIViewController {
     
     @objc func nextPage() {
         switch signUpType {
-        case .login:
-            switch mode! {
-            case .driver: loginDriver()
-            case .passenger: loginPassenger()
-            case .business: loginBusiness()
-            }
-            
-        case .sigup:
-            switch mode! {
-            case .driver: createDriver()
-            case .passenger: createPassenger()
-            case .business: createBusiness()
-            }
+            case .login:
+                switch mode! {
+                    case .driver: loginDriver()
+                    case .passenger: loginPassenger()
+                    case .business: loginBusiness()
+                }
+                
+            case .sigup:
+                switch mode! {
+                    case .driver: createDriver()
+                    case .passenger: createPassenger()
+                    case .business: createBusiness()
+                }
         }
     }
     
@@ -721,5 +742,6 @@ extension FormController: UIPickerViewDataSource {
 extension FormController: UIPickerViewDelegate {
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCountry = SupportedCountries(rawValue: row) ?? .france
+        (textFields.filter({ $0.tag == FormType.country.rawValue }).first)?.text = selectedCountry.title
     }
 }
